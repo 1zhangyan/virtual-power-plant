@@ -105,10 +105,38 @@ Response Data: {
 === Fetch Complete ===
 ```
 
+## 🧪 测试
+
+项目遵循Spring Boot标准测试结构，包含完整的单元测试和集成测试：
+
+### 测试运行
+```bash
+# 运行所有测试
+./mvnw test
+
+# 运行特定测试
+./mvnw test -Dtest=WeatherDataServiceTest
+```
+
+### 测试覆盖
+- ✅ 单元测试：WeatherDataService、TokenConfig、WeatherController
+- ✅ 集成测试：完整API调用流程
+- ✅ Mock测试：HTTP请求、JSON解析
+- ✅ 测试工具：MockWeatherServer
+
+详细测试文档：[src/test/README.md](src/test/README.md)
+
 ### 🛠 技术栈
 - Spring Boot 2.7.18
 - Spring Scheduling
 - RestTemplate HTTP客户端
 - Jackson JSON处理
 - SpringDoc OpenAPI (Swagger)
-- Maven 3.9.5 
+- Maven 3.9.5
+
+### 测试技术栈
+- JUnit 5
+- Mockito
+- Spring Boot Test
+- WireMock
+- MockMvc 
