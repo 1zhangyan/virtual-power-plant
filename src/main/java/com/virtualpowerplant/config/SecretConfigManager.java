@@ -252,7 +252,28 @@ public class SecretConfigManager {
      * 获取SunGrow Base URL
      */
     public static String getSunGrowBaseUrl() {
-        return getString("sungrow.base_url", "https://gateway.isolarcloud.com.hk");
+        return getString("sungrow.base_url");
+    }
+
+    /**
+     * 获取SunGrow public key
+     */
+    public static String getSunGrowPublicKey() {
+        return getString("sungrow.public_key");
+    }
+
+    /**
+     * 获取SunGrow access_key
+     */
+    public static String getSunGrowAccessKey() {
+        return getString("sungrow.access_key");
+    }
+
+    /**
+     * 获取SunGrow aes_key
+     */
+    public static String getSunGrowAESKey() {
+        return getString("sungrow.aes_key");
     }
 
     /**
