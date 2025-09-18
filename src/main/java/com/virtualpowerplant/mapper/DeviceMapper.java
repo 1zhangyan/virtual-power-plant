@@ -19,5 +19,5 @@ public interface DeviceMapper {
      * 查询所有带经纬度信息的逆变器
      */
     @Select("SELECT * FROM vpp.sungrow_device WHERE device_type = 1  ORDER BY device_name")
-    List<Device> selectInvertersWithCoordinates();
+    List<Device> selectInverters();
 }

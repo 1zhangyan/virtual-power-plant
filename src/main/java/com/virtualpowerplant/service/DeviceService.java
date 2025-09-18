@@ -3,6 +3,8 @@ package com.virtualpowerplant.service;
 import com.virtualpowerplant.mapper.DeviceMapper;
 import com.virtualpowerplant.model.Device;
 import com.virtualpowerplant.model.PowerStation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,8 @@ import java.util.stream.Collectors;
 @Transactional
 public class DeviceService {
 
+    private static final Logger logger = LoggerFactory.getLogger(DeviceService.class);
+
     @Autowired
     private DeviceMapper deviceMapper;
 
@@ -26,24 +30,36 @@ public class DeviceService {
      * 同步SunGrow设备数据到数据库，包含经纬度信息
      */
     public void syncDevicesWithCoordinates() throws Exception {
+        logger.info("开始同步SunGrow设备数据...");
+
         // 1. 登录SunGrow获取token
         String token = sunGrowDataService.loginAndGetToken();
+        logger.info("登录成功，获取到token");
 
         // 2. 获取所有电站信息（包含经纬度）
+        logger.info("开始获取电站信息...");
         List<PowerStation> powerStations = sunGrowDataService.getPowerStationsAndParse(token);
         Map<Long, PowerStation> psMap = powerStations.stream()
             .collect(Collectors.toMap(PowerStation::getPsId, ps -> ps));
+        logger.info("获取到 {} 个电站信息", powerStations.size());
 
         // 3. 获取所有设备信息
+        logger.info("开始获取设备信息...");
         List<Device> devices = sunGrowDataService.getDevicesAndParse(token);
+        logger.info("获取到 {} 个设备信息", devices.size());
 
-        // 4. 为设备添加经纬度信息
+        // 4. 为设备添加经纬度信息并保存到数据库
+        logger.info("开始处理设备数据并同步到数据库...");
         LocalDateTime now = LocalDateTime.now();
+        int processedCount = 0;
+        int updatedCount = 0;
+
         for (Device device : devices) {
             PowerStation ps = psMap.get(device.getPsId());
             if (ps != null) {
                 device.setLatitude(ps.getLatitude());
                 device.setLongitude(ps.getLongitude());
+                updatedCount++;
             }
 
             if (device.getCreatedAt() == null) {
@@ -53,13 +69,22 @@ public class DeviceService {
 
             // 5. Upsert到数据库
             deviceMapper.insertOrUpdate(device);
+            processedCount++;
+
+            // 每处理100个设备记录一次日志
+            if (processedCount % 100 == 0) {
+                logger.info("已处理 {} / {} 个设备", processedCount, devices.size());
+            }
         }
+
+        logger.info("设备数据同步完成：总共处理 {} 个设备，其中 {} 个设备添加了经纬度信息",
+                   processedCount, updatedCount);
     }
 
     /**
      * 查询所有带经纬度信息的逆变器
      */
-    public List<Device> getInvertersWithCoordinates() {
-        return deviceMapper.selectInvertersWithCoordinates();
+    public List<Device> getInverters() {
+        return deviceMapper.selectInverters();
     }
 }

@@ -24,6 +24,7 @@ import com.virtualpowerplant.utils.SunGrowResponseParser;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Service
 public class SunGrowDataService {
@@ -82,20 +83,20 @@ public class SunGrowDataService {
         return postHttpCall(apiUrl,requestBody);
     }
 
-    public static String getPowerStationList(String token) throws Exception {
+    public static String getPowerStationList(String token, int page, int size) throws Exception {
         String apiUrl = baseUrl + "/openapi/getPowerStationList";
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("curPage", 1);
-        requestBody.put("size", 999);
+        requestBody.put("curPage", page);
+        requestBody.put("size", size);
         requestBody.put("token", token);
         return postHttpCall(apiUrl,requestBody);
     }
 
-    public static String getDeviceList(String token) throws Exception {
+    public static String getDeviceList(String token, int page, int size) throws Exception {
         String apiUrl = baseUrl + "/openapi/getDeviceListByUser";
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("curPage", 1);
-        requestBody.put("size", 999);
+        requestBody.put("curPage", page);
+        requestBody.put("size", size);
         requestBody.put("token", token);
         return postHttpCall(apiUrl,requestBody);
     }
@@ -127,13 +128,35 @@ public class SunGrowDataService {
 
     public static List<PowerStation> getPowerStationsAndParse(String token) throws Exception {
         try {
-            String jsonResponse = getPowerStationList(token);
-            logger.info("电站列表API响应: {}", jsonResponse);
+            List<PowerStation> allPowerStations = new ArrayList<>();
+            int page = 1;
+            int pageSize = 200; // API每页最大200条
 
-            List<PowerStation> powerStations = SunGrowResponseParser.extractPowerStations(jsonResponse);
-            logger.info("成功解析到 {} 个电站信息", powerStations != null ? powerStations.size() : 0);
+            while (true) {
+                logger.info("获取电站列表第 {} 页，每页 {} 条", page, pageSize);
+                String jsonResponse = getPowerStationList(token, page, pageSize);
+                logger.debug("电站列表API响应 (第{}页): {}", page, jsonResponse);
 
-            return powerStations;
+                List<PowerStation> powerStations = SunGrowResponseParser.extractPowerStations(jsonResponse);
+                if (powerStations == null || powerStations.isEmpty()) {
+                    logger.info("第 {} 页没有更多电站数据，停止分页", page);
+                    break;
+                }
+
+                allPowerStations.addAll(powerStations);
+                logger.info("第 {} 页获取到 {} 个电站，累计 {} 个", page, powerStations.size(), allPowerStations.size());
+
+                // 如果返回的数据少于页大小，说明这是最后一页
+                if (powerStations.size() < pageSize) {
+                    logger.info("第 {} 页数据量 {} 小于页大小 {}，已获取完所有数据", page, powerStations.size(), pageSize);
+                    break;
+                }
+
+                page++;
+            }
+
+            logger.info("成功解析到总共 {} 个电站信息", allPowerStations.size());
+            return allPowerStations;
         } catch (Exception e) {
             logger.error("获取并解析电站信息失败: {}", e.getMessage(), e);
             throw e;
@@ -142,35 +165,40 @@ public class SunGrowDataService {
 
     public static List<Device> getDevicesAndParse(String token) throws Exception {
         try {
-            String jsonResponse = getDeviceList(token);
-            logger.info("设备列表API响应: {}", jsonResponse);
+            List<Device> allDevices = new ArrayList<>();
+            int page = 1;
+            int pageSize = 200; // API每页最大200条
 
-            List<Device> devices = SunGrowResponseParser.extractDevices(jsonResponse);
-            logger.info("成功解析到 {} 个设备信息", devices != null ? devices.size() : 0);
+            while (true) {
+                logger.info("获取设备列表第 {} 页，每页 {} 条", page, pageSize);
+                String jsonResponse = getDeviceList(token, page, pageSize);
+                logger.debug("设备列表API响应 (第{}页): {}", page, jsonResponse);
 
-            return devices;
+                List<Device> devices = SunGrowResponseParser.extractDevices(jsonResponse);
+                if (devices == null || devices.isEmpty()) {
+                    logger.info("第 {} 页没有更多设备数据，停止分页", page);
+                    break;
+                }
+
+                allDevices.addAll(devices);
+                logger.info("第 {} 页获取到 {} 个设备，累计 {} 个", page, devices.size(), allDevices.size());
+
+                // 如果返回的数据少于页大小，说明这是最后一页
+                if (devices.size() < pageSize) {
+                    logger.info("第 {} 页数据量 {} 小于页大小 {}，已获取完所有数据", page, devices.size(), pageSize);
+                    break;
+                }
+
+                page++;
+            }
+
+            logger.info("成功解析到总共 {} 个设备信息", allDevices.size());
+            return allDevices;
         } catch (Exception e) {
             logger.error("获取并解析设备信息失败: {}", e.getMessage(), e);
             throw e;
         }
     }
 
-    public static DeviceList getDeviceListAndParse(String token) throws Exception {
-        try {
-            String jsonResponse = getDeviceList(token);
-            logger.info("设备列表API响应: {}", jsonResponse);
-
-            DeviceList deviceList = SunGrowResponseParser.extractDeviceList(jsonResponse);
-            logger.info("成功解析设备列表，总数: {}, 当前页: {}, 逆变器: {}, 通信模块: {}, 在线设备: {}, 故障设备: {}",
-                deviceList.getRowCount(), deviceList.getPageSize(),
-                deviceList.getInverterCount(), deviceList.getCommunicationModuleCount(),
-                deviceList.getOnlineDeviceCount(), deviceList.getFaultyDeviceCount());
-
-            return deviceList;
-        } catch (Exception e) {
-            logger.error("获取并解析设备列表失败: {}", e.getMessage(), e);
-            throw e;
-        }
-    }
 
 }

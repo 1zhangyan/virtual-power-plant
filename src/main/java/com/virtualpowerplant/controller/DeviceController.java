@@ -40,7 +40,7 @@ public class DeviceController {
     @Operation(summary = "查询带经纬度的逆变器", description = "返回所有带经纬度信息的逆变器设备")
     public ResponseEntity<List<Device>> getInvertersWithCoordinates() {
         try {
-            List<Device> inverters = deviceService.getInvertersWithCoordinates();
+            List<Device> inverters = deviceService.getInverters();
             logger.info("查询到 {} 个带经纬度的逆变器设备", inverters.size());
             return ResponseEntity.ok(inverters);
         } catch (Exception e) {
