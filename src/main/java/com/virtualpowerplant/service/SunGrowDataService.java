@@ -14,8 +14,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.constant.Constant;
+import com.virtualpowerplant.model.SunGrowUserInfo;
+import com.virtualpowerplant.model.PowerStation;
 import com.virtualpowerplant.utils.AESEncryptUtils;
 import com.virtualpowerplant.utils.RSAEncryptUtils;
+import com.virtualpowerplant.utils.SunGrowResponseParser;
+
+import java.util.List;
 
 @Service
 public class SunGrowDataService {
@@ -74,45 +79,62 @@ public class SunGrowDataService {
         return postHttpCall(apiUrl,requestBody);
     }
 
-    /*TODO:
-    login 返回的结果为，写一段代码解析这段json，result_data、result_msg、result_code 的解析需要抽出公共代码，用来解析其他类似请求，login 的结果需要返回一个描述用户信息的类
-    {
-	"req_serial_num":"20250918d84e4bb3b1cee0fabba56c78",
-	"result_code":"1",
-	"result_msg":"success",
-	"result_data":{
-		"user_master_org_id":"1104432",
-		"mobile_tel":"13883358710",
-		"user_name":"基能能源—内蒙",
-		"language":"Chinese",
-		"token":"956680_7054b43ad9db4f81ac8134502076f02b",
-		"err_times":"0",
-		"user_id":"956680",
-		"login_state":"1",
-		"disable_time":null,
-		"country_name":"中国",
-		"user_account":"jc666",
-		"user_master_org_name":"品贡",
-		"email":null,
-		"country_id":"1"
-	}
-}
-    *
-    * */
+    public static SunGrowUserInfo loginAndGetUserInfo() throws Exception {
+        try {
+            String jsonResponse = login();
+            logger.info("登录API响应: {}", jsonResponse);
 
+            SunGrowUserInfo userInfo = SunGrowResponseParser.extractUserInfo(jsonResponse);
+            logger.info("登录成功，用户信息: {}", userInfo);
 
-    public static String getPowerStationList() throws Exception {
+            return userInfo;
+        } catch (Exception e) {
+            logger.error("登录失败: {}", e.getMessage(), e);
+            throw e;
+        }
+    }
+
+    public static String getPowerStationList(String token) throws Exception {
         String apiUrl = baseUrl + "/openapi/getPowerStationList";
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("curPage", 1);
-        requestBody.put("size", 9999);
-        requestBody.put("token", "956680_4fcd6fbb3e114b7faef29e54a3787947");
+        requestBody.put("size", 3);
+        requestBody.put("token", token);
         return postHttpCall(apiUrl,requestBody);
     }
 
+    public static List<PowerStation> getPowerStationsAndParse(String token) throws Exception {
+        try {
+            String jsonResponse = getPowerStationList(token);
+            logger.info("电站列表API响应: {}", jsonResponse);
+
+            List<PowerStation> powerStations = SunGrowResponseParser.extractPowerStations(jsonResponse);
+            logger.info("成功解析到 {} 个电站信息", powerStations != null ? powerStations.size() : 0);
+
+            return powerStations;
+        } catch (Exception e) {
+            logger.error("获取并解析电站信息失败: {}", e.getMessage(), e);
+            throw e;
+        }
+    }
+
+
+
     public static void main(String[] args) throws Exception {
-//        System.out.println(getPowerStationList());
-        System.out.println(login());
+            // 登录获取用户信息
+            System.out.println("=== 登录测试 ===");
+            SunGrowUserInfo userInfo = loginAndGetUserInfo();
+            System.out.println("用户名: " + userInfo.getUserName());
+            System.out.println("Token: " + userInfo.getToken());
+            // 测试原始电站列表API
+            System.out.println("\n=== 原始电站列表响应 ===");
+            String rawResponse = getPowerStationList(userInfo.getToken());
+            System.out.println(rawResponse);
+
+            // 测试解析后的电站列表
+            System.out.println("\n=== 解析后的电站信息 ===");
+            List<PowerStation> powerStations = getPowerStationsAndParse(userInfo.getToken());
+            int i = 0;
     }
 
 }
