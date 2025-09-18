@@ -1,30 +1,44 @@
 package com.virtualpowerplant.service;
 
-
 import static com.virtualpowerplant.constant.Constant.objectMapper;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.utils.AESEncryptUtils;
 import com.virtualpowerplant.utils.RSAEncryptUtils;
 
+@Service
 public class SunGrowDataService {
+
+    private static final Logger logger = LoggerFactory.getLogger(SunGrowDataService.class);
+
     public static String login() throws Exception{
-        String appKey = "CCAA8A077B013FA889940AA05B4AE421";
-        String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvY7PCF1il4_9nMbTjpqbOTZfuu_YnsSzhFLCIFWgcspm7gTjQDlETwoU8J3EDbeckGm9u9mWwxUOi1nIgC-_F-nix6g1efunwcBc5QOdlZ4Mje93DfaJLhdwJaCjqW8ALAyZX83PTyf0kjQRA7fYoLkrCLlD7ypfp48aedp3kkQIDAQAB";
-        String accessKey = "dgf9hud76au85j4wc8kcjn76z9enfcrm";
-        String AESKey = "A123456zA123456z";
-        String userAccount = "13883358710";
-        String userPassword = "@jn888888";
+        String appKey = SecretConfigManager.getSunGrowAppKey();
+        String publicKey = SecretConfigManager.getString("sungrow.public_key");
+        String accessKey = SecretConfigManager.getString("sungrow.access_key");
+        String AESKey = SecretConfigManager.getString("sungrow.aes_key");
+        String userAccount = SecretConfigManager.getSunGrowUsername();
+        String userPassword = SecretConfigManager.getSunGrowPassword();
+
+        if (appKey == null || publicKey == null || accessKey == null ||
+            AESKey == null || userAccount == null || userPassword == null) {
+            logger.error("SunGrow配置信息不完整，请检查secret.config文件");
+            throw new RuntimeException("SunGrow配置信息不完整");
+        }
         String xRandomSecretKey = RSAEncryptUtils.publicEncrypt(AESKey, publicKey);
         String xAccessKey = accessKey;
-        String apiUrl = "https://gateway.isolarcloud.com/openapi/login";
+        String baseUrl = SecretConfigManager.getSunGrowBaseUrl();
+        String apiUrl = baseUrl + "/openapi/login";
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
         headers.set("x-random-secret-key",xRandomSecretKey );

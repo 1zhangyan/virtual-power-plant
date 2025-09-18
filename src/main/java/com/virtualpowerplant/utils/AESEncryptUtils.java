@@ -14,7 +14,6 @@ public class AESEncryptUtils {
             result = cipher.doFinal(content.getBytes("UTF-8"));
             return parseByte2HexStr(result);
         } catch (Exception e) {
-            //Deal Exception
             throw new Exception("AES encrypt error");
         }
     }
@@ -56,7 +55,6 @@ public class AESEncryptUtils {
             original = cipher.doFinal(decryptFrom);
             return new String(original);
         } catch (Exception e) {
-            //Deal Exception
             throw new RuntimeException("AES decrypt error");
         }
     }

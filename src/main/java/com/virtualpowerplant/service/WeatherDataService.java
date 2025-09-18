@@ -1,6 +1,7 @@
 package com.virtualpowerplant.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.config.TokenConfig;
 import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.model.WeatherDataResult;
@@ -38,7 +39,7 @@ public class WeatherDataService {
      */
     public WeatherDataResult fetchWeatherData(double longitude, double latitude, String dataType, List<String> metaVars, String timestamp) {
         try {
-            String token = tokenConfig.getWeatherToken();
+            String token = SecretConfigManager.getWeatherApiToken();
             String apiUrl = BASE_API_URL + "/" + dataType + "/multi/point";
 
             // 构建请求头
