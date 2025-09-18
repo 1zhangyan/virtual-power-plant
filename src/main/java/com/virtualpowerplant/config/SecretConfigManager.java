@@ -43,8 +43,7 @@ public class SecretConfigManager {
             File configFile = new File(SECRET_CONFIG_PATH);
             if (!configFile.exists()) {
                 logger.warn("Secret config file not found at: {}. Creating default template.", SECRET_CONFIG_PATH);
-                createDefaultConfigFile();
-                return;
+                throw new RuntimeException(String.format("Secret config file not found at: %s. Creating default template.", SECRET_CONFIG_PATH));
             }
 
             JsonNode rootNode = objectMapper.readTree(configFile);
@@ -91,39 +90,6 @@ public class SecretConfigManager {
         }
     }
 
-    /**
-     * 创建默认配置文件模板
-     */
-    private static void createDefaultConfigFile() {
-        String defaultConfig = "{\n" +
-            "  \"weather\": {\n" +
-            "    \"api_token\": \"your-weather-api-token-here\"\n" +
-            "  },\n" +
-            "  \"sungrow\": {\n" +
-            "    \"username\": \"your-sungrow-username\",\n" +
-            "    \"password\": \"your-sungrow-password\",\n" +
-            "    \"app_key\": \"your-sungrow-app-key\",\n" +
-            "    \"base_url\": \"https://gateway.isolarcloud.com.hk\",\n" +
-            "    \"public_key\": \"your-sungrow-public-key\",\n" +
-            "    \"access_key\": \"your-sungrow-access-key\",\n" +
-            "    \"aes_key\": \"your-sungrow-aes-key\"\n" +
-            "  },\n" +
-            "  \"database\": {\n" +
-            "    \"url\": \"jdbc:mysql://localhost:3306/vpp\",\n" +
-            "    \"username\": \"your-db-username\",\n" +
-            "    \"password\": \"your-db-password\"\n" +
-            "  }\n" +
-            "}";
-
-        try {
-            File configFile = new File(SECRET_CONFIG_PATH);
-            java.nio.file.Files.write(configFile.toPath(), defaultConfig.getBytes());
-            logger.info("Created default secret config template at: {}", SECRET_CONFIG_PATH);
-            logger.info("Please update the configuration file with your actual credentials.");
-        } catch (IOException e) {
-            logger.error("Failed to create default config file: {}", e.getMessage(), e);
-        }
-    }
 
     /**
      * 获取字符串配置值
@@ -279,21 +245,21 @@ public class SecretConfigManager {
     /**
      * 获取数据库URL
      */
-    public static String getDatabaseUrl() {
-        return getString("database.url");
+    public static String getMysqlUrl() {
+        return getString("mysql.url");
     }
 
     /**
      * 获取数据库用户名
      */
-    public static String getDatabaseUsername() {
-        return getString("database.username");
+    public static String getMysqlUsername() {
+        return getString("mysql.username");
     }
 
     /**
      * 获取数据库密码
      */
-    public static String getDatabasePassword() {
-        return getString("database.password");
+    public static String getMysqlPassword() {
+        return getString("mysql.password");
     }
 }

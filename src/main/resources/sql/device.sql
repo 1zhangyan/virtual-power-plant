@@ -1,0 +1,32 @@
+-- Device table schema for SunGrow devices
+CREATE TABLE IF NOT EXISTS sungrow_device (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    uuid BIGINT NOT NULL UNIQUE COMMENT '设备唯一标识',
+    ps_id BIGINT NOT NULL COMMENT '电站ID',
+    device_name VARCHAR(100) NOT NULL COMMENT '设备名称',
+    device_sn VARCHAR(50) NOT NULL COMMENT '设备序列号',
+    device_type INT NOT NULL COMMENT '设备类型(1:逆变器, 22:通信模块)',
+    device_code INT COMMENT '设备代码',
+    type_name VARCHAR(50) COMMENT '设备类型名称',
+    device_model_code VARCHAR(50) COMMENT '设备型号代码',
+    device_model_id BIGINT COMMENT '设备型号ID',
+    factory_name VARCHAR(100) COMMENT '制造商名称',
+    channel_id INT COMMENT '通道ID',
+    ps_key VARCHAR(100) COMMENT '电站键值',
+    communication_dev_sn VARCHAR(50) COMMENT '通信设备序列号',
+    dev_status VARCHAR(10) COMMENT '设备状态(0:离线, 1:在线)',
+    dev_fault_status INT COMMENT '设备故障状态(4:正常)',
+    rel_state INT COMMENT '连接状态(0:未连接, 1:已连接)',
+    rel_time DATETIME COMMENT '连接时间',
+    grid_connection_date DATETIME COMMENT '并网时间',
+    latitude DECIMAL(10, 8) COMMENT '纬度',
+    longitude DECIMAL(11, 8) COMMENT '经度',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+
+    INDEX idx_ps_id (ps_id),
+    INDEX idx_device_type (device_type),
+    INDEX idx_dev_status (dev_status),
+    INDEX idx_uuid (uuid),
+    INDEX idx_device_sn (device_sn)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='设备信息表';

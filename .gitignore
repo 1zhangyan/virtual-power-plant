@@ -3,3 +3,26 @@
 .gitignore
 target/
 test
+
+# Secret configuration files
+secret.config
+*/secret.config
+**/secret.config
+
+# Database and logs
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/

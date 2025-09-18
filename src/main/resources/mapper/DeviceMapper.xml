@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.virtualpowerplant.mapper.DeviceMapper">
+
+    <!-- Device ResultMap -->
+    <resultMap id="DeviceResultMap" type="com.virtualpowerplant.model.Device">
+        <id property="id" column="id"/>
+        <result property="uuid" column="uuid"/>
+        <result property="psId" column="ps_id"/>
+        <result property="deviceName" column="device_name"/>
+        <result property="deviceSn" column="device_sn"/>
+        <result property="deviceType" column="device_type"/>
+        <result property="deviceCode" column="device_code"/>
+        <result property="typeName" column="type_name"/>
+        <result property="deviceModelCode" column="device_model_code"/>
+        <result property="deviceModelId" column="device_model_id"/>
+        <result property="factoryName" column="factory_name"/>
+        <result property="channelId" column="channel_id"/>
+        <result property="psKey" column="ps_key"/>
+        <result property="communicationDevSn" column="communication_dev_sn"/>
+        <result property="devStatus" column="dev_status"/>
+        <result property="devFaultStatus" column="dev_fault_status"/>
+        <result property="relState" column="rel_state"/>
+        <result property="relTime" column="rel_time"/>
+        <result property="gridConnectionDate" column="grid_connection_date"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <!-- 插入或更新设备信息 (使用UUID作为唯一键) -->
+    <insert id="insertOrUpdate" parameterType="com.virtualpowerplant.model.Device">
+        INSERT INTO vpp.sungrow_device (uuid, ps_id, device_name, device_sn, device_type, device_code,
+                           type_name, device_model_code, device_model_id, factory_name, channel_id, ps_key,
+                           communication_dev_sn, dev_status, dev_fault_status, rel_state, rel_time, grid_connection_date,
+                           latitude, longitude, created_at, updated_at)
+        VALUES (#{uuid}, #{psId}, #{deviceName}, #{deviceSn}, #{deviceType}, #{deviceCode},
+                #{typeName}, #{deviceModelCode}, #{deviceModelId}, #{factoryName}, #{channelId}, #{psKey},
+                #{communicationDevSn}, #{devStatus}, #{devFaultStatus}, #{relState}, #{relTime}, #{gridConnectionDate},
+                #{latitude}, #{longitude}, #{createdAt}, #{updatedAt})
+        ON DUPLICATE KEY UPDATE
+            ps_id = VALUES(ps_id),
+            device_name = VALUES(device_name),
+            device_sn = VALUES(device_sn),
+            device_type = VALUES(device_type),
+            device_code = VALUES(device_code),
+            type_name = VALUES(type_name),
+            device_model_code = VALUES(device_model_code),
+            device_model_id = VALUES(device_model_id),
+            factory_name = VALUES(factory_name),
+            channel_id = VALUES(channel_id),
+            ps_key = VALUES(ps_key),
+            communication_dev_sn = VALUES(communication_dev_sn),
+            dev_status = VALUES(dev_status),
+            dev_fault_status = VALUES(dev_fault_status),
+            rel_state = VALUES(rel_state),
+            rel_time = VALUES(rel_time),
+            grid_connection_date = VALUES(grid_connection_date),
+            latitude = VALUES(latitude),
+            longitude = VALUES(longitude),
+            updated_at = VALUES(updated_at)
+    </insert>
+
+</mapper>

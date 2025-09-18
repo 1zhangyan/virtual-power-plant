@@ -6,6 +6,8 @@ import com.virtualpowerplant.model.SunGrowResponse;
 import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.PowerStationList;
 import com.virtualpowerplant.model.PowerStation;
+import com.virtualpowerplant.model.DeviceList;
+import com.virtualpowerplant.model.Device;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -74,5 +76,19 @@ public class SunGrowResponseParser {
     public static List<PowerStation> extractPowerStations(String jsonResponse) {
         PowerStationList powerStationList = extractPowerStationList(jsonResponse);
         return powerStationList != null ? powerStationList.getPageList() : null;
+    }
+
+    public static SunGrowResponse<DeviceList> parseDeviceListResponse(String jsonResponse) {
+        return parseResponse(jsonResponse, DeviceList.class);
+    }
+
+    public static DeviceList extractDeviceList(String jsonResponse) {
+        SunGrowResponse<DeviceList> response = parseDeviceListResponse(jsonResponse);
+        return extractData(response);
+    }
+
+    public static List<Device> extractDevices(String jsonResponse) {
+        DeviceList deviceList = extractDeviceList(jsonResponse);
+        return deviceList != null ? deviceList.getPageList() : null;
     }
 }

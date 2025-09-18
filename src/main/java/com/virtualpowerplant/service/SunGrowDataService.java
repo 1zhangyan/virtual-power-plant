@@ -16,9 +16,12 @@ import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.PowerStation;
+import com.virtualpowerplant.model.Device;
+import com.virtualpowerplant.model.DeviceList;
 import com.virtualpowerplant.utils.AESEncryptUtils;
 import com.virtualpowerplant.utils.RSAEncryptUtils;
 import com.virtualpowerplant.utils.SunGrowResponseParser;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -79,6 +82,24 @@ public class SunGrowDataService {
         return postHttpCall(apiUrl,requestBody);
     }
 
+    public static String getPowerStationList(String token) throws Exception {
+        String apiUrl = baseUrl + "/openapi/getPowerStationList";
+        Map<String, Object> requestBody = new HashMap<>();
+        requestBody.put("curPage", 1);
+        requestBody.put("size", 999);
+        requestBody.put("token", token);
+        return postHttpCall(apiUrl,requestBody);
+    }
+
+    public static String getDeviceList(String token) throws Exception {
+        String apiUrl = baseUrl + "/openapi/getDeviceListByUser";
+        Map<String, Object> requestBody = new HashMap<>();
+        requestBody.put("curPage", 1);
+        requestBody.put("size", 999);
+        requestBody.put("token", token);
+        return postHttpCall(apiUrl,requestBody);
+    }
+
     public static SunGrowUserInfo loginAndGetUserInfo() throws Exception {
         try {
             String jsonResponse = login();
@@ -94,13 +115,14 @@ public class SunGrowDataService {
         }
     }
 
-    public static String getPowerStationList(String token) throws Exception {
-        String apiUrl = baseUrl + "/openapi/getPowerStationList";
-        Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("curPage", 1);
-        requestBody.put("size", 3);
-        requestBody.put("token", token);
-        return postHttpCall(apiUrl,requestBody);
+    public String loginAndGetToken() throws Exception {
+        try {
+            SunGrowUserInfo userInfo = loginAndGetUserInfo();
+            return userInfo.getToken();
+        } catch (Exception e) {
+            logger.error("获取token失败: {}", e.getMessage(), e);
+            throw e;
+        }
     }
 
     public static List<PowerStation> getPowerStationsAndParse(String token) throws Exception {
@@ -118,23 +140,37 @@ public class SunGrowDataService {
         }
     }
 
+    public static List<Device> getDevicesAndParse(String token) throws Exception {
+        try {
+            String jsonResponse = getDeviceList(token);
+            logger.info("设备列表API响应: {}", jsonResponse);
 
+            List<Device> devices = SunGrowResponseParser.extractDevices(jsonResponse);
+            logger.info("成功解析到 {} 个设备信息", devices != null ? devices.size() : 0);
 
-    public static void main(String[] args) throws Exception {
-            // 登录获取用户信息
-            System.out.println("=== 登录测试 ===");
-            SunGrowUserInfo userInfo = loginAndGetUserInfo();
-            System.out.println("用户名: " + userInfo.getUserName());
-            System.out.println("Token: " + userInfo.getToken());
-            // 测试原始电站列表API
-            System.out.println("\n=== 原始电站列表响应 ===");
-            String rawResponse = getPowerStationList(userInfo.getToken());
-            System.out.println(rawResponse);
+            return devices;
+        } catch (Exception e) {
+            logger.error("获取并解析设备信息失败: {}", e.getMessage(), e);
+            throw e;
+        }
+    }
 
-            // 测试解析后的电站列表
-            System.out.println("\n=== 解析后的电站信息 ===");
-            List<PowerStation> powerStations = getPowerStationsAndParse(userInfo.getToken());
-            int i = 0;
+    public static DeviceList getDeviceListAndParse(String token) throws Exception {
+        try {
+            String jsonResponse = getDeviceList(token);
+            logger.info("设备列表API响应: {}", jsonResponse);
+
+            DeviceList deviceList = SunGrowResponseParser.extractDeviceList(jsonResponse);
+            logger.info("成功解析设备列表，总数: {}, 当前页: {}, 逆变器: {}, 通信模块: {}, 在线设备: {}, 故障设备: {}",
+                deviceList.getRowCount(), deviceList.getPageSize(),
+                deviceList.getInverterCount(), deviceList.getCommunicationModuleCount(),
+                deviceList.getOnlineDeviceCount(), deviceList.getFaultyDeviceCount());
+
+            return deviceList;
+        } catch (Exception e) {
+            logger.error("获取并解析设备列表失败: {}", e.getMessage(), e);
+            throw e;
+        }
     }
 
 }
