@@ -11,9 +11,9 @@ import java.io.IOException;
 public class TokenConfig {
 
     private static final String TOKEN_FILE_PATH = System.getProperty("user.home") + "/token.txt";
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public String getWeatherToken() {
+    public static String getWeatherToken() {
         try {
             File tokenFile = new File(TOKEN_FILE_PATH);
             if (!tokenFile.exists()) {

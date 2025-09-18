@@ -2,6 +2,7 @@ package com.virtualpowerplant.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.virtualpowerplant.config.TokenConfig;
+import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.model.WeatherDataResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +27,6 @@ public class WeatherDataService {
 
     @Autowired
     private TokenConfig tokenConfig;
-
-    private final RestTemplate restTemplate = new RestTemplate();
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * 获取气象数据的通用函数
@@ -58,7 +56,7 @@ public class WeatherDataService {
             HttpEntity<Map<String, Object>> request = new HttpEntity<>(requestBody, headers);
 
             // 发送请求
-            ResponseEntity<Map> response = restTemplate.exchange(
+            ResponseEntity<Map> response = Constant.restTemplate.exchange(
                 apiUrl,
                 HttpMethod.POST,
                 request,
@@ -84,7 +82,7 @@ public class WeatherDataService {
     private WeatherDataResult parseWeatherResponse(Map<String, Object> responseBody, double longitude, double latitude) {
         try {
             // 首先打印原始响应以便调试
-            logger.info("原始API响应: {}", objectMapper.writeValueAsString(responseBody));
+            logger.info("原始API响应: {}", Constant.objectMapper.writeValueAsString(responseBody));
 
             // 解析位置信息
             List<Double> location = Arrays.asList(longitude, latitude);
@@ -181,7 +179,7 @@ public class WeatherDataService {
         } catch (Exception e) {
             logger.error("解析响应数据失败: {}", e.getMessage(), e);
             try {
-                logger.error("响应体内容: {}", objectMapper.writeValueAsString(responseBody));
+                logger.error("响应体内容: {}", Constant.objectMapper.writeValueAsString(responseBody));
             } catch (Exception ex) {
                 logger.error("无法序列化响应体: {}", ex.getMessage());
             }
@@ -189,7 +187,7 @@ public class WeatherDataService {
         }
     }
 
-    @Scheduled(fixedDelay = 10000) // 每10秒执行一次
+//    @Scheduled(fixedDelay = 10000) // 每10秒执行一次
     public void scheduledWeatherDataFetch() {
         String timestamp = LocalDateTime.now().minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         logger.info("=== 定时气象数据获取 [{}] ===", timestamp);

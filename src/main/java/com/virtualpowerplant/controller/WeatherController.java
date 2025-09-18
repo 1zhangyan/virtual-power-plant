@@ -62,7 +62,7 @@ public class WeatherController {
             String[] vars = metaVars.split(",");
             return weatherDataService.fetchWeatherData(longitude, latitude, dataType, Arrays.asList(vars),  "2025-01-15 00:00:00");
         } catch (Exception e) {
-            throw new RuntimeException("Failed to fetch weather data: " + e.getMessage());
+            throw new RuntimeException("Failed to fetch weather data: " , e);
         }
     }
 }
