@@ -2,9 +2,8 @@ package com.virtualpowerplant.service;
 
 import static com.virtualpowerplant.constant.Constant.objectMapper;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -22,9 +21,6 @@ import com.virtualpowerplant.utils.AESEncryptUtils;
 import com.virtualpowerplant.utils.RSAEncryptUtils;
 import com.virtualpowerplant.utils.SunGrowResponseParser;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
-import java.util.ArrayList;
 
 @Service
 public class SunGrowDataService {
@@ -92,11 +88,28 @@ public class SunGrowDataService {
         return postHttpCall(apiUrl,requestBody);
     }
 
+    public static String getDatasubscribeConfig(String token) throws Exception {
+        String apiUrl = baseUrl + "/openapi/datasubscribe/getConfig";
+        Map<String, Object> requestBody = new HashMap<>();
+        requestBody.put("sys_code", 200);
+        requestBody.put("token", token);
+        return postHttpCall(apiUrl,requestBody);
+    }
+
     public static String getDeviceList(String token, int page, int size) throws Exception {
         String apiUrl = baseUrl + "/openapi/getDeviceListByUser";
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("curPage", page);
         requestBody.put("size", size);
+        requestBody.put("token", token);
+        return postHttpCall(apiUrl,requestBody);
+    }
+
+    public static String openDeviceRealtimeUpdate(String token, List<String> snList, Integer second) throws Exception {
+        String apiUrl = baseUrl + "/openapi/datasubscribe/start";
+        Map<String, Object> requestBody = new HashMap<>();
+        requestBody.put("second", second);
+        requestBody.put("sn_list", snList);
         requestBody.put("token", token);
         return postHttpCall(apiUrl,requestBody);
     }
@@ -200,5 +213,10 @@ public class SunGrowDataService {
         }
     }
 
+    public static void main(String[] args) throws Exception{
+        String token = loginAndGetUserInfo().getToken();
+        System.out.println(openDeviceRealtimeUpdate(token, Collections.singletonList("A2470115157"),10));
+//        System.out.println(getDatasubscribeConfig(token));
+    }
 
 }
