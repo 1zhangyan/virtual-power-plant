@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS sungrow_device (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     uuid BIGINT NOT NULL UNIQUE COMMENT '设备唯一标识',
     ps_id BIGINT NOT NULL COMMENT '电站ID',
+    ps_name VARCHAR(100) COMMENT '电站名称',
     device_name VARCHAR(100) NOT NULL COMMENT '设备名称',
     device_sn VARCHAR(50) NOT NULL COMMENT '设备序列号',
     device_type INT NOT NULL COMMENT '设备类型(1:逆变器, 22:通信模块)',
@@ -29,6 +30,12 @@ CREATE TABLE IF NOT EXISTS sungrow_device (
     grid_connection_date DATETIME COMMENT '并网时间',
     latitude DECIMAL(10, 8) COMMENT '纬度',
     longitude DECIMAL(11, 8) COMMENT '经度',
+    ps_type INT COMMENT '电站类型',
+    online_status INT COMMENT '电站在线状态',
+    province_name VARCHAR(50) COMMENT '省份名称',
+    city_name VARCHAR(50) COMMENT '城市名称',
+    district_name VARCHAR(50) COMMENT '区域名称',
+    connect_type INT COMMENT '连接类型',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
@@ -40,11 +47,11 @@ CREATE TABLE IF NOT EXISTS sungrow_device (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='设备信息表';
 
 -- 插入示例数据（可选）
-INSERT IGNORE INTO sungrow_device (uuid, ps_id, device_name, device_sn, device_type, type_name, factory_name, dev_status, dev_fault_status, rel_state, latitude, longitude)
+INSERT IGNORE INTO sungrow_device (uuid, ps_id, ps_name, device_name, device_sn, device_type, type_name, factory_name, dev_status, dev_fault_status, rel_state, latitude, longitude, ps_type, online_status, province_name, city_name, district_name, connect_type)
 VALUES
-    (1001, 1, '逆变器-001', 'INV-001', 1, '逆变器', '阳光电源', '1', 4, 1, 39.9042, 116.4074),
-    (1002, 1, '通信模块-001', 'COM-001', 22, '通信模块', '阳光电源', '1', 4, 1, 39.9042, 116.4074),
-    (1003, 1, '逆变器-002', 'INV-002', 1, '逆变器', '阳光电源', '0', 2, 0, 31.2304, 121.4737);
+    (1001, 1, '北京朝阳电站', '逆变器-001', 'INV-001', 1, '逆变器', '阳光电源', '1', 4, 1, 39.9042, 116.4074, 1, 1, '北京市', '北京市', '朝阳区', 1),
+    (1002, 1, '北京朝阳电站', '通信模块-001', 'COM-001', 22, '通信模块', '阳光电源', '1', 4, 1, 39.9042, 116.4074, 1, 1, '北京市', '北京市', '朝阳区', 1),
+    (1003, 1, '上海浦东电站', '逆变器-002', 'INV-002', 1, '逆变器', '阳光电源', '0', 2, 0, 31.2304, 121.4737, 1, 0, '上海市', '上海市', '浦东新区', 1);
 
 -- 验证数据插入
 SELECT 'SunGrow Device table created and sample data inserted' as status;

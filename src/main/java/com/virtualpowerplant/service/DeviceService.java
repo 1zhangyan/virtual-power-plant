@@ -59,6 +59,13 @@ public class DeviceService {
             if (ps != null) {
                 device.setLatitude(ps.getLatitude());
                 device.setLongitude(ps.getLongitude());
+                device.setPsName(ps.getPsName());
+                device.setPsType(ps.getPsType());
+                device.setOnlineStatus(ps.getPsStatus()); // psStatus对应onlineStatus
+                device.setProvinceName(ps.getProvinceName());
+                device.setCityName(ps.getCityName());
+                device.setDistrictName(ps.getDistrictName());
+                device.setConnectType(ps.getConnectType());
                 updatedCount++;
             }
 
@@ -77,7 +84,7 @@ public class DeviceService {
             }
         }
 
-        logger.info("设备数据同步完成：总共处理 {} 个设备，其中 {} 个设备添加了经纬度信息",
+        logger.info("设备数据同步完成：总共处理 {} 个设备，其中 {} 个设备添加了电站信息(经纬度、电站名称、省市区等)",
                    processedCount, updatedCount);
     }
 

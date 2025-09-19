@@ -7,6 +7,7 @@
         <id property="id" column="id"/>
         <result property="uuid" column="uuid"/>
         <result property="psId" column="ps_id"/>
+        <result property="psName" column="ps_name"/>
         <result property="deviceName" column="device_name"/>
         <result property="deviceSn" column="device_sn"/>
         <result property="deviceType" column="device_type"/>
@@ -25,22 +26,31 @@
         <result property="gridConnectionDate" column="grid_connection_date"/>
         <result property="latitude" column="latitude"/>
         <result property="longitude" column="longitude"/>
+        <result property="psType" column="ps_type"/>
+        <result property="onlineStatus" column="online_status"/>
+        <result property="provinceName" column="province_name"/>
+        <result property="cityName" column="city_name"/>
+        <result property="districtName" column="district_name"/>
+        <result property="connectType" column="connect_type"/>
         <result property="createdAt" column="created_at"/>
         <result property="updatedAt" column="updated_at"/>
     </resultMap>
 
     <!-- 插入或更新设备信息 (使用UUID作为唯一键) -->
     <insert id="insertOrUpdate" parameterType="com.virtualpowerplant.model.Device">
-        INSERT INTO vpp.sungrow_device (uuid, ps_id, device_name, device_sn, device_type, device_code,
+        INSERT INTO vpp.sungrow_device (uuid, ps_id, ps_name, device_name, device_sn, device_type, device_code,
                            type_name, device_model_code, device_model_id, factory_name, channel_id, ps_key,
                            communication_dev_sn, dev_status, dev_fault_status, rel_state, rel_time, grid_connection_date,
-                           latitude, longitude, created_at, updated_at)
-        VALUES (#{uuid}, #{psId}, #{deviceName}, #{deviceSn}, #{deviceType}, #{deviceCode},
+                           latitude, longitude, ps_type, online_status, province_name, city_name, district_name, connect_type,
+                           created_at, updated_at)
+        VALUES (#{uuid}, #{psId}, #{psName}, #{deviceName}, #{deviceSn}, #{deviceType}, #{deviceCode},
                 #{typeName}, #{deviceModelCode}, #{deviceModelId}, #{factoryName}, #{channelId}, #{psKey},
                 #{communicationDevSn}, #{devStatus}, #{devFaultStatus}, #{relState}, #{relTime}, #{gridConnectionDate},
-                #{latitude}, #{longitude}, #{createdAt}, #{updatedAt})
+                #{latitude}, #{longitude}, #{psType}, #{onlineStatus}, #{provinceName}, #{cityName}, #{districtName}, #{connectType},
+                #{createdAt}, #{updatedAt})
         ON DUPLICATE KEY UPDATE
             ps_id = VALUES(ps_id),
+            ps_name = VALUES(ps_name),
             device_name = VALUES(device_name),
             device_sn = VALUES(device_sn),
             device_type = VALUES(device_type),
@@ -59,6 +69,12 @@
             grid_connection_date = VALUES(grid_connection_date),
             latitude = VALUES(latitude),
             longitude = VALUES(longitude),
+            ps_type = VALUES(ps_type),
+            online_status = VALUES(online_status),
+            province_name = VALUES(province_name),
+            city_name = VALUES(city_name),
+            district_name = VALUES(district_name),
+            connect_type = VALUES(connect_type),
             updated_at = VALUES(updated_at)
     </insert>
 

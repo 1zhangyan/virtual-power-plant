@@ -14,6 +14,21 @@ public class Device {
     @JsonProperty("ps_id")
     private Long psId;
 
+    @JsonProperty("ps_name")
+    private String psName;
+
+    private Integer psType;
+
+    private Integer onlineStatus;
+
+    private String provinceName;
+
+    private String cityName;
+
+    private String districtName;
+
+    private Integer connectType;
+
     @JsonProperty("device_name")
     private String deviceName;
 
@@ -293,5 +308,61 @@ public class Device {
                 ", devFaultStatus=" + devFaultStatus +
                 ", relState=" + relState +
                 '}';
+    }
+
+    public String getPsName() {
+        return psName;
+    }
+
+    public void setPsName(String psName) {
+        this.psName = psName;
+    }
+
+    public Integer getPsType() {
+        return psType;
+    }
+
+    public void setPsType(Integer psType) {
+        this.psType = psType;
+    }
+
+    public Integer getOnlineStatus() {
+        return onlineStatus;
+    }
+
+    public void setOnlineStatus(Integer onlineStatus) {
+        this.onlineStatus = onlineStatus;
+    }
+
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+
+    public Integer getConnectType() {
+        return connectType;
+    }
+
+    public void setConnectType(Integer connectType) {
+        this.connectType = connectType;
     }
 }
