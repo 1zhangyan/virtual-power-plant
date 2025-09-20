@@ -3,7 +3,10 @@ package com.virtualpowerplant.service;
 import static com.virtualpowerplant.constant.Constant.objectMapper;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -16,16 +19,22 @@ import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.PowerStation;
 import com.virtualpowerplant.model.Device;
-import com.virtualpowerplant.model.DeviceList;
 import com.virtualpowerplant.utils.AESEncryptUtils;
 import com.virtualpowerplant.utils.RSAEncryptUtils;
 import com.virtualpowerplant.utils.SunGrowResponseParser;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class SunGrowDataService {
 
     private static final Logger logger = LoggerFactory.getLogger(SunGrowDataService.class);
+
+    // Token缓存，3小时过期
+    private static final Cache<String, String> tokenCache = CacheBuilder.newBuilder()
+            .expireAfterWrite(3, TimeUnit.HOURS)
+            .maximumSize(1)
+            .build();
+
+    private static final String TOKEN_CACHE_KEY = "sungrow_token";
 
     private static final String appKey = SecretConfigManager.getSunGrowAppKey();
     private static final String publicKey = SecretConfigManager.getSunGrowPublicKey();
@@ -79,49 +88,47 @@ public class SunGrowDataService {
         return postHttpCall(apiUrl,requestBody);
     }
 
-    public static String getPowerStationList(String token, int page, int size) throws Exception {
+    public static String getPowerStationList(int page, int size) throws Exception {
         String apiUrl = baseUrl + "/openapi/getPowerStationList";
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("curPage", page);
         requestBody.put("size", size);
-        requestBody.put("token", token);
+        requestBody.put("token", getCachedToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
-    public static String getDatasubscribeConfig(String token) throws Exception {
-        String apiUrl = baseUrl + "/openapi/datasubscribe/getConfig";
+    public static String getRealTimeData(List<String> snList) throws Exception {
+        String apiUrl = baseUrl + "/openapi/getPVInverterRealTimeData";
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("sys_code", 200);
-        requestBody.put("token", token);
+        requestBody.put("sn_list", snList);
+        requestBody.put("token", getCachedToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
-    public static String getDeviceList(String token, int page, int size) throws Exception {
+    public static String getDeviceList(int page, int size) throws Exception {
         String apiUrl = baseUrl + "/openapi/getDeviceListByUser";
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("curPage", page);
         requestBody.put("size", size);
-        requestBody.put("token", token);
+        requestBody.put("token", getCachedToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
-    public static String openDeviceRealtimeUpdate(String token, List<String> snList, Integer second) throws Exception {
+    public static String openDeviceRealtimeUpdate(List<String> snList, Integer second) throws Exception {
         String apiUrl = baseUrl + "/openapi/datasubscribe/start";
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("second", second);
         requestBody.put("sn_list", snList);
-        requestBody.put("token", token);
+        requestBody.put("token", getCachedToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
     public static SunGrowUserInfo loginAndGetUserInfo() throws Exception {
         try {
             String jsonResponse = login();
-            logger.info("登录API响应: {}", jsonResponse);
-
+//            logger.info("登录API响应: {}", jsonResponse);
             SunGrowUserInfo userInfo = SunGrowResponseParser.extractUserInfo(jsonResponse);
             logger.info("登录成功，用户信息: {}", userInfo);
-
             return userInfo;
         } catch (Exception e) {
             logger.error("登录失败: {}", e.getMessage(), e);
@@ -139,7 +146,44 @@ public class SunGrowDataService {
         }
     }
 
-    public static List<PowerStation> getPowerStationsAndParse(String token) throws Exception {
+    /**
+     * 获取缓存的token，如果缓存过期则重新登录获取
+     */
+    public static String getCachedToken() throws Exception {
+        try {
+            // 尝试从缓存获取token
+            String cachedToken = tokenCache.getIfPresent(TOKEN_CACHE_KEY);
+
+            if (cachedToken != null) {
+                logger.debug("使用缓存的token");
+                return cachedToken;
+            }
+
+            // 缓存中没有token，重新登录获取
+            logger.info("Token缓存已过期，重新登录获取token...");
+            SunGrowUserInfo userInfo = loginAndGetUserInfo();
+            String newToken = userInfo.getToken();
+
+            // 将新token放入缓存
+            tokenCache.put(TOKEN_CACHE_KEY, newToken);
+            logger.info("新token已缓存，有效期3小时");
+
+            return newToken;
+        } catch (Exception e) {
+            logger.error("获取缓存token失败: {}", e.getMessage(), e);
+            throw e;
+        }
+    }
+
+    /**
+     * 清除token缓存（用于强制重新登录）
+     */
+    public static void clearTokenCache() {
+        tokenCache.invalidateAll();
+        logger.info("Token缓存已清除");
+    }
+
+    public static List<PowerStation> getPowerStationsAndParse() throws Exception {
         try {
             List<PowerStation> allPowerStations = new ArrayList<>();
             int page = 1;
@@ -147,7 +191,7 @@ public class SunGrowDataService {
 
             while (true) {
                 logger.info("获取电站列表第 {} 页，每页 {} 条", page, pageSize);
-                String jsonResponse = getPowerStationList(token, page, pageSize);
+                String jsonResponse = getPowerStationList(page, pageSize);
                 logger.debug("电站列表API响应 (第{}页): {}", page, jsonResponse);
 
                 List<PowerStation> powerStations = SunGrowResponseParser.extractPowerStations(jsonResponse);
@@ -176,7 +220,7 @@ public class SunGrowDataService {
         }
     }
 
-    public static List<Device> getDevicesAndParse(String token) throws Exception {
+    public static List<Device> getDevicesAndParse() throws Exception {
         try {
             List<Device> allDevices = new ArrayList<>();
             int page = 1;
@@ -184,7 +228,7 @@ public class SunGrowDataService {
 
             while (true) {
                 logger.info("获取设备列表第 {} 页，每页 {} 条", page, pageSize);
-                String jsonResponse = getDeviceList(token, page, pageSize);
+                String jsonResponse = getDeviceList(page, pageSize);
                 logger.debug("设备列表API响应 (第{}页): {}", page, jsonResponse);
 
                 List<Device> devices = SunGrowResponseParser.extractDevices(jsonResponse);
@@ -213,10 +257,7 @@ public class SunGrowDataService {
         }
     }
 
-    public static void main(String[] args) throws Exception{
-        String token = loginAndGetUserInfo().getToken();
-        System.out.println(openDeviceRealtimeUpdate(token, Collections.singletonList("A2470115157"),10));
-//        System.out.println(getDatasubscribeConfig(token));
+    public static void main(String[] args) throws Exception {
+       System.out.println(getRealTimeData(Collections.singletonList("A2552608698")));
     }
-
 }

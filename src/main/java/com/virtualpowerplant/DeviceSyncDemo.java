@@ -20,14 +20,12 @@ public class DeviceSyncDemo {
         try {
             logger.info("=== SunGrow分页数据获取演示 ===");
 
-            // 1. 登录获取token
-            logger.info("步骤1: 登录SunGrow账号...");
-            String token = SunGrowDataService.loginAndGetUserInfo().getToken();
-            logger.info("登录成功，Token: {}...", token.substring(0, Math.min(20, token.length())));
+            // 1. 直接使用缓存token获取数据（自动处理登录）
+            logger.info("步骤1: 使用缓存token机制，自动处理登录...");
 
             // 2. 分页获取所有电站信息
-            logger.info("\n步骤2: 分页获取电站信息...");
-            List<PowerStation> powerStations = SunGrowDataService.getPowerStationsAndParse(token);
+            logger.info("\n步骤2: 分页获取电站信息（自动使用缓存token）...");
+            List<PowerStation> powerStations = SunGrowDataService.getPowerStationsAndParse();
             logger.info("电站信息获取完成:");
             logger.info("  - 总电站数: {}", powerStations.size());
 
@@ -49,8 +47,8 @@ public class DeviceSyncDemo {
             }
 
             // 3. 分页获取所有设备信息
-            logger.info("\n步骤3: 分页获取设备信息...");
-            List<Device> devices = SunGrowDataService.getDevicesAndParse(token);
+            logger.info("\n步骤3: 分页获取设备信息（自动使用缓存token）...");
+            List<Device> devices = SunGrowDataService.getDevicesAndParse();
             logger.info("设备信息获取完成:");
             logger.info("  - 总设备数: {}", devices.size());
 

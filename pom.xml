@@ -75,6 +75,13 @@
             <version>2.6</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Guava for caching -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.1-jre</version>
+        </dependency>
     </dependencies>
 
     <build>

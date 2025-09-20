@@ -32,20 +32,19 @@ public class DeviceService {
     public void syncDevicesWithCoordinates() throws Exception {
         logger.info("开始同步SunGrow设备数据...");
 
-        // 1. 登录SunGrow获取token
-        String token = sunGrowDataService.loginAndGetToken();
-        logger.info("登录成功，获取到token");
+        // 1. 使用缓存token（自动处理登录）
+        logger.info("使用缓存token进行API调用...");
 
         // 2. 获取所有电站信息（包含经纬度）
         logger.info("开始获取电站信息...");
-        List<PowerStation> powerStations = sunGrowDataService.getPowerStationsAndParse(token);
+        List<PowerStation> powerStations = SunGrowDataService.getPowerStationsAndParse();
         Map<Long, PowerStation> psMap = powerStations.stream()
             .collect(Collectors.toMap(PowerStation::getPsId, ps -> ps));
         logger.info("获取到 {} 个电站信息", powerStations.size());
 
         // 3. 获取所有设备信息
         logger.info("开始获取设备信息...");
-        List<Device> devices = sunGrowDataService.getDevicesAndParse(token);
+        List<Device> devices = SunGrowDataService.getDevicesAndParse();
         logger.info("获取到 {} 个设备信息", devices.size());
 
         // 4. 为设备添加经纬度信息并保存到数据库
