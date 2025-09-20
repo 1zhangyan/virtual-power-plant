@@ -262,4 +262,11 @@ public class SecretConfigManager {
     public static String getMysqlPassword() {
         return getString("mysql.password");
     }
+
+    /**
+     * 获取Lindorm URL
+     */
+    public static String getLindormUrl() {
+        return getString("lindorm.url");
+    }
 }
