@@ -29,8 +29,8 @@ public class SunGrowDataService {
 
     private static final Logger logger = LoggerFactory.getLogger(SunGrowDataService.class);
 
-    // Token缓存，3小时过期
-    private static final Cache<String, String> tokenCache = CacheBuilder.newBuilder()
+//     Token缓存，3小时过期
+    private static Cache<String, String> tokenCache = CacheBuilder.newBuilder()
             .expireAfterWrite(3, TimeUnit.HOURS)
             .maximumSize(1)
             .build();

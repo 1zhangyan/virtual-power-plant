@@ -1,14 +1,5 @@
 package com.virtualpowerplant.service;
 
-import com.aliyun.lindorm.tsdb.client.ClientOptions;
-import com.aliyun.lindorm.tsdb.client.LindormTSDBClient;
-import com.aliyun.lindorm.tsdb.client.LindormTSDBFactory;
-import com.aliyun.lindorm.tsdb.client.exception.LindormTSDBException;
-import com.aliyun.lindorm.tsdb.client.model.QueryResult;
-import com.aliyun.lindorm.tsdb.client.model.Record;
-import com.aliyun.lindorm.tsdb.client.model.ResultSet;
-import com.aliyun.lindorm.tsdb.client.model.WriteResult;
-import com.aliyun.lindorm.tsdb.client.utils.ExceptionUtils;
 import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.model.InverterRealTimeData;
 import org.slf4j.Logger;
@@ -17,19 +8,17 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.sql.*;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 public class LindormTSDBService {
 
     private static final Logger logger = LoggerFactory.getLogger(LindormTSDBService.class);
 
-    private LindormTSDBClient lindormTSDBClient;
-    private static final String DATABASE_NAME = "vpp";
+    private Connection connection;
     private static final String TABLE_NAME = "inverter_realtime";
 
     @PostConstruct
@@ -40,32 +29,27 @@ public class LindormTSDBService {
                 throw new RuntimeException("Lindorm URL not configured in secret.config");
             }
 
-            logger.info("初始化Lindorm TSDB客户端，URL: {}", url);
-            ClientOptions options = ClientOptions.newBuilder(url).build();
-            lindormTSDBClient = LindormTSDBFactory.connect(options);
+            logger.info("初始化Lindorm TSDB JDBC连接，URL: {}", url);
+            connection = DriverManager.getConnection(url);
 
-            // 创建数据库和表（如果不存在）
-            initDatabaseAndTable();
-            logger.info("Lindorm TSDB客户端初始化完成");
+            // 创建表（如果不存在）
+            initTable();
+            logger.info("Lindorm TSDB JDBC连接初始化完成");
         } catch (Exception e) {
-            logger.error("初始化Lindorm TSDB客户端失败: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to initialize Lindorm TSDB client", e);
+            logger.error("初始化Lindorm TSDB JDBC连接失败: {}", e.getMessage(), e);
+            throw new RuntimeException("Failed to initialize Lindorm TSDB JDBC connection", e);
         }
     }
 
-    private void initDatabaseAndTable() {
+    private void initTable() {
         try {
-            // 创建数据库
-            lindormTSDBClient.execute("CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME);
-            logger.info("数据库 {} 创建或确认存在", DATABASE_NAME);
-
-            // 创建表
+            // 创建表，按照lindorm.md的格式，使用TIMESTAMP而不是BIGINT
             String createTableSQL = String.format(
                     "CREATE TABLE IF NOT EXISTS %s (" +
                             "ps_name VARCHAR TAG, " +
                             "ps_key VARCHAR TAG, " +
                             "inverter_sn VARCHAR TAG, " +
-                            "time BIGINT, " +
+                            "time TIMESTAMP, " +
                             "latitude DOUBLE, " +
                             "longitude DOUBLE, " +
                             "active_power DOUBLE, " +
@@ -74,11 +58,13 @@ public class LindormTSDBService {
                     TABLE_NAME
             );
 
-            lindormTSDBClient.execute(DATABASE_NAME, createTableSQL);
-            logger.info("表 {} 创建或确认存在", TABLE_NAME);
+            try (Statement stmt = connection.createStatement()) {
+                stmt.execute(createTableSQL);
+                logger.info("表 {} 创建或确认存在", TABLE_NAME);
+            }
         } catch (Exception e) {
-            logger.error("初始化数据库和表失败: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to initialize database and table", e);
+            logger.error("初始化表失败: {}", e.getMessage(), e);
+            throw new RuntimeException("Failed to initialize table", e);
         }
     }
 
@@ -88,8 +74,14 @@ public class LindormTSDBService {
             return;
         }
 
-        try {
-            List<Record> records = new ArrayList<>();
+        // 按照lindorm.md的示例，使用批量插入
+        String insertSQL = String.format(
+            "INSERT INTO %s(ps_name, ps_key, inverter_sn, time, latitude, longitude, active_power) VALUES(?, ?, ?, ?, ?, ?, ?)",
+            TABLE_NAME
+        );
+
+        try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
+            int batchCount = 0;
 
             for (InverterRealTimeData data : dataList) {
                 if (data.getInverterSn() == null || data.getInverterSn().isEmpty()) {
@@ -97,170 +89,130 @@ public class LindormTSDBService {
                     continue;
                 }
 
-                // 将LocalDateTime转换为毫秒时间戳
-                long timestamp = data.getDeviceTime() != null ?
-                    data.getDeviceTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() :
-                    System.currentTimeMillis();
+                // 将LocalDateTime转换为Timestamp，遵循lindorm.md的时间格式
+                Timestamp timestamp = data.getDeviceTime() != null ?
+                    Timestamp.valueOf(data.getDeviceTime()) :
+                    new Timestamp(System.currentTimeMillis());
 
-                Record record = Record.table(TABLE_NAME)
-                        .time(timestamp)
-                        .tag("inverter_sn", data.getInverterSn())
-                        .tag("ps_name", data.getPsName() != null ? data.getPsName() : "unknown")
-                        .tag("ps_key", data.getPsKey() != null ? data.getPsKey() : "unknown")
-                        .addField("latitude", data.getLatitude() != null ? data.getLatitude() : 0.0)
-                        .addField("longitude", data.getLongitude() != null ? data.getLongitude() : 0.0)
-                        .addField("active_power", data.getActivePower() != null ? data.getActivePower() : 0.0)
-                        .build();
+                pstmt.setString(1, data.getPsName() != null ? data.getPsName() : "unknown");
+                pstmt.setString(2, data.getPsKey() != null ? data.getPsKey() : "unknown");
+                pstmt.setString(3, data.getInverterSn());
+                pstmt.setTimestamp(4, timestamp);
+                pstmt.setDouble(5, data.getLatitude() != null ? data.getLatitude() : 0.0);
+                pstmt.setDouble(6, data.getLongitude() != null ? data.getLongitude() : 0.0);
+                pstmt.setDouble(7, data.getActivePower() != null ? data.getActivePower() : 0.0);
 
-                records.add(record);
+                pstmt.addBatch();
+                batchCount++;
             }
 
-            if (records.isEmpty()) {
+            if (batchCount > 0) {
+                // 执行批量插入，遵循lindorm.md的批量操作方式
+                pstmt.executeBatch();
+                logger.info("成功写入 {} 条实时数据到Lindorm", batchCount);
+            } else {
                 logger.warn("没有有效的记录可写入");
-                return;
             }
 
-            // 异步写入
-            CompletableFuture<WriteResult> future = lindormTSDBClient.write(DATABASE_NAME, records);
-
-            // 处理写入结果
-            future.whenComplete((result, exception) -> {
-                if (exception != null) {
-                    logger.error("写入Lindorm失败", exception);
-                    Throwable rootCause = ExceptionUtils.getRootCause(exception);
-                    if (rootCause instanceof LindormTSDBException) {
-                        LindormTSDBException e = (LindormTSDBException) rootCause;
-                        logger.error("Lindorm错误码: {}, SQL状态: {}, 错误消息: {}",
-                                e.getCode(), e.getSqlstate(), e.getMessage());
-                    }
-                } else {
-                    logger.info("成功写入 {} 条实时数据到Lindorm", records.size());
-                }
-            });
-
-            // 等待写入完成
-            future.join();
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             logger.error("写入实时数据到Lindorm失败: {}", e.getMessage(), e);
             throw new RuntimeException("Failed to write real-time data to Lindorm", e);
         }
     }
 
     public List<InverterRealTimeData> queryLatestData(int limit) {
-        try {
-            String sql = String.format(
-                    "SELECT * FROM %s ORDER BY time DESC LIMIT %d",
-                    TABLE_NAME, limit
-            );
+        String sql = String.format(
+                "SELECT ps_name, ps_key, inverter_sn, time, latitude, longitude, active_power FROM %s ORDER BY time DESC LIMIT %d",
+                TABLE_NAME, limit
+        );
 
-            return executeQuery(sql);
-        } catch (Exception e) {
-            logger.error("查询最新数据失败: {}", e.getMessage(), e);
-            return new ArrayList<>();
-        }
+        return executeQuery(sql);
     }
 
     public List<InverterRealTimeData> queryByInverterSn(String inverterSn, int limit) {
-        try {
-            String sql = String.format(
-                    "SELECT * FROM %s WHERE inverter_sn = '%s' ORDER BY time DESC LIMIT %d",
-                    TABLE_NAME, inverterSn, limit
-            );
+        String sql = String.format(
+                "SELECT ps_name, ps_key, inverter_sn, time, latitude, longitude, active_power FROM %s WHERE inverter_sn = ? ORDER BY time DESC LIMIT %d",
+                TABLE_NAME, limit
+        );
 
-            return executeQuery(sql);
-        } catch (Exception e) {
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, inverterSn);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return parseResultSet(rs);
+            }
+        } catch (SQLException e) {
             logger.error("根据逆变器序列号查询数据失败: {}", e.getMessage(), e);
             return new ArrayList<>();
         }
     }
 
     public List<InverterRealTimeData> queryByTimeRange(long startTime, long endTime) {
-        try {
-            String sql = String.format(
-                    "SELECT * FROM %s WHERE time >= %d AND time <= %d ORDER BY time DESC",
-                    TABLE_NAME, startTime, endTime
-            );
+        // 按照lindorm.md的示例，使用绑定参数和时间范围查询
+        String sql = String.format(
+                "SELECT ps_name, ps_key, inverter_sn, time, latitude, longitude, active_power FROM %s WHERE time >= ? AND time <= ? ORDER BY time DESC",
+                TABLE_NAME
+        );
 
-            return executeQuery(sql);
-        } catch (Exception e) {
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setTimestamp(1, new Timestamp(startTime));
+            pstmt.setTimestamp(2, new Timestamp(endTime));
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return parseResultSet(rs);
+            }
+        } catch (SQLException e) {
             logger.error("根据时间范围查询数据失败: {}", e.getMessage(), e);
             return new ArrayList<>();
         }
     }
 
     public List<InverterRealTimeData> queryByPowerStation(String psKey, int limit) {
-        try {
-            String sql = String.format(
-                    "SELECT * FROM %s WHERE ps_key = '%s' ORDER BY time DESC LIMIT %d",
-                    TABLE_NAME, psKey, limit
-            );
+        String sql = String.format(
+                "SELECT ps_name, ps_key, inverter_sn, time, latitude, longitude, active_power FROM %s WHERE ps_key = ? ORDER BY time DESC LIMIT %d",
+                TABLE_NAME, limit
+        );
 
-            return executeQuery(sql);
-        } catch (Exception e) {
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, psKey);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return parseResultSet(rs);
+            }
+        } catch (SQLException e) {
             logger.error("根据电站查询数据失败: {}", e.getMessage(), e);
             return new ArrayList<>();
         }
     }
 
     private List<InverterRealTimeData> executeQuery(String sql) {
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            return parseResultSet(rs);
+        } catch (SQLException e) {
+            logger.error("执行查询失败: {}", e.getMessage(), e);
+            return new ArrayList<>();
+        }
+    }
+
+    private List<InverterRealTimeData> parseResultSet(ResultSet rs) throws SQLException {
         List<InverterRealTimeData> results = new ArrayList<>();
 
-        try (ResultSet resultSet = lindormTSDBClient.query(DATABASE_NAME, sql)) {
-            QueryResult result;
-            while ((result = resultSet.next()) != null) {
-                List<String> columns = result.getColumns();
-                List<List<Object>> rows = result.getRows();
+        while (rs.next()) {
+            InverterRealTimeData data = new InverterRealTimeData();
 
-                for (List<Object> row : rows) {
-                    InverterRealTimeData data = new InverterRealTimeData();
+            data.setPsName(rs.getString("ps_name"));
+            data.setPsKey(rs.getString("ps_key"));
+            data.setInverterSn(rs.getString("inverter_sn"));
 
-                    for (int i = 0; i < columns.size(); i++) {
-                        String column = columns.get(i);
-                        Object value = row.get(i);
-
-                        switch (column) {
-                            case "inverter_sn":
-                                data.setInverterSn(value != null ? value.toString() : null);
-                                break;
-                            case "ps_name":
-                                data.setPsName(value != null ? value.toString() : null);
-                                break;
-                            case "ps_key":
-                                data.setPsKey(value != null ? value.toString() : null);
-                                break;
-                            case "time":
-                                if (value instanceof Number) {
-                                    long timestamp = ((Number) value).longValue();
-                                    data.setDeviceTime(LocalDateTime.ofInstant(
-                                            java.time.Instant.ofEpochMilli(timestamp),
-                                            ZoneId.systemDefault()
-                                    ));
-                                }
-                                break;
-                            case "latitude":
-                                if (value instanceof Number) {
-                                    data.setLatitude(((Number) value).doubleValue());
-                                }
-                                break;
-                            case "longitude":
-                                if (value instanceof Number) {
-                                    data.setLongitude(((Number) value).doubleValue());
-                                }
-                                break;
-                            case "active_power":
-                                if (value instanceof Number) {
-                                    data.setActivePower(((Number) value).doubleValue());
-                                }
-                                break;
-                        }
-                    }
-
-                    results.add(data);
-                }
+            // 按照lindorm.md的格式，处理时间戳
+            Timestamp timestamp = rs.getTimestamp("time");
+            if (timestamp != null) {
+                data.setDeviceTime(timestamp.toLocalDateTime());
             }
-        } catch (Exception e) {
-            logger.error("执行查询失败: {}", e.getMessage(), e);
+
+            data.setLatitude(rs.getDouble("latitude"));
+            data.setLongitude(rs.getDouble("longitude"));
+            data.setActivePower(rs.getDouble("active_power"));
+
+            results.add(data);
         }
 
         return results;
@@ -268,12 +220,12 @@ public class LindormTSDBService {
 
     @PreDestroy
     public void shutdown() {
-        if (lindormTSDBClient != null) {
+        if (connection != null) {
             try {
-                lindormTSDBClient.shutdown();
-                logger.info("Lindorm TSDB客户端已关闭");
-            } catch (Exception e) {
-                logger.error("关闭Lindorm TSDB客户端失败: {}", e.getMessage(), e);
+                connection.close();
+                logger.info("Lindorm TSDB JDBC连接已关闭");
+            } catch (SQLException e) {
+                logger.error("关闭Lindorm TSDB JDBC连接失败: {}", e.getMessage(), e);
             }
         }
     }

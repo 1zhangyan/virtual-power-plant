@@ -1,7 +1,9 @@
 package com.virtualpowerplant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DevicePoint {
 
     @JsonProperty("device_sn")
@@ -9,9 +11,6 @@ public class DevicePoint {
 
     @JsonProperty("ps_key")
     private String psKey;
-
-    @JsonProperty("ps_id")
-    private Long psId;
 
     @JsonProperty("device_name")
     private String deviceName;
@@ -25,8 +24,6 @@ public class DevicePoint {
     @JsonProperty("dev_status")
     private Integer devStatus;
 
-    @JsonProperty("uuid")
-    private Long uuid;
 
     public String getDeviceSn() {
         return deviceSn;
@@ -44,13 +41,6 @@ public class DevicePoint {
         this.psKey = psKey;
     }
 
-    public Long getPsId() {
-        return psId;
-    }
-
-    public void setPsId(Long psId) {
-        this.psId = psId;
-    }
 
     public String getDeviceName() {
         return deviceName;
@@ -84,25 +74,5 @@ public class DevicePoint {
         this.devStatus = devStatus;
     }
 
-    public Long getUuid() {
-        return uuid;
-    }
 
-    public void setUuid(Long uuid) {
-        this.uuid = uuid;
-    }
-
-    @Override
-    public String toString() {
-        return "DevicePoint{" +
-                "deviceSn='" + deviceSn + '\'' +
-                ", psKey='" + psKey + '\'' +
-                ", psId=" + psId +
-                ", deviceName='" + deviceName + '\'' +
-                ", deviceTime='" + deviceTime + '\'' +
-                ", p24='" + p24 + '\'' +
-                ", devStatus=" + devStatus +
-                ", uuid=" + uuid +
-                '}';
-    }
 }
