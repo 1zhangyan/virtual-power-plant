@@ -309,8 +309,4 @@ public class SunGrowDataService {
             throw e;
         }
     }
-
-    public static void main(String[] args) throws Exception {
-       System.out.println(getRealTimeData(Collections.singletonList("A2552608698")));
-    }
 }

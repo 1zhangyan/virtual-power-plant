@@ -3,7 +3,7 @@ package com.virtualpowerplant.model;
 import java.util.List;
 import java.util.Map;
 
-public class WeatherDataResult {
+public class GfsSurfaceDataResult {
     private List<Double> location;
     private List<String> timestamps;
     private Map<String, List<Double>> metricValues;
@@ -11,11 +11,11 @@ public class WeatherDataResult {
     private List<String> metricUnits;
     private String timeFcst;
 
-    public WeatherDataResult() {}
+    public GfsSurfaceDataResult() {}
 
-    public WeatherDataResult(List<Double> location, List<String> timestamps,
-                           Map<String, List<Double>> metricValues, List<String> metricVars,
-                           List<String> metricUnits, String timeFcst) {
+    public GfsSurfaceDataResult(List<Double> location, List<String> timestamps,
+                                Map<String, List<Double>> metricValues, List<String> metricVars,
+                                List<String> metricUnits, String timeFcst) {
         this.location = location;
         this.timestamps = timestamps;
         this.metricValues = metricValues;

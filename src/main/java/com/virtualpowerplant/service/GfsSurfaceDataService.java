@@ -1,43 +1,44 @@
+
+
 package com.virtualpowerplant.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.config.TokenConfig;
 import com.virtualpowerplant.constant.Constant;
-import com.virtualpowerplant.model.WeatherDataResult;
+import com.virtualpowerplant.model.GfsSurfaceDataResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import static com.virtualpowerplant.constant.Constant.objectMapper;
+
 @Service
-public class WeatherDataService {
+public class GfsSurfaceDataService {
 
-    private static final Logger logger = LoggerFactory.getLogger(WeatherDataService.class);
+    private static final Logger logger = LoggerFactory.getLogger(GfsSurfaceDataService.class);
     private static final String BASE_API_URL = "https://api-pro-openet.terraqt.com/v1";
+    private static final String dataType = "gfs_surface";
 
-    @Autowired
-    private TokenConfig tokenConfig;
+    private static final List<String> metaVars = Arrays.asList("tcc", "lcc", "mcc", "hcc", "dswrf", "dlwrf", "uswrf", "ulwrf");
+
 
     /**
      * 获取气象数据的通用函数
+     *
      * @param longitude 经度
-     * @param latitude 纬度
-     * @param dataType 数据类型 (如: gfs_surface)
-     * @param metaVars 指标列表 (如: ["t2m", "d2m"])
+     * @param latitude  纬度
      * @return WeatherDataResult 包含时间戳和指标值的结果
      */
-    public WeatherDataResult fetchWeatherData(double longitude, double latitude, String dataType, List<String> metaVars, String timestamp) {
+    public static GfsSurfaceDataResult fetchGfsSurfaceData(double longitude, double latitude) {
         try {
             String token = SecretConfigManager.getWeatherApiToken();
             String apiUrl = BASE_API_URL + "/" + dataType + "/multi/point";
@@ -49,7 +50,6 @@ public class WeatherDataService {
 
             // 构建请求体
             Map<String, Object> requestBody = new HashMap<>();
-            requestBody.put("time", timestamp);
             requestBody.put("points", Arrays.asList(Arrays.asList(longitude, latitude)));
             requestBody.put("mete_vars", metaVars);
             requestBody.put("avg", false);
@@ -58,14 +58,16 @@ public class WeatherDataService {
 
             // 发送请求
             ResponseEntity<Map> response = Constant.restTemplate.exchange(
-                apiUrl,
-                HttpMethod.POST,
-                request,
-                Map.class
+                    apiUrl,
+                    HttpMethod.POST,
+                    request,
+                    Map.class
             );
 
-            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-                return parseWeatherResponse(response.getBody(), longitude, latitude);
+            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null
+                    && response.getBody().containsKey("data")
+                    && response.getBody().get("data") != null) {
+                return parseWeatherResponse((Map)response.getBody().get("data"), longitude, latitude);
             } else {
                 logger.warn("API请求失败 - HTTP {}", response.getStatusCode());
                 return null;
@@ -80,10 +82,10 @@ public class WeatherDataService {
     /**
      * 解析API响应数据
      */
-    private WeatherDataResult parseWeatherResponse(Map<String, Object> responseBody, double longitude, double latitude) {
+    private static GfsSurfaceDataResult parseWeatherResponse(Map<String, Object> responseBody, double longitude, double latitude) {
         try {
             // 首先打印原始响应以便调试
-            logger.info("原始API响应: {}", Constant.objectMapper.writeValueAsString(responseBody));
+            logger.info("原始API响应: {}", objectMapper.writeValueAsString(responseBody));
 
             // 解析位置信息
             List<Double> location = Arrays.asList(longitude, latitude);
@@ -175,53 +177,17 @@ public class WeatherDataService {
                     metricVars != null ? metricVars.size() : 0,
                     metricValues.size());
 
-            return new WeatherDataResult(location, timestamps, metricValues, metricVars, metricUnits, timeFcst);
+            return new GfsSurfaceDataResult(location, timestamps, metricValues, metricVars, metricUnits, timeFcst);
 
         } catch (Exception e) {
             logger.error("解析响应数据失败: {}", e.getMessage(), e);
             try {
-                logger.error("响应体内容: {}", Constant.objectMapper.writeValueAsString(responseBody));
+                logger.error("响应体内容: {}", objectMapper.writeValueAsString(responseBody));
             } catch (Exception ex) {
                 logger.error("无法序列化响应体: {}", ex.getMessage());
             }
             return null;
         }
     }
-
-//    @Scheduled(fixedDelay = 10000) // 每10秒执行一次
-    public void scheduledWeatherDataFetch() {
-        String timestamp = LocalDateTime.now().minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        logger.info("=== 定时气象数据获取 [{}] ===", timestamp);
-
-        try {
-            // 第一个点位
-            WeatherDataResult result1 = fetchWeatherData(103.1693835, 30.5398753, "gfs_surface", Arrays.asList("t2m", "d2m"), timestamp);
-            if (result1 != null) {
-                logger.info("点位1 [103.17, 30.54] 数据获取成功:");
-                logger.info("  位置: {}", result1.getLocation());
-                logger.info("  时间戳: {}", result1.getTimestamps());
-                logger.info("  指标值: {}", result1.getMetricValues());
-                logger.info("  指标单位: {}", result1.getMetricUnits());
-                logger.info("  起报时刻: {}", result1.getTimeFcst());
-            } else {
-                logger.warn("点位1数据获取失败");
-            }
-
-            // 第二个点位
-            WeatherDataResult result2 = fetchWeatherData(104.0693835, 30.5398753, "gfs_surface", Arrays.asList("t2m"), timestamp);
-            if (result2 != null) {
-                logger.info("点位2 [104.07, 30.54] 数据获取成功:");
-                logger.info("  位置: {}", result2.getLocation());
-                logger.info("  时间戳: {}", result2.getTimestamps());
-                logger.info("  指标值: {}", result2.getMetricValues());
-            } else {
-                logger.warn("点位2数据获取失败");
-            }
-
-        } catch (Exception e) {
-            logger.error("定时任务执行失败: {}", e.getMessage(), e);
-        }
-
-        logger.info("=== 定时任务完成 ===");
-    }
 }
+
