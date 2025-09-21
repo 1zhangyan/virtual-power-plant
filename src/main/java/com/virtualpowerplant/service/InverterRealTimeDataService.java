@@ -54,13 +54,13 @@ public class InverterRealTimeDataService {
 
             if (realTimeDataList != null && !realTimeDataList.isEmpty()) {
                 lindormTSDBService.writeRealTimeData(realTimeDataList);
-                logger.info("成功保存 {} 条逆变器实时数据到Lindorm", realTimeDataList.size());
+                logger.debug("成功保存 {} 条逆变器实时数据到Lindorm", realTimeDataList.size());
             } else {
                 logger.warn("未获取到任何逆变器实时数据");
             }
 
             long endTime = System.currentTimeMillis();
-            logger.info("逆变器实时数据收集完成，耗时: {} ms", endTime - startTime);
+            logger.debug("逆变器实时数据收集完成，耗时: {} ms", endTime - startTime);
 
         } catch (Exception e) {
             logger.error("定时收集逆变器实时数据失败: {}", e.getMessage(), e);
