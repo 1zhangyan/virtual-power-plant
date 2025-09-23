@@ -193,23 +193,23 @@ public class InverterRealTimeDataController {
         }
     }
 
-    @PostMapping("/collect")
-    @Operation(summary = "手动触发实时数据收集", description = "手动触发一次逆变器实时数据收集任务")
-    public ResponseEntity<Map<String, Object>> manualCollect() {
-        try {
-            realTimeDataService.collectInverterRealTimeData();
-
-            Map<String, Object> response = new HashMap<>();
-            response.put("success", true);
-            response.put("message", "手动触发实时数据收集成功");
-
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            logger.error("手动触发实时数据收集失败: {}", e.getMessage(), e);
-            Map<String, Object> response = new HashMap<>();
-            response.put("success", false);
-            response.put("error", e.getMessage());
-            return ResponseEntity.internalServerError().body(response);
-        }
-    }
+//    @PostMapping("/collect")
+//    @Operation(summary = "手动触发实时数据收集", description = "手动触发一次逆变器实时数据收集任务")
+//    public ResponseEntity<Map<String, Object>> manualCollect() {
+//        try {
+//            realTimeDataService.collectInverterRealTimeData();
+//
+//            Map<String, Object> response = new HashMap<>();
+//            response.put("success", true);
+//            response.put("message", "手动触发实时数据收集成功");
+//
+//            return ResponseEntity.ok(response);
+//        } catch (Exception e) {
+//            logger.error("手动触发实时数据收集失败: {}", e.getMessage(), e);
+//            Map<String, Object> response = new HashMap<>();
+//            response.put("success", false);
+//            response.put("error", e.getMessage());
+//            return ResponseEntity.internalServerError().body(response);
+//        }
+//    }
 }
