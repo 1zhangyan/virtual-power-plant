@@ -120,4 +120,19 @@ public class InverterRealTimeDataService {
         }
     }
 
+    public List<InverterRealTimeData> getPowerStationDataByTimeRange(String psKey, LocalDateTime startTime, LocalDateTime endTime) {
+        try {
+            // 获取电站下所有逆变器的数据，然后按时间范围过滤
+            List<InverterRealTimeData> allData = lindormTSDBService.queryByPowerStation(psKey, 10000);
+            return allData.stream()
+                    .filter(data -> data.getDeviceTime() != null &&
+                            !data.getDeviceTime().isBefore(startTime) &&
+                            !data.getDeviceTime().isAfter(endTime))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            logger.error("根据电站和时间范围获取实时数据失败: {}", e.getMessage(), e);
+            return new ArrayList<>();
+        }
+    }
+
 }

@@ -114,6 +114,7 @@
 <summary><strong>📡 实时数据采集模块</strong></summary>
 
 - 🎮 `InverterRealTimeDataController` - 逆变器实时数据API
+- 🎮 `PowerDataQueryController` - 功率数据查询API (新增)
 - 💼 `SunGrowDataService` - SunGrow数据服务
 - 📊 `LindormTSDBService` - 时序数据存储服务
 
@@ -261,6 +262,15 @@ java -jar target/virtual-power-plant-1.0.0.jar
 | `GET` | `/inverter/realtime-data` | 📈 获取逆变器实时数据 | `200` |
 | `POST` | `/inverter/sync-data` | 🔄 同步数据到Lindorm | `200` |
 
+### ⚡ 功率数据查询
+
+| 方法 | 路径 | 描述 | 状态码 |
+|------|------|------|--------|
+| `GET` | `/api/power-data/inverter/{inverterSn}/power` | 📊 按时间段和逆变器SN获取实时功率数据 | `200` |
+| `GET` | `/api/power-data/powerstation/{psKey}/power` | 🏭 按时间段和电站PS_KEY获取实时功率数据 | `200` |
+| `GET` | `/api/power-data/inverter/{inverterSn}/weather` | 🌤️ 按时间段和逆变器SN获取天气预报 | `200` |
+| `GET` | `/api/power-data/powerstation/{psKey}/weather` | 🌦️ 按时间段和电站PS_KEY获取天气预报 | `200` |
+
 ### 🔐 认证管理
 
 | 方法 | 路径 | 描述 | 状态码 |
@@ -294,6 +304,30 @@ curl -X POST "http://localhost:8080/devices" \
 ```bash
 curl -X GET "http://localhost:8080/inverter/realtime-data" \
      -H "Authorization: Bearer your_token_here"
+```
+
+**按时间段获取逆变器功率数据**
+```bash
+curl -X GET "http://localhost:8080/api/power-data/inverter/C2123456789/power?startTime=2024-01-01%2000:00:00&endTime=2024-01-01%2023:59:59" \
+     -H "accept: application/json"
+```
+
+**按时间段获取电站功率数据**
+```bash
+curl -X GET "http://localhost:8080/api/power-data/powerstation/PS001/power?startTime=2024-01-01%2000:00:00&endTime=2024-01-01%2023:59:59" \
+     -H "accept: application/json"
+```
+
+**按时间段获取逆变器天气预报**
+```bash
+curl -X GET "http://localhost:8080/api/power-data/inverter/C2123456789/weather?startTime=2024-01-01%2000:00:00&endTime=2024-01-01%2023:59:59" \
+     -H "accept: application/json"
+```
+
+**按时间段获取电站天气预报**
+```bash
+curl -X GET "http://localhost:8080/api/power-data/powerstation/PS001/weather?startTime=2024-01-01%2000:00:00&endTime=2024-01-01%2023:59:59" \
+     -H "accept: application/json"
 ```
 
 </details>
@@ -375,6 +409,61 @@ curl -X GET "http://localhost:8080/inverter/realtime-data" \
     "medium": "中云量 (%)",
     "high": "高云量 (%)"
   }
+}
+```
+
+### ⚡ 功率数据查询响应 (PowerDataQueryResponse)
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "数据ID",
+      "psName": "电站名称",
+      "psKey": "电站标识",
+      "latitude": "纬度",
+      "longitude": "经度",
+      "inverterSn": "逆变器序列号",
+      "activePower": "有功功率 (kW)",
+      "deviceTime": "设备时间",
+      "createTime": "创建时间"
+    }
+  ],
+  "inverter_sn": "C2123456789",
+  "start_time": "查询开始时间",
+  "end_time": "查询结束时间",
+  "count": "数据条数",
+  "message": "查询结果说明"
+}
+```
+
+### 🌤️ 天气预报查询响应 (WeatherDataQueryResponse)
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "psName": "电站名称",
+      "psKey": "电站标识",
+      "deviceSn": "设备序列号",
+      "time": "预报时间",
+      "tcc": "总云量 (%)",
+      "lcc": "低云量 (%)",
+      "mcc": "中云量 (%)",
+      "hcc": "高云量 (%)",
+      "dswrf": "向下短波辐射 (W/m²)",
+      "dlwrf": "向下长波辐射 (W/m²)",
+      "uswrf": "向上短波辐射 (W/m²)",
+      "ulwrf": "向上长波辐射 (W/m²)"
+    }
+  ],
+  "inverter_sn": "C2123456789",
+  "start_time": "查询开始时间",
+  "end_time": "查询结束时间",
+  "count": "数据条数",
+  "message": "查询结果说明"
 }
 ```
 

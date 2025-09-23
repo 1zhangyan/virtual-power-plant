@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -135,6 +137,100 @@ public class InverterGfsSurfaceLindormService {
             logger.error("写入逆变器天气数据到Lindorm失败: {}", e.getMessage(), e);
             throw new RuntimeException("Failed to write inverter weather data to Lindorm", e);
         }
+    }
+
+    /**
+     * 根据逆变器SN和时间范围查询天气预报数据
+     */
+    public List<InverterWeatherData> getInverterWeatherByTimeRange(String inverterSn, LocalDateTime startTime, LocalDateTime endTime) {
+        if (connection == null) {
+            logger.warn("Lindorm连接未初始化，无法查询逆变器天气数据");
+            return new ArrayList<>();
+        }
+
+        List<InverterWeatherData> result = new ArrayList<>();
+        String querySQL = String.format(
+            "SELECT ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf " +
+            "FROM %s WHERE device_sn = ? AND time >= ? AND time <= ? ORDER BY time",
+            TABLE_NAME
+        );
+
+        try (PreparedStatement pstmt = connection.prepareStatement(querySQL)) {
+            pstmt.setString(1, inverterSn);
+            pstmt.setTimestamp(2, Timestamp.valueOf(startTime));
+            pstmt.setTimestamp(3, Timestamp.valueOf(endTime));
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                InverterWeatherData data = new InverterWeatherData();
+                data.setPsName(rs.getString("ps_name"));
+                data.setPsKey(rs.getString("ps_key"));
+                data.setDeviceSn(rs.getString("device_sn"));
+                data.setTime(rs.getTimestamp("time").toLocalDateTime());
+                data.setTcc(rs.getDouble("tcc"));
+                data.setLcc(rs.getDouble("lcc"));
+                data.setMcc(rs.getDouble("mcc"));
+                data.setHcc(rs.getDouble("hcc"));
+                data.setDswrf(rs.getDouble("dswrf"));
+                data.setDlwrf(rs.getDouble("dlwrf"));
+                data.setUswrf(rs.getDouble("uswrf"));
+                data.setUlwrf(rs.getDouble("ulwrf"));
+                result.add(data);
+            }
+
+            logger.debug("查询到 {} 条逆变器天气数据, 逆变器SN: {}", result.size(), inverterSn);
+        } catch (SQLException e) {
+            logger.error("查询逆变器天气数据失败: {}", e.getMessage(), e);
+        }
+
+        return result;
+    }
+
+    /**
+     * 根据电站PS_KEY和时间范围查询天气预报数据
+     */
+    public List<InverterWeatherData> getPowerStationWeatherByTimeRange(String psKey, LocalDateTime startTime, LocalDateTime endTime) {
+        if (connection == null) {
+            logger.warn("Lindorm连接未初始化，无法查询电站天气数据");
+            return new ArrayList<>();
+        }
+
+        List<InverterWeatherData> result = new ArrayList<>();
+        String querySQL = String.format(
+            "SELECT ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf " +
+            "FROM %s WHERE ps_key = ? AND time >= ? AND time <= ? ORDER BY time",
+            TABLE_NAME
+        );
+
+        try (PreparedStatement pstmt = connection.prepareStatement(querySQL)) {
+            pstmt.setString(1, psKey);
+            pstmt.setTimestamp(2, Timestamp.valueOf(startTime));
+            pstmt.setTimestamp(3, Timestamp.valueOf(endTime));
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                InverterWeatherData data = new InverterWeatherData();
+                data.setPsName(rs.getString("ps_name"));
+                data.setPsKey(rs.getString("ps_key"));
+                data.setDeviceSn(rs.getString("device_sn"));
+                data.setTime(rs.getTimestamp("time").toLocalDateTime());
+                data.setTcc(rs.getDouble("tcc"));
+                data.setLcc(rs.getDouble("lcc"));
+                data.setMcc(rs.getDouble("mcc"));
+                data.setHcc(rs.getDouble("hcc"));
+                data.setDswrf(rs.getDouble("dswrf"));
+                data.setDlwrf(rs.getDouble("dlwrf"));
+                data.setUswrf(rs.getDouble("uswrf"));
+                data.setUlwrf(rs.getDouble("ulwrf"));
+                result.add(data);
+            }
+
+            logger.debug("查询到 {} 条电站天气数据, 电站PS_KEY: {}", result.size(), psKey);
+        } catch (SQLException e) {
+            logger.error("查询电站天气数据失败: {}", e.getMessage(), e);
+        }
+
+        return result;
     }
 
     @PreDestroy
