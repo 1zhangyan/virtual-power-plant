@@ -39,6 +39,11 @@
   </tr>
   <tr>
     <td align="center">
+      <img src="https://img.icons8.com/fluency/48/000000/lightning-bolt.png" width="40">
+      <br><strong>虚拟电厂管理</strong>
+      <br>VPP信息的创建、更新和查询管理
+    </td>
+    <td align="center">
       <img src="https://img.icons8.com/fluency/48/000000/database.png" width="40">
       <br><strong>时序数据存储</strong>
       <br>使用阿里云Lindorm进行时序数据存储
@@ -48,10 +53,22 @@
       <br><strong>API文档</strong>
       <br>集成Swagger/OpenAPI文档
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <img src="https://img.icons8.com/fluency/48/000000/security-checked.png" width="40">
       <br><strong>数据安全</strong>
       <br>RSA和AES加密支持
+    </td>
+    <td align="center">
+      <img src="https://img.icons8.com/fluency/48/000000/error.png" width="40">
+      <br><strong>异常处理</strong>
+      <br>全局异常处理和错误响应管理
+    </td>
+    <td align="center">
+      <img src="https://img.icons8.com/fluency/48/000000/data-quality.png" width="40">
+      <br><strong>数据同步</strong>
+      <br>设备数据与VPP信息的实时同步
     </td>
   </tr>
 </table>
@@ -86,13 +103,36 @@
 │   ├── 📂 java/com/virtualpowerplant/
 │   │   ├── 📂 config/           # ⚙️ 配置类
 │   │   ├── 📂 controller/       # 🎮 REST控制器
+│   │   │   ├── 📄 DeviceController.java        # 设备管理接口
+│   │   │   ├── 📄 VppController.java          # 虚拟电厂管理接口
+│   │   │   ├── 📄 PowerDataQueryController.java # 功率数据查询接口
+│   │   │   └── 📄 InverterRealTimeDataController.java # 实时数据接口
 │   │   ├── 📂 model/           # 📊 数据模型
+│   │   │   ├── 📄 VirtualPowerPlant.java      # 虚拟电厂模型
+│   │   │   ├── 📄 Device.java                 # 设备模型
+│   │   │   ├── 📄 InverterRealTimeData.java   # 逆变器实时数据
+│   │   │   └── 📄 PowerStation.java           # 电站模型
 │   │   ├── 📂 service/         # 💼 业务逻辑
+│   │   │   ├── 📄 VppService.java             # 虚拟电厂服务
+│   │   │   ├── 📄 DeviceService.java          # 设备服务
+│   │   │   ├── 📄 SunGrowDataService.java     # SunGrow数据服务
+│   │   │   └── 📄 LindormTSDBService.java     # 时序数据库服务
 │   │   ├── 📂 mapper/          # 🗂️ MyBatis映射器
+│   │   │   ├── 📄 VppMapper.java              # 虚拟电厂数据访问
+│   │   │   ├── 📄 DeviceMapper.java           # 设备数据访问
+│   │   │   └── 📄 PowerStationMapper.java     # 电站数据访问
+│   │   ├── 📂 exception/       # ❌ 异常处理
+│   │   │   ├── 📄 GlobalExceptionHandler.java # 全局异常处理
+│   │   │   ├── 📄 VppNotFoundException.java   # VPP未找到异常
+│   │   │   └── 📄 InvalidParameterException.java # 参数异常
 │   │   └── 📂 utils/           # 🛠️ 工具类
+│   │       ├── 📄 RSAEncryptUtils.java        # RSA加密工具
+│   │       └── 📄 AESEncryptUtils.java        # AES加密工具
 │   └── 📂 resources/
-│       ├── 📂 mapper/          # 📄 MyBatis XML映射文件
 │       ├── 📂 sql/             # 🗃️ 数据库脚本
+│       │   ├── 📄 virtual_power_plant.sql     # VPP表结构
+│       │   ├── 📄 add_vpp_fields.sql          # VPP字段添加脚本
+│       │   └── 📄 init.sql                    # 初始化脚本
 │       └── 📄 application.yml  # ⚙️ 应用配置
 ├── 📄 pom.xml                  # 📦 Maven依赖配置
 ├── 📄 README.md               # 📖 项目说明文档
@@ -125,6 +165,16 @@
 
 - 💼 `GfsSurfaceDataService` - GFS地面预报数据服务
 - 📊 `InverterGfsSurfaceLindormService` - 天气数据Lindorm存储
+
+</details>
+
+<details>
+<summary><strong>⚡ 虚拟电厂管理模块</strong></summary>
+
+- 🎮 `VppController` - 虚拟电厂管理API接口
+- 💼 `VppService` - 虚拟电厂业务逻辑处理
+- 🗂️ `VppMapper` - 虚拟电厂数据访问层
+- 📊 `VirtualPowerPlant` - 虚拟电厂数据模型定义
 
 </details>
 
@@ -271,6 +321,13 @@ java -jar target/virtual-power-plant-1.0.0.jar
 | `GET` | `/api/power-data/inverter/{inverterSn}/weather` | 🌤️ 按时间段和逆变器SN获取天气预报 | `200` |
 | `GET` | `/api/power-data/powerstation/{psKey}/weather` | 🌦️ 按时间段和电站PS_KEY获取天气预报 | `200` |
 
+### ⚡ 虚拟电厂管理
+
+| 方法 | 路径 | 描述 | 状态码 |
+|------|------|------|--------|
+| `POST` | `/api/vpp/upsert` | ⚡ 创建或更新虚拟电厂信息 | `200` |
+| `GET` | `/api/vpp/details` | 📋 获取虚拟电厂详细信息 | `200` |
+
 ### 🔐 认证管理
 
 | 方法 | 路径 | 描述 | 状态码 |
@@ -327,6 +384,38 @@ curl -X GET "http://localhost:8080/api/power-data/inverter/C2123456789/weather?s
 **按时间段获取电站天气预报**
 ```bash
 curl -X GET "http://localhost:8080/api/power-data/powerstation/PS001/weather?startTime=2024-01-01%2000:00:00&endTime=2024-01-01%2023:59:59" \
+     -H "accept: application/json"
+```
+
+**创建或更新虚拟电厂**
+```bash
+curl -X POST "http://localhost:8080/api/vpp/upsert" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "mobileTel": "13800138000",
+       "userName": "张三",
+       "language": "zh-CN",
+       "userId": "user001",
+       "countryName": "中国",
+       "userAccount": "zhangsan",
+       "userMasterOrgName": "阳光电力集团",
+       "email": "zhangsan@example.com",
+       "countryId": "CN"
+     }'
+```
+
+**获取虚拟电厂详细信息**
+```bash
+# 通过userId查询
+curl -X GET "http://localhost:8080/api/vpp/details?userId=user001" \
+     -H "accept: application/json"
+
+# 通过userAccount查询
+curl -X GET "http://localhost:8080/api/vpp/details?userAccount=zhangsan" \
+     -H "accept: application/json"
+
+# 通过vppId查询
+curl -X GET "http://localhost:8080/api/vpp/details?vppId=1" \
      -H "accept: application/json"
 ```
 
@@ -464,6 +553,49 @@ curl -X GET "http://localhost:8080/api/power-data/powerstation/PS001/weather?sta
   "end_time": "查询结束时间",
   "count": "数据条数",
   "message": "查询结果说明"
+}
+```
+
+### ⚡ 虚拟电厂模型 (VirtualPowerPlant)
+
+```json
+{
+  "vppId": "虚拟电厂唯一标识 (自增主键)",
+  "mobileTel": "联系电话",
+  "userName": "用户姓名",
+  "language": "语言偏好",
+  "userId": "用户ID (唯一)",
+  "countryName": "国家名称",
+  "userAccount": "用户账号 (唯一)",
+  "userMasterOrgName": "主管机构名称",
+  "email": "用户邮箱",
+  "countryId": "国家代码",
+  "createdAt": "创建时间",
+  "updatedAt": "更新时间"
+}
+```
+
+**VPP API响应格式**
+```json
+{
+  "success": true,
+  "error": null,
+  "timestamp": "2024-01-01T10:00:00",
+  "status": 200,
+  "data": {
+    "vppId": 1,
+    "mobileTel": "13800138000",
+    "userName": "张三",
+    "language": "zh-CN",
+    "userId": "user001",
+    "countryName": "中国",
+    "userAccount": "zhangsan",
+    "userMasterOrgName": "阳光电力集团",
+    "email": "zhangsan@example.com",
+    "countryId": "CN",
+    "createdAt": "2024-01-01T08:00:00",
+    "updatedAt": "2024-01-01T10:00:00"
+  }
 }
 ```
 
