@@ -38,11 +38,11 @@ public class DeviceController {
 
     @GetMapping("/inverters/coordinates")
     @Operation(summary = "查询带经纬度的逆变器", description = "根据vppId返回所有带经纬度信息的逆变器设备，如果不提供vppId则返回所有设备")
-    public ResponseEntity<List<Device>> getInvertersWithCoordinates(@RequestParam(required = false) String vppId) {
+    public ResponseEntity<List<Device>> getInvertersWithCoordinates(@RequestParam(required = false) Long vppId) {
         try {
             List<Device> inverters;
-            if (vppId != null && !vppId.trim().isEmpty()) {
-                inverters = deviceService.getInvertersByVppId(vppId.trim());
+            if (vppId != null) {
+                inverters = deviceService.getInvertersByVppId(vppId);
                 logger.info("查询到 {} 个VPP {} 的带经纬度逆变器设备", inverters.size(), vppId);
             } else {
                 inverters = deviceService.getInverters();

@@ -228,6 +228,7 @@ public class SunGrowResponseParser {
         device.setGridConnectionDate(getTextValue(node, "grid_connection_date"));
         device.setLatitude(getDoubleValue(node, "latitude"));
         device.setLongitude(getDoubleValue(node, "longitude"));
+        device.setVppId(getLongValue(node, "vpp_id"));
         return device;
     }
 

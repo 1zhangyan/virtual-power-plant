@@ -32,7 +32,7 @@ public class Device {
     private String gridConnectionDate;
     private Double latitude;
     private Double longitude;
-    private String vppId;
+    private Long vppId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -317,11 +317,11 @@ public class Device {
         this.connectType = connectType;
     }
 
-    public String getVppId() {
+    public Long getVppId() {
         return vppId;
     }
 
-    public void setVppId(String vppId) {
+    public void setVppId(Long vppId) {
         this.vppId = vppId;
     }
 }

@@ -30,12 +30,12 @@ public class SunGrowDataService {
     private static final Logger logger = LoggerFactory.getLogger(SunGrowDataService.class);
 
 //     Token缓存，3小时过期
-    private static Cache<String, String> tokenCache = CacheBuilder.newBuilder()
+    private static Cache<String, SunGrowUserInfo> sunGrowUserInfoCache = CacheBuilder.newBuilder()
             .expireAfterWrite(3, TimeUnit.HOURS)
             .maximumSize(1)
             .build();
 
-    private static final String TOKEN_CACHE_KEY = "sungrow_token";
+    private static final String USER_INFO_CACHE_KEY = "userInfoCacheKey";
 
     private static final String appKey = SecretConfigManager.getSunGrowAppKey();
     private static final String publicKey = SecretConfigManager.getSunGrowPublicKey();
@@ -94,7 +94,7 @@ public class SunGrowDataService {
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("curPage", page);
         requestBody.put("size", size);
-        requestBody.put("token", getCachedToken());
+        requestBody.put("token", getCachedUserInfo().getToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
@@ -102,7 +102,7 @@ public class SunGrowDataService {
         String apiUrl = baseUrl + "/openapi/getPVInverterRealTimeData";
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("sn_list", snList);
-        requestBody.put("token", getCachedToken());
+        requestBody.put("token", getCachedUserInfo().getToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
@@ -111,7 +111,7 @@ public class SunGrowDataService {
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("curPage", page);
         requestBody.put("size", size);
-        requestBody.put("token", getCachedToken());
+        requestBody.put("token", getCachedUserInfo().getToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
@@ -120,7 +120,7 @@ public class SunGrowDataService {
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("second", second);
         requestBody.put("sn_list", snList);
-        requestBody.put("token", getCachedToken());
+        requestBody.put("token", getCachedUserInfo().getToken());
         return postHttpCall(apiUrl,requestBody);
     }
 
@@ -150,26 +150,25 @@ public class SunGrowDataService {
     /**
      * 获取缓存的token，如果缓存过期则重新登录获取
      */
-    public static String getCachedToken() throws Exception {
+    public static SunGrowUserInfo getCachedUserInfo() throws Exception {
         try {
             // 尝试从缓存获取token
-            String cachedToken = tokenCache.getIfPresent(TOKEN_CACHE_KEY);
+            SunGrowUserInfo sunGrowUserInfo = sunGrowUserInfoCache.getIfPresent(USER_INFO_CACHE_KEY);
 
-            if (cachedToken != null) {
+            if (sunGrowUserInfo != null) {
                 logger.debug("使用缓存的token");
-                return cachedToken;
+                return sunGrowUserInfo;
             }
 
             // 缓存中没有token，重新登录获取
             logger.info("Token缓存已过期，重新登录获取token...");
             SunGrowUserInfo userInfo = loginAndGetUserInfo();
-            String newToken = userInfo.getToken();
 
             // 将新token放入缓存
-            tokenCache.put(TOKEN_CACHE_KEY, newToken);
+            sunGrowUserInfoCache.put(USER_INFO_CACHE_KEY, userInfo);
             logger.info("新token已缓存，有效期3小时");
 
-            return newToken;
+            return userInfo;
         } catch (Exception e) {
             logger.error("获取缓存token失败: {}", e.getMessage(), e);
             throw e;
@@ -180,7 +179,7 @@ public class SunGrowDataService {
      * 清除token缓存（用于强制重新登录）
      */
     public static void clearTokenCache() {
-        tokenCache.invalidateAll();
+        sunGrowUserInfoCache.invalidateAll();
         logger.info("Token缓存已清除");
     }
 
