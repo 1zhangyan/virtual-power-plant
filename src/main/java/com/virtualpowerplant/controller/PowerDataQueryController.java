@@ -21,7 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/power-data")
-@Tag(name = "功率数据查询", description = "逆变器和电站功率数据及天气预报查询接口")
+@Tag(name = "电站实时功率和天气预报", description = "逆变器和电站功率数据及天气预报查询接口")
 public class PowerDataQueryController {
 
     private static final Logger logger = LoggerFactory.getLogger(PowerDataQueryController.class);

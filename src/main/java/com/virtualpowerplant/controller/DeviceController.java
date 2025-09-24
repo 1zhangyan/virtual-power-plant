@@ -37,16 +37,15 @@ public class DeviceController {
 //    }
 
     @GetMapping("/inverters/coordinates")
-    @Operation(summary = "查询带经纬度的逆变器", description = "根据vppId返回所有带经纬度信息的逆变器设备，如果不提供vppId则返回所有设备")
-    public ResponseEntity<List<Device>> getInvertersWithCoordinates(@RequestParam(required = false) Long vppId) {
+    @Operation(summary = "查询带经纬度的逆变器", description = "根据vppId返回所有带经纬度信息的逆变器设备")
+    public ResponseEntity<List<Device>> getInvertersWithCoordinates(@RequestParam(required = true) Long vppId) {
         try {
             List<Device> inverters;
             if (vppId != null) {
                 inverters = deviceService.getInvertersByVppId(vppId);
-                logger.info("查询到 {} 个VPP {} 的带经纬度逆变器设备", inverters.size(), vppId);
+                logger.debug("查询到 {} 个VPP {} 的带经纬度逆变器设备", inverters.size(), vppId);
             } else {
-                inverters = deviceService.getInverters();
-                logger.info("查询到 {} 个带经纬度的逆变器设备", inverters.size());
+                throw new RuntimeException("必须携带vpp信息");
             }
             return ResponseEntity.ok(inverters);
         } catch (Exception e) {
