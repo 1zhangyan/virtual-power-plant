@@ -22,7 +22,7 @@ public class VppService {
     /**
      * 插入或更新虚拟电厂信息
      */
-    public VirtualPowerPlant upsert(VirtualPowerPlant vpp) {
+    public void findOrInsert(VirtualPowerPlant vpp) {
         logger.info("执行虚拟电厂信息upsert操作: {}", vpp.toString());
 
         LocalDateTime now = LocalDateTime.now();
@@ -30,14 +30,11 @@ public class VppService {
             vpp.setCreatedAt(now);
         }
         vpp.setUpdatedAt(now);
-
-        int result = vppMapper.upsert(vpp);
-        if (result > 0) {
-            logger.info("虚拟电厂信息upsert成功, vppId: {}", vpp.getVppId());
-            return vpp;
+        VirtualPowerPlant result = vppMapper.findByUserAccount(vpp.getUserAccount());
+        if (result != null) {
+            logger.info("已经存在虚拟电厂 vppId: {}", result.getVppId());
         } else {
-            logger.error("虚拟电厂信息upsert失败: {}", vpp.toString());
-            throw new RuntimeException("虚拟电厂信息保存失败");
+            vppMapper.insert(vpp);
         }
     }
 

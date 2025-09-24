@@ -22,19 +22,19 @@ public class DeviceController {
     @Autowired
     private DeviceService deviceService;
 
-//    @PostMapping("/sync")
-//    @Operation(summary = "同步SunGrow设备数据", description = "登录SunGrow账号，获取所有设备信息和对应电站的经纬度，同步到数据库")
-//    public ResponseEntity<String> syncDevices() {
-//        try {
-//            logger.info("开始同步SunGrow设备数据...");
-//            deviceService.syncDevicesWithCoordinates();
-//            logger.info("设备数据同步完成");
-//            return ResponseEntity.ok("设备数据同步成功");
-//        } catch (Exception e) {
-//            logger.error("设备数据同步失败: {}", e.getMessage(), e);
-//            return ResponseEntity.internalServerError().body("设备数据同步失败: " + e.getMessage());
-//        }
-//    }
+    @PostMapping("/sync")
+    @Operation(summary = "同步SunGrow设备数据", description = "登录SunGrow账号，获取所有设备信息和对应电站的经纬度，同步到数据库")
+    public ResponseEntity<String> syncDevices() {
+        try {
+            logger.info("开始同步SunGrow设备数据...");
+            deviceService.syncDevicesWithCoordinates();
+            logger.info("设备数据同步完成");
+            return ResponseEntity.ok("设备数据同步成功");
+        } catch (Exception e) {
+            logger.error("设备数据同步失败: {}", e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("设备数据同步失败: " + e.getMessage());
+        }
+    }
 
     @GetMapping("/inverters/coordinates")
     @Operation(summary = "查询带经纬度的逆变器", description = "根据vppId返回所有带经纬度信息的逆变器设备")

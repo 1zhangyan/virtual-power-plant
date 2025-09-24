@@ -4,8 +4,10 @@ import com.virtualpowerplant.mapper.DeviceMapper;
 import com.virtualpowerplant.model.Device;
 import com.virtualpowerplant.model.PowerStation;
 import com.virtualpowerplant.model.SunGrowUserInfo;
+import com.virtualpowerplant.model.VirtualPowerPlant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +27,7 @@ public class DeviceService {
     private DeviceMapper deviceMapper;
 
     @Autowired
-    private SunGrowDataService sunGrowDataService;
+    private VppService vppService;
 
     /**
      * 同步SunGrow设备数据到数据库，包含经纬度信息
@@ -33,10 +35,13 @@ public class DeviceService {
     public void syncDevicesWithCoordinates() throws Exception {
         logger.info("开始同步SunGrow设备数据...");
 
-        // 1. 使用缓存token（自动处理登录）
-        logger.info("使用缓存token进行API调用...");
-
+        // 1. 同步虚拟电厂信息
         SunGrowUserInfo sunGrowUserInfo = SunGrowDataService.getCachedUserInfo();
+
+        VirtualPowerPlant virtualPowerPlant = new VirtualPowerPlant();
+        BeanUtils.copyProperties(sunGrowUserInfo,virtualPowerPlant);
+        vppService.findOrInsert(virtualPowerPlant);
+
         // 2. 获取所有电站信息（包含经纬度）
         logger.info("开始获取电站信息...");
         List<PowerStation> powerStations = SunGrowDataService.getPowerStationsAndParse();

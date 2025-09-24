@@ -1,5 +1,7 @@
 package com.virtualpowerplant.controller;
 
+import com.virtualpowerplant.exception.InvalidParameterException;
+import com.virtualpowerplant.exception.VppNotFoundException;
 import com.virtualpowerplant.model.VirtualPowerPlant;
 import com.virtualpowerplant.service.VppService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,12 +25,10 @@ public class VppController {
 
     @PostMapping("/upsert")
     @Operation(summary = "创建或更新虚拟电厂", description = "插入新的虚拟电厂信息或更新已存在的虚拟电厂信息")
-    public ResponseEntity<VirtualPowerPlant> upsertVpp(@RequestBody VirtualPowerPlant vpp) {
+    public ResponseEntity<String> upsertVpp(@RequestBody VirtualPowerPlant vpp) {
         try {
-            logger.info("收到虚拟电厂upsert请求: {}", vpp.toString());
-            VirtualPowerPlant result = vppService.upsert(vpp);
-            logger.info("虚拟电厂upsert成功，返回结果: {}", result.toString());
-            return ResponseEntity.ok(result);
+            vppService.findOrInsert(vpp);
+            return ResponseEntity.ok("ok");
         } catch (Exception e) {
             logger.error("虚拟电厂upsert失败: {}", e.getMessage(), e);
             return ResponseEntity.internalServerError().body(null);
@@ -48,14 +48,14 @@ public class VppController {
             if ((userId == null || userId.trim().isEmpty()) &&
                 (userAccount == null || userAccount.trim().isEmpty()) &&
                 vppId == null) {
-                throw new RuntimeException("参数不能全空");
+                throw new InvalidParameterException("查询参数不能全部为空，请提供userId、userAccount或vppId中的至少一个");
             }
 
             VirtualPowerPlant vpp = vppService.getVppDetails(userId, userAccount, vppId);
             if (vpp != null) {
                 return ResponseEntity.ok(vpp);
             } else {
-                throw new RuntimeException("未找到匹配的虚拟电厂信息");
+                throw new VppNotFoundException("未找到匹配的虚拟电厂信息");
             }
     }
 }
