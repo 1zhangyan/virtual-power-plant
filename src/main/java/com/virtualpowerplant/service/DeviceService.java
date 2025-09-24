@@ -35,6 +35,7 @@ public class DeviceService {
         // 1. 使用缓存token（自动处理登录）
         logger.info("使用缓存token进行API调用...");
 
+        String token = sunGrowDataService.getCachedToken();
         // 2. 获取所有电站信息（包含经纬度）
         logger.info("开始获取电站信息...");
         List<PowerStation> powerStations = SunGrowDataService.getPowerStationsAndParse();
@@ -92,5 +93,12 @@ public class DeviceService {
      */
     public List<Device> getInverters() {
         return deviceMapper.selectInverters();
+    }
+
+    /**
+     * 根据vppId查询逆变器设备
+     */
+    public List<Device> getInvertersByVppId(String vppId) {
+        return deviceMapper.selectInvertersByVppId(vppId);
     }
 }

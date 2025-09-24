@@ -26,6 +26,7 @@
         <result property="gridConnectionDate" column="grid_connection_date"/>
         <result property="latitude" column="latitude"/>
         <result property="longitude" column="longitude"/>
+        <result property="vppId" column="vpp_id"/>
         <result property="psType" column="ps_type"/>
         <result property="onlineStatus" column="online_status"/>
         <result property="provinceName" column="province_name"/>
@@ -41,12 +42,12 @@
         INSERT INTO vpp.sungrow_device (uuid, ps_id, ps_name, device_name, device_sn, device_type, device_code,
                            type_name, device_model_code, device_model_id, factory_name, channel_id, ps_key,
                            communication_dev_sn, dev_status, dev_fault_status, rel_state, rel_time, grid_connection_date,
-                           latitude, longitude, ps_type, online_status, province_name, city_name, district_name, connect_type,
+                           latitude, longitude, vpp_id, ps_type, online_status, province_name, city_name, district_name, connect_type,
                            created_at, updated_at)
         VALUES (#{uuid}, #{psId}, #{psName}, #{deviceName}, #{deviceSn}, #{deviceType}, #{deviceCode},
                 #{typeName}, #{deviceModelCode}, #{deviceModelId}, #{factoryName}, #{channelId}, #{psKey},
                 #{communicationDevSn}, #{devStatus}, #{devFaultStatus}, #{relState}, #{relTime}, #{gridConnectionDate},
-                #{latitude}, #{longitude}, #{psType}, #{onlineStatus}, #{provinceName}, #{cityName}, #{districtName}, #{connectType},
+                #{latitude}, #{longitude}, #{vppId}, #{psType}, #{onlineStatus}, #{provinceName}, #{cityName}, #{districtName}, #{connectType},
                 #{createdAt}, #{updatedAt})
         ON DUPLICATE KEY UPDATE
             ps_id = VALUES(ps_id),
@@ -69,6 +70,7 @@
             grid_connection_date = VALUES(grid_connection_date),
             latitude = VALUES(latitude),
             longitude = VALUES(longitude),
+            vpp_id = VALUES(vpp_id),
             ps_type = VALUES(ps_type),
             online_status = VALUES(online_status),
             province_name = VALUES(province_name),

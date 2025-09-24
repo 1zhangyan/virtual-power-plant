@@ -20,4 +20,10 @@ public interface DeviceMapper {
      */
     @Select("SELECT * FROM vpp.sungrow_device WHERE device_type = 1  ORDER BY device_name")
     List<Device> selectInverters();
+
+    /**
+     * 根据vppId查询逆变器设备
+     */
+    @Select("SELECT * FROM vpp.sungrow_device WHERE device_type = 1 AND vpp_id = #{vppId} ORDER BY device_name")
+    List<Device> selectInvertersByVppId(@Param("vppId") String vppId);
 }
