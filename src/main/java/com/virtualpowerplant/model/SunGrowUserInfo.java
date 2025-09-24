@@ -1,49 +1,20 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class SunGrowUserInfo {
 
-    @JsonProperty("user_master_org_id")
     private String userMasterOrgId;
-
-    @JsonProperty("mobile_tel")
     private String mobileTel;
-
-    @JsonProperty("user_name")
     private String userName;
-
-    @JsonProperty("language")
     private String language;
-
-    @JsonProperty("token")
     private String token;
-
-    @JsonProperty("err_times")
     private String errTimes;
-
-    @JsonProperty("user_id")
     private String userId;
-
-    @JsonProperty("login_state")
     private String loginState;
-
-    @JsonProperty("disable_time")
     private String disableTime;
-
-    @JsonProperty("country_name")
     private String countryName;
-
-    @JsonProperty("user_account")
     private String userAccount;
-
-    @JsonProperty("user_master_org_name")
     private String userMasterOrgName;
-
-    @JsonProperty("email")
     private String email;
-
-    @JsonProperty("country_id")
     private String countryId;
 
     public SunGrowUserInfo() {}

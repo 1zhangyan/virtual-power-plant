@@ -1,15 +1,10 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class PowerStationList {
 
-    @JsonProperty("pageList")
     private List<PowerStation> pageList;
-
-    @JsonProperty("rowCount")
     private Integer rowCount;
 
     public PowerStationList() {}

@@ -1,11 +1,12 @@
 package com.virtualpowerplant.utils;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.virtualpowerplant.model.SunGrowResponse;
 import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.PowerStationList;
 import com.virtualpowerplant.model.PowerStation;
+import com.virtualpowerplant.model.PowerStationValue;
 import com.virtualpowerplant.model.DeviceList;
 import com.virtualpowerplant.model.Device;
 import com.virtualpowerplant.model.InverterRealTimeData;
@@ -28,12 +29,16 @@ public class SunGrowResponseParser {
 
     public static <T> SunGrowResponse<T> parseResponse(String jsonResponse, Class<T> dataType) {
         try {
-            TypeReference<SunGrowResponse<T>> typeRef = new TypeReference<SunGrowResponse<T>>() {};
-            SunGrowResponse<T> response = objectMapper.readValue(jsonResponse, typeRef);
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+            SunGrowResponse<T> response = new SunGrowResponse<>();
 
-            if (response.getResultData() != null) {
-                String dataJson = objectMapper.writeValueAsString(response.getResultData());
-                T typedData = objectMapper.readValue(dataJson, dataType);
+            response.setReqSerialNum(getTextValue(rootNode, "req_serial_num"));
+            response.setResultCode(getTextValue(rootNode, "result_code"));
+            response.setResultMsg(getTextValue(rootNode, "result_msg"));
+
+            JsonNode resultDataNode = rootNode.get("result_data");
+            if (resultDataNode != null && !resultDataNode.isNull()) {
+                T typedData = parseDataByType(resultDataNode, dataType);
                 response.setResultData(typedData);
             }
 
@@ -43,6 +48,187 @@ public class SunGrowResponseParser {
             logger.debug("原始响应内容: {}", jsonResponse);
             throw new RuntimeException("解析SunGrow响应失败", e);
         }
+    }
+
+    private static String getTextValue(JsonNode node, String fieldName) {
+        JsonNode fieldNode = node.get(fieldName);
+        return fieldNode != null && !fieldNode.isNull() ? fieldNode.asText() : null;
+    }
+
+    private static Integer getIntValue(JsonNode node, String fieldName) {
+        JsonNode fieldNode = node.get(fieldName);
+        return fieldNode != null && !fieldNode.isNull() ? fieldNode.asInt() : null;
+    }
+
+    private static Long getLongValue(JsonNode node, String fieldName) {
+        JsonNode fieldNode = node.get(fieldName);
+        return fieldNode != null && !fieldNode.isNull() ? fieldNode.asLong() : null;
+    }
+
+    private static Double getDoubleValue(JsonNode node, String fieldName) {
+        JsonNode fieldNode = node.get(fieldName);
+        return fieldNode != null && !fieldNode.isNull() ? fieldNode.asDouble() : null;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> T parseDataByType(JsonNode dataNode, Class<T> dataType) {
+        if (dataType == SunGrowUserInfo.class) {
+            return (T) parseSunGrowUserInfo(dataNode);
+        } else if (dataType == PowerStationList.class) {
+            return (T) parsePowerStationList(dataNode);
+        } else if (dataType == DeviceList.class) {
+            return (T) parseDeviceList(dataNode);
+        } else {
+            try {
+                return objectMapper.treeToValue(dataNode, dataType);
+            } catch (Exception e) {
+                logger.error("无法解析数据类型: {}", dataType.getName(), e);
+                return null;
+            }
+        }
+    }
+
+    private static SunGrowUserInfo parseSunGrowUserInfo(JsonNode node) {
+        SunGrowUserInfo userInfo = new SunGrowUserInfo();
+        userInfo.setUserMasterOrgId(getTextValue(node, "user_master_org_id"));
+        userInfo.setMobileTel(getTextValue(node, "mobile_tel"));
+        userInfo.setUserName(getTextValue(node, "user_name"));
+        userInfo.setLanguage(getTextValue(node, "language"));
+        userInfo.setToken(getTextValue(node, "token"));
+        userInfo.setErrTimes(getTextValue(node, "err_times"));
+        userInfo.setUserId(getTextValue(node, "user_id"));
+        userInfo.setLoginState(getTextValue(node, "login_state"));
+        userInfo.setDisableTime(getTextValue(node, "disable_time"));
+        userInfo.setCountryName(getTextValue(node, "country_name"));
+        userInfo.setUserAccount(getTextValue(node, "user_account"));
+        userInfo.setUserMasterOrgName(getTextValue(node, "user_master_org_name"));
+        userInfo.setEmail(getTextValue(node, "email"));
+        userInfo.setCountryId(getTextValue(node, "country_id"));
+        return userInfo;
+    }
+
+    private static PowerStationList parsePowerStationList(JsonNode node) {
+        PowerStationList list = new PowerStationList();
+        list.setRowCount(getIntValue(node, "rowCount"));
+
+        JsonNode pageListNode = node.get("pageList");
+        if (pageListNode != null && pageListNode.isArray()) {
+            List<PowerStation> powerStations = new ArrayList<>();
+            for (JsonNode stationNode : pageListNode) {
+                powerStations.add(parsePowerStation(stationNode));
+            }
+            list.setPageList(powerStations);
+        }
+        return list;
+    }
+
+    private static PowerStation parsePowerStation(JsonNode node) {
+        PowerStation station = new PowerStation();
+        station.setPsId(getLongValue(node, "ps_id"));
+        station.setPsName(getTextValue(node, "ps_name"));
+        station.setPsLocation(getTextValue(node, "ps_location"));
+        station.setProvinceName(getTextValue(node, "province_name"));
+        station.setCityName(getTextValue(node, "city_name"));
+        station.setDistrictName(getTextValue(node, "district_name"));
+        station.setLatitude(getDoubleValue(node, "latitude"));
+        station.setLongitude(getDoubleValue(node, "longitude"));
+
+        station.setTotalEnergy(parsePowerStationValue(node.get("total_energy")));
+        station.setTodayEnergy(parsePowerStationValue(node.get("today_energy")));
+        station.setCurrPower(parsePowerStationValue(node.get("curr_power")));
+        station.setTotalIncome(parsePowerStationValue(node.get("total_income")));
+        station.setTodayIncome(parsePowerStationValue(node.get("today_income")));
+        station.setMonthIncome(parsePowerStationValue(node.get("month_income")));
+        station.setYearIncome(parsePowerStationValue(node.get("year_income")));
+        station.setTotalCapacity(parsePowerStationValue(node.get("total_capcity")));
+        station.setCo2Reduce(parsePowerStationValue(node.get("co2_reduce")));
+        station.setCo2ReduceTotal(parsePowerStationValue(node.get("co2_reduce_total")));
+        station.setEquivalentHour(parsePowerStationValue(node.get("equivalent_hour")));
+
+        station.setPsStatus(getIntValue(node, "ps_status"));
+        station.setPsFaultStatus(getIntValue(node, "ps_fault_status"));
+        station.setGridConnectionStatus(getIntValue(node, "grid_connection_status"));
+        station.setBuildStatus(getIntValue(node, "build_status"));
+        station.setPsType(getIntValue(node, "ps_type"));
+        station.setConnectType(getIntValue(node, "connect_type"));
+        station.setValidFlag(getIntValue(node, "valid_flag"));
+        station.setAlarmCount(getIntValue(node, "alarm_count"));
+        station.setFaultCount(getIntValue(node, "fault_count"));
+        station.setInstallDate(getTextValue(node, "install_date"));
+        station.setGridConnectionTime(getLongValue(node, "grid_connection_time"));
+        station.setShareType(getTextValue(node, "share_type"));
+        station.setPsCurrentTimeZone(getTextValue(node, "ps_current_time_zone"));
+        station.setDescription(getTextValue(node, "description"));
+        station.setTotalEnergyUpdateTime(getTextValue(node, "total_energy_update_time"));
+        station.setTodayEnergyUpdateTime(getTextValue(node, "today_energy_update_time"));
+        station.setCurrPowerUpdateTime(getTextValue(node, "curr_power_update_time"));
+        station.setTotalIncomeUpdateTime(getTextValue(node, "total_income_update_time"));
+        station.setTodayIncomeUpdateTime(getTextValue(node, "today_income_update_time"));
+        station.setMonthIncomeUpdateTime(getTextValue(node, "month_income_update_time"));
+        station.setYearIncomeUpdateTime(getTextValue(node, "year_income_update_time"));
+        station.setTotalCapacityUpdateTime(getTextValue(node, "total_capcity_update_time"));
+        station.setCo2ReduceUpdateTime(getTextValue(node, "co2_reduce_update_time"));
+        station.setCo2ReduceTotalUpdateTime(getTextValue(node, "co2_reduce_total_update_time"));
+        station.setEquivalentHourUpdateTime(getTextValue(node, "equivalent_hour_update_time"));
+
+        return station;
+    }
+
+    private static PowerStationValue parsePowerStationValue(JsonNode node) {
+        if (node == null || node.isNull()) {
+            return null;
+        }
+        PowerStationValue value = new PowerStationValue();
+        value.setUnit(getTextValue(node, "unit"));
+        value.setValue(getTextValue(node, "value"));
+        return value;
+    }
+
+    private static DeviceList parseDeviceList(JsonNode node) {
+        DeviceList list = new DeviceList();
+        list.setRowCount(getIntValue(node, "rowCount"));
+
+        JsonNode pageListNode = node.get("pageList");
+        if (pageListNode != null && pageListNode.isArray()) {
+            List<Device> devices = new ArrayList<>();
+            for (JsonNode deviceNode : pageListNode) {
+                devices.add(parseDevice(deviceNode));
+            }
+            list.setPageList(devices);
+        }
+        return list;
+    }
+
+    private static Device parseDevice(JsonNode node) {
+        Device device = new Device();
+        device.setUuid(getLongValue(node, "uuid"));
+        device.setPsId(getLongValue(node, "ps_id"));
+        device.setPsName(getTextValue(node, "ps_name"));
+        device.setPsType(getIntValue(node, "ps_type"));
+        device.setOnlineStatus(getIntValue(node, "online_status"));
+        device.setProvinceName(getTextValue(node, "province_name"));
+        device.setCityName(getTextValue(node, "city_name"));
+        device.setDistrictName(getTextValue(node, "district_name"));
+        device.setConnectType(getIntValue(node, "connect_type"));
+        device.setDeviceName(getTextValue(node, "device_name"));
+        device.setDeviceSn(getTextValue(node, "device_sn"));
+        device.setDeviceType(getIntValue(node, "device_type"));
+        device.setDeviceCode(getIntValue(node, "device_code"));
+        device.setTypeName(getTextValue(node, "type_name"));
+        device.setDeviceModelCode(getTextValue(node, "device_model_code"));
+        device.setDeviceModelId(getLongValue(node, "device_model_id"));
+        device.setFactoryName(getTextValue(node, "factory_name"));
+        device.setChannelId(getIntValue(node, "chnnl_id"));
+        device.setPsKey(getTextValue(node, "ps_key"));
+        device.setCommunicationDevSn(getTextValue(node, "communication_dev_sn"));
+        device.setDevStatus(getTextValue(node, "dev_status"));
+        device.setDevFaultStatus(getIntValue(node, "dev_fault_status"));
+        device.setRelState(getIntValue(node, "rel_state"));
+        device.setRelTime(getTextValue(node, "rel_time"));
+        device.setGridConnectionDate(getTextValue(node, "grid_connection_date"));
+        device.setLatitude(getDoubleValue(node, "latitude"));
+        device.setLongitude(getDoubleValue(node, "longitude"));
+        return device;
     }
 
     public static SunGrowResponse<SunGrowUserInfo> parseLoginResponse(String jsonResponse) {
@@ -102,12 +288,26 @@ public class SunGrowResponseParser {
 
     public static List<InverterRealTimeData> extractRealTimeData(String jsonResponse) {
         try {
-            TypeReference<SunGrowResponse<List<InverterRealTimeData>>> typeRef =
-                new TypeReference<SunGrowResponse<List<InverterRealTimeData>>>() {};
-            SunGrowResponse<List<InverterRealTimeData>> response = objectMapper.readValue(jsonResponse, typeRef);
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+            SunGrowResponse<List<InverterRealTimeData>> response = new SunGrowResponse<>();
+
+            response.setReqSerialNum(getTextValue(rootNode, "req_serial_num"));
+            response.setResultCode(getTextValue(rootNode, "result_code"));
+            response.setResultMsg(getTextValue(rootNode, "result_msg"));
+
+            JsonNode resultDataNode = rootNode.get("result_data");
+            List<InverterRealTimeData> realTimeDataList = new ArrayList<>();
+            if (resultDataNode != null && resultDataNode.isArray()) {
+                for (JsonNode dataNode : resultDataNode) {
+                    InverterRealTimeData data = objectMapper.treeToValue(dataNode, InverterRealTimeData.class);
+                    if (data != null) {
+                        realTimeDataList.add(data);
+                    }
+                }
+            }
+            response.setResultData(realTimeDataList);
 
             validateResponse(response);
-            List<InverterRealTimeData> realTimeDataList = response.getResultData();
 
             LocalDateTime deviceTime = LocalDateTime.now();
             if (realTimeDataList != null) {
@@ -126,7 +326,8 @@ public class SunGrowResponseParser {
 
     public static List<InverterRealTimeData> extractRealTimeDataWithDeviceInfo(String jsonResponse, List<Device> devices) {
         try {
-            RealTimeDataResponse response = objectMapper.readValue(jsonResponse, RealTimeDataResponse.class);
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+            RealTimeDataResponse response = parseRealTimeDataResponse(rootNode);
 
             if (!"1".equals(response.getResultCode())) {
                 logger.error("API调用失败 - 错误码: {}, 错误消息: {}", response.getResultCode(), response.getResultMsg());
@@ -199,5 +400,56 @@ public class SunGrowResponseParser {
             logger.debug("原始响应内容: {}", jsonResponse);
             return new ArrayList<>();
         }
+    }
+
+    private static RealTimeDataResponse parseRealTimeDataResponse(JsonNode rootNode) {
+        RealTimeDataResponse response = new RealTimeDataResponse();
+        response.setReqSerialNum(getTextValue(rootNode, "req_serial_num"));
+        response.setResultCode(getTextValue(rootNode, "result_code"));
+        response.setResultMsg(getTextValue(rootNode, "result_msg"));
+
+        JsonNode resultDataNode = rootNode.get("result_data");
+        if (resultDataNode != null && !resultDataNode.isNull()) {
+            RealTimeDataResponse.ResultData resultData = new RealTimeDataResponse.ResultData();
+
+            JsonNode failSnListNode = resultDataNode.get("fail_sn_list");
+            if (failSnListNode != null && failSnListNode.isArray()) {
+                List<String> failSnList = new ArrayList<>();
+                for (JsonNode snNode : failSnListNode) {
+                    failSnList.add(snNode.asText());
+                }
+                resultData.setFailSnList(failSnList);
+            }
+
+            JsonNode devicePointListNode = resultDataNode.get("device_point_list");
+            if (devicePointListNode != null && devicePointListNode.isArray()) {
+                List<RealTimeDataResponse.DevicePointWrapper> devicePointList = new ArrayList<>();
+                for (JsonNode wrapperNode : devicePointListNode) {
+                    RealTimeDataResponse.DevicePointWrapper wrapper = new RealTimeDataResponse.DevicePointWrapper();
+                    JsonNode devicePointNode = wrapperNode.get("device_point");
+                    if (devicePointNode != null && !devicePointNode.isNull()) {
+                        DevicePoint devicePoint = parseDevicePoint(devicePointNode);
+                        wrapper.setDevicePoint(devicePoint);
+                    }
+                    devicePointList.add(wrapper);
+                }
+                resultData.setDevicePointList(devicePointList);
+            }
+
+            response.setResultData(resultData);
+        }
+
+        return response;
+    }
+
+    private static DevicePoint parseDevicePoint(JsonNode node) {
+        DevicePoint devicePoint = new DevicePoint();
+        devicePoint.setDeviceSn(getTextValue(node, "device_sn"));
+        devicePoint.setPsKey(getTextValue(node, "ps_key"));
+        devicePoint.setDeviceName(getTextValue(node, "device_name"));
+        devicePoint.setDeviceTime(getTextValue(node, "device_time"));
+        devicePoint.setP24(getTextValue(node, "p24"));
+        devicePoint.setDevStatus(getIntValue(node, "dev_status"));
+        return devicePoint;
     }
 }

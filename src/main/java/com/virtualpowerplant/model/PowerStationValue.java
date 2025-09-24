@@ -1,13 +1,8 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class PowerStationValue {
 
-    @JsonProperty("unit")
     private String unit;
-
-    @JsonProperty("value")
     private String value;
 
     public PowerStationValue() {}

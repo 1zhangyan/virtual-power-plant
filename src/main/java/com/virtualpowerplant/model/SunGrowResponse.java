@@ -1,19 +1,10 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class SunGrowResponse<T> {
 
-    @JsonProperty("req_serial_num")
     private String reqSerialNum;
-
-    @JsonProperty("result_code")
     private String resultCode;
-
-    @JsonProperty("result_msg")
     private String resultMsg;
-
-    @JsonProperty("result_data")
     private T resultData;
 
     public SunGrowResponse() {}

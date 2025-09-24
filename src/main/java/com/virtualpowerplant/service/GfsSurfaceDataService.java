@@ -2,9 +2,7 @@
 
 package com.virtualpowerplant.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.virtualpowerplant.config.SecretConfigManager;
-import com.virtualpowerplant.config.TokenConfig;
 import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.mapper.DeviceMapper;
 import com.virtualpowerplant.model.*;
@@ -19,9 +17,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static com.virtualpowerplant.constant.Constant.objectMapper;
 

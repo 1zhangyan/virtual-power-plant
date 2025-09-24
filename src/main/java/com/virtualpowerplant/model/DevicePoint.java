@@ -1,27 +1,12 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class DevicePoint {
 
-    @JsonProperty("device_sn")
     private String deviceSn;
-
-    @JsonProperty("ps_key")
     private String psKey;
-
-    @JsonProperty("device_name")
     private String deviceName;
-
-    @JsonProperty("device_time")
     private String deviceTime;
-
-    @JsonProperty("p24")
     private String p24;
-
-    @JsonProperty("dev_status")
     private Integer devStatus;
 
 

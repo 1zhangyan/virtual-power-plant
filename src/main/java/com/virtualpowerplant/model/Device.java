@@ -1,88 +1,38 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.time.LocalDateTime;
 
 public class Device {
 
     private Long id;
-
-    @JsonProperty("uuid")
     private Long uuid;
-
-    @JsonProperty("ps_id")
     private Long psId;
-
-    @JsonProperty("ps_name")
     private String psName;
-
     private Integer psType;
-
     private Integer onlineStatus;
-
     private String provinceName;
-
     private String cityName;
-
     private String districtName;
-
     private Integer connectType;
-
-    @JsonProperty("device_name")
     private String deviceName;
-
-    @JsonProperty("device_sn")
     private String deviceSn;
-
-    @JsonProperty("device_type")
     private Integer deviceType;
-
-    @JsonProperty("device_code")
     private Integer deviceCode;
-
-    @JsonProperty("type_name")
     private String typeName;
-
-    @JsonProperty("device_model_code")
     private String deviceModelCode;
-
-    @JsonProperty("device_model_id")
     private Long deviceModelId;
-
-    @JsonProperty("factory_name")
     private String factoryName;
-
-    @JsonProperty("chnnl_id")
     private Integer channelId;
-
-    @JsonProperty("ps_key")
     private String psKey;
-
-    @JsonProperty("communication_dev_sn")
     private String communicationDevSn;
-
-    @JsonProperty("dev_status")
     private String devStatus;
-
-    @JsonProperty("dev_fault_status")
     private Integer devFaultStatus;
-
-    @JsonProperty("rel_state")
     private Integer relState;
-
-    @JsonProperty("rel_time")
     private String relTime;
-
-    @JsonProperty("grid_connection_date")
     private String gridConnectionDate;
-
     private Double latitude;
-
     private Double longitude;
-
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 
     public Device() {}

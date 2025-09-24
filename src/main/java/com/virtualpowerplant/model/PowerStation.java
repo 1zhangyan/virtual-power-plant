@@ -1,139 +1,53 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class PowerStation {
 
-    @JsonProperty("ps_id")
     private Long psId;
-
-    @JsonProperty("ps_name")
     private String psName;
-
-    @JsonProperty("ps_location")
     private String psLocation;
-
-    @JsonProperty("province_name")
     private String provinceName;
-
-    @JsonProperty("city_name")
     private String cityName;
-
-    @JsonProperty("district_name")
     private String districtName;
-
-    @JsonProperty("latitude")
     private Double latitude;
-
-    @JsonProperty("longitude")
     private Double longitude;
 
-    @JsonProperty("total_energy")
     private PowerStationValue totalEnergy;
-
-    @JsonProperty("today_energy")
     private PowerStationValue todayEnergy;
-
-    @JsonProperty("curr_power")
     private PowerStationValue currPower;
-
-    @JsonProperty("total_income")
     private PowerStationValue totalIncome;
-
-    @JsonProperty("today_income")
     private PowerStationValue todayIncome;
-
-    @JsonProperty("month_income")
     private PowerStationValue monthIncome;
-
-    @JsonProperty("year_income")
     private PowerStationValue yearIncome;
-
-    @JsonProperty("total_capcity")
     private PowerStationValue totalCapacity;
-
-    @JsonProperty("co2_reduce")
     private PowerStationValue co2Reduce;
-
-    @JsonProperty("co2_reduce_total")
     private PowerStationValue co2ReduceTotal;
-
-    @JsonProperty("equivalent_hour")
     private PowerStationValue equivalentHour;
 
-    @JsonProperty("ps_status")
     private Integer psStatus;
-
-    @JsonProperty("ps_fault_status")
     private Integer psFaultStatus;
-
-    @JsonProperty("grid_connection_status")
     private Integer gridConnectionStatus;
-
-    @JsonProperty("build_status")
     private Integer buildStatus;
-
-    @JsonProperty("ps_type")
     private Integer psType;
-
-    @JsonProperty("connect_type")
     private Integer connectType;
-
-    @JsonProperty("valid_flag")
     private Integer validFlag;
-
-    @JsonProperty("alarm_count")
     private Integer alarmCount;
-
-    @JsonProperty("fault_count")
     private Integer faultCount;
-
-    @JsonProperty("install_date")
     private String installDate;
-
-    @JsonProperty("grid_connection_time")
     private Long gridConnectionTime;
-
-    @JsonProperty("share_type")
     private String shareType;
-
-    @JsonProperty("ps_current_time_zone")
     private String psCurrentTimeZone;
-
-    @JsonProperty("description")
     private String description;
 
-    @JsonProperty("total_energy_update_time")
     private String totalEnergyUpdateTime;
-
-    @JsonProperty("today_energy_update_time")
     private String todayEnergyUpdateTime;
-
-    @JsonProperty("curr_power_update_time")
     private String currPowerUpdateTime;
-
-    @JsonProperty("total_income_update_time")
     private String totalIncomeUpdateTime;
-
-    @JsonProperty("today_income_update_time")
     private String todayIncomeUpdateTime;
-
-    @JsonProperty("month_income_update_time")
     private String monthIncomeUpdateTime;
-
-    @JsonProperty("year_income_update_time")
     private String yearIncomeUpdateTime;
-
-    @JsonProperty("total_capcity_update_time")
     private String totalCapacityUpdateTime;
-
-    @JsonProperty("co2_reduce_update_time")
     private String co2ReduceUpdateTime;
-
-    @JsonProperty("co2_reduce_total_update_time")
     private String co2ReduceTotalUpdateTime;
-
-    @JsonProperty("equivalent_hour_update_time")
     private String equivalentHourUpdateTime;
 
     public PowerStation() {}
