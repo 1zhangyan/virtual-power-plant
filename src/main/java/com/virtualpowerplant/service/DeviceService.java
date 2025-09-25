@@ -40,7 +40,7 @@ public class DeviceService {
 
         VirtualPowerPlant virtualPowerPlant = new VirtualPowerPlant();
         BeanUtils.copyProperties(sunGrowUserInfo,virtualPowerPlant);
-        vppService.findOrInsert(virtualPowerPlant);
+        Long vppId = vppService.findOrInsert(virtualPowerPlant);
 
         // 2. 获取所有电站信息（包含经纬度）
         logger.info("开始获取电站信息...");
@@ -79,7 +79,7 @@ public class DeviceService {
                 device.setCreatedAt(now);
             }
             device.setUpdatedAt(now);
-
+            device.setVppId(vppId);
             // 5. Upsert到数据库
             deviceMapper.insertOrUpdate(device);
             processedCount++;

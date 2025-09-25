@@ -194,7 +194,7 @@ public class GfsSurfaceDataService {
         }
     }
 
-//    @Scheduled(fixedRate = 6*60*60*1000)
+    @Scheduled(fixedRate = 6*60*1000)
     public void collectWeatherData() {
         try {
             logger.info("开始定时收集天气预报...");

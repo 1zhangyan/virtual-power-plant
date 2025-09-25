@@ -18,7 +18,7 @@ public interface VppMapper {
             "VALUES (#{mobileTel}, #{userName}, #{language}, #{userId}, #{countryName}, " +
             "#{userAccount}, #{userMasterOrgName}, #{email}, #{countryId})")
     @Options(useGeneratedKeys = true, keyProperty = "vppId")
-    int insert(VirtualPowerPlant vpp);
+    Long insert(VirtualPowerPlant vpp);
 
 
     /**

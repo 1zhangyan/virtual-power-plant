@@ -34,5 +34,5 @@ springdoc:
 # 日志配置
 logging:
   level:
-    com.virtualpowerplant.mapper: DEBUG
-    org.springframework.jdbc: DEBUG
+    com.virtualpowerplant.mapper: info
+    org.springframework.jdbc: info
