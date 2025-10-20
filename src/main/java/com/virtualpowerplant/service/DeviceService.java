@@ -97,8 +97,13 @@ public class DeviceService {
     /**
      * 查询所有带经纬度信息的逆变器
      */
-    public List<Device> getInverters() {
-        return deviceMapper.selectInverters();
+    public List<String> getInverterLocations() {
+        return deviceMapper.selectInverters()
+                .stream()
+                .filter(it -> it.getLatitude() > 0.0 && it.getLongitude() > 0.0)
+                .map(it ->  String.format("%s#%s", Math.round(it.getLongitude()),Math.round(it.getLatitude())))
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     /**

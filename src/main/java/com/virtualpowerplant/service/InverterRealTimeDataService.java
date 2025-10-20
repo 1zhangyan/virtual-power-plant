@@ -25,7 +25,7 @@ public class InverterRealTimeDataService {
     @Autowired
     private DeviceMapper deviceMapper;
 
-    @Scheduled(fixedRate = 2*60*1000)
+//    @Scheduled(fixedRate = 2*60*1000)
     public void collectInverterRealTimeData() {
         try {
             logger.info("开始定时收集逆变器实时数据和天气预报...");

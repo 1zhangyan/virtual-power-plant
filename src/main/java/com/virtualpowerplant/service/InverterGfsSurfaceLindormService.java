@@ -2,8 +2,11 @@ package com.virtualpowerplant.service;
 
 import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.model.InverterWeatherData;
+import com.virtualpowerplant.model.WeatherForestData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -12,17 +15,23 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 逆变器天气数据的 Lindorm TSDB 服务
  * 按照 lindorm.md 规范使用 JDBC 方式操作时序数据库
  */
 @Service
+@DependsOn(value = "DatasetMetaInfoService")
 public class InverterGfsSurfaceLindormService {
+
+    @Autowired
+    DatasetMetaInfoService datasetMetaInfoService;
 
     private static final Logger logger = LoggerFactory.getLogger(InverterGfsSurfaceLindormService.class);
 
     private Connection connection;
+
     private static final String TABLE_NAME = "gfs_surface_forecast";
 
     @PostConstruct
@@ -47,35 +56,61 @@ public class InverterGfsSurfaceLindormService {
     }
 
     private void initInverterWeatherTable() {
-        try {
-            // 创建逆变器天气数据表
+        List<String> metaTypes = datasetMetaInfoService.selectAllValidMetaType();
+        for (String metaType : metaTypes) {
+            List<String> metaVars = datasetMetaInfoService.selectMetaVarByMetaType(metaType);
             String createTableSQL = String.format(
-                    "CREATE TABLE IF NOT EXISTS %s (" +
-                            "ps_name VARCHAR TAG, " +
-                            "ps_key VARCHAR TAG, " +
-                            "device_sn VARCHAR TAG, " +
-                            "time TIMESTAMP, " +
-                            "tcc DOUBLE, " +           // 总云量 %
-                            "lcc DOUBLE, " +           // 低云量 %
-                            "mcc DOUBLE, " +           // 中云量 %
-                            "hcc DOUBLE, " +           // 高云量 %
-                            "dswrf DOUBLE, " +         // 向下短波辐射 W/m^2
-                            "dlwrf DOUBLE, " +         // 向下长波辐射 W/m^2
-                            "uswrf DOUBLE, " +         // 向上短波辐射 W/m^2
-                            "ulwrf DOUBLE, " +         // 向上长波辐射 W/m^2
-                            "PRIMARY KEY(device_sn)" +
-                            ")",
-                    TABLE_NAME
+                    "CREATE TABLE IF NOT EXISTS weather_forest_%s (" +
+                            "longitude varchar TAG, " +
+                            "latitude varchar TAG, " +
+                            "time TIMESTAMP, %s" +
+                            ",PRIMARY KEY (longitude,latitude) )",
+                    metaType,
+                    String.join(",", metaVars.stream().map(it -> String.format("%s Double", it)).collect(Collectors.toList()))
             );
-
+            System.out.println(createTableSQL);
             try (Statement stmt = connection.createStatement()) {
                 stmt.execute(createTableSQL);
                 logger.info("逆变器天气数据表 {} 创建或确认存在", TABLE_NAME);
+            } catch (Exception e) {
+                logger.error("初始化逆变器天气数据表失败: {}", e.getMessage(), e);
+                throw new RuntimeException("Failed to initialize inverter weather table", e);
             }
-        } catch (Exception e) {
-            logger.error("初始化逆变器天气数据表失败: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to initialize inverter weather table", e);
         }
+    }
+
+    public void writeInverterWeatherData(WeatherForestData weatherForestData) {
+        if (connection == null) {
+            logger.warn("Lindorm连接未初始化，跳过逆变器天气数据写入");
+            return;
+        }
+
+        if (weatherForestData == null || weatherForestData.getTimestamps() == null) {
+            logger.warn("逆变器天气数据列表为空，跳过写入");
+            return;
+        }
+
+        try (Statement stmt = connection.createStatement()) {
+            for (int i = 0; i < weatherForestData.getTimestamps().size(); i++) {
+                String insertSQL = String.format(
+                        "INSERT INTO weather_forest_%s(time,longitude,latitude,%s) VALUES('%s','%s','%s',%s)",
+                        weatherForestData.getMetaType(),
+                        String.join(",", weatherForestData.getMetricVars()),
+                        Timestamp.valueOf(weatherForestData.getTimestamps().get(i)),
+                        weatherForestData.getLocation().get(0),
+                        weatherForestData.getLocation().get(1),
+                        String.join(",", weatherForestData.getMetricValues().get(i).stream().map(Object::toString).collect(Collectors.toList()))
+                );
+                System.out.println(insertSQL);
+                stmt.execute(insertSQL);
+            }
+            stmt.executeBatch();
+            stmt.clearBatch();
+        } catch (Exception e) {
+            logger.error("写入逆变器天气数据到Lindorm失败: {}", e.getMessage(), e);
+            throw new RuntimeException("Failed to write inverter weather data to Lindorm", e);
+        }
+
     }
 
     /**
@@ -94,8 +129,8 @@ public class InverterGfsSurfaceLindormService {
 
         // 按照 lindorm.md 的批量插入模式
         String insertSQL = String.format(
-            "INSERT INTO %s(ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            TABLE_NAME
+                "INSERT INTO %s(ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                TABLE_NAME
         );
 
         try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
@@ -150,9 +185,9 @@ public class InverterGfsSurfaceLindormService {
 
         List<InverterWeatherData> result = new ArrayList<>();
         String querySQL = String.format(
-            "SELECT ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf " +
-            "FROM %s WHERE device_sn = ? AND time >= ? AND time <= ? ORDER BY time",
-            TABLE_NAME
+                "SELECT ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf " +
+                        "FROM %s WHERE device_sn = ? AND time >= ? AND time <= ? ORDER BY time",
+                TABLE_NAME
         );
 
         try (PreparedStatement pstmt = connection.prepareStatement(querySQL)) {
@@ -197,9 +232,9 @@ public class InverterGfsSurfaceLindormService {
 
         List<InverterWeatherData> result = new ArrayList<>();
         String querySQL = String.format(
-            "SELECT ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf " +
-            "FROM %s WHERE ps_key = ? AND time >= ? AND time <= ? ORDER BY time",
-            TABLE_NAME
+                "SELECT ps_name, ps_key, device_sn, time, tcc, lcc, mcc, hcc, dswrf, dlwrf, uswrf, ulwrf " +
+                        "FROM %s WHERE ps_key = ? AND time >= ? AND time <= ? ORDER BY time",
+                TABLE_NAME
         );
 
         try (PreparedStatement pstmt = connection.prepareStatement(querySQL)) {

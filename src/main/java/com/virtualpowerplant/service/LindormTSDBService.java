@@ -28,43 +28,12 @@ public class LindormTSDBService {
             if (url == null || url.isEmpty()) {
                 throw new RuntimeException("Lindorm URL not configured in secret.config");
             }
-
             logger.info("初始化Lindorm TSDB JDBC连接，URL: {}", url);
             connection = DriverManager.getConnection(url);
-
-            // 创建表（如果不存在）
-            initTable();
             logger.info("Lindorm TSDB JDBC连接初始化完成");
         } catch (Exception e) {
             logger.error("初始化Lindorm TSDB JDBC连接失败: {}", e.getMessage(), e);
             throw new RuntimeException("Failed to initialize Lindorm TSDB JDBC connection", e);
-        }
-    }
-
-    private void initTable() {
-        try {
-            // 创建表，按照lindorm.md的格式，使用TIMESTAMP而不是BIGINT
-            String createTableSQL = String.format(
-                    "CREATE TABLE IF NOT EXISTS %s (" +
-                            "ps_name VARCHAR TAG, " +
-                            "ps_key VARCHAR TAG, " +
-                            "inverter_sn VARCHAR TAG, " +
-                            "time TIMESTAMP, " +
-                            "latitude DOUBLE, " +
-                            "longitude DOUBLE, " +
-                            "active_power DOUBLE, " +
-                            "PRIMARY KEY(inverter_sn)" +
-                            ")",
-                    TABLE_NAME
-            );
-
-            try (Statement stmt = connection.createStatement()) {
-                stmt.execute(createTableSQL);
-                logger.info("表 {} 创建或确认存在", TABLE_NAME);
-            }
-        } catch (Exception e) {
-            logger.error("初始化表失败: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to initialize table", e);
         }
     }
 
@@ -73,7 +42,6 @@ public class LindormTSDBService {
             logger.warn("实时数据列表为空，跳过写入");
             return;
         }
-
         // 按照lindorm.md的示例，使用批量插入
         String insertSQL = String.format(
             "INSERT INTO %s(ps_name, ps_key, inverter_sn, time, latitude, longitude, active_power) VALUES(?, ?, ?, ?, ?, ?, ?)",

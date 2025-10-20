@@ -13,7 +13,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -194,7 +193,7 @@ public class GfsSurfaceDataService {
         }
     }
 
-    @Scheduled(fixedRate = 6*60*1000)
+//    @Scheduled(fixedRate = 6*60*1000)
     public void collectWeatherData() {
         try {
             logger.info("开始定时收集天气预报...");
@@ -296,7 +295,7 @@ public class GfsSurfaceDataService {
 
     /**
      * 根据坐标获取天气预报数据
-     * 这里需要根据实际的天气API来实现，目前返回模拟数据
+     * 这里需要根据实际的天气
      */
     private List<GfsSurfaceData> getWeatherDataForLocation(Double latitude, Double longitude) {
         try {

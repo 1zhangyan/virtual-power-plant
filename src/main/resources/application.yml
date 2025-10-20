@@ -36,3 +36,4 @@ logging:
   level:
     com.virtualpowerplant.mapper: info
     org.springframework.jdbc: info
+#

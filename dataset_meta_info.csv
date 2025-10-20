@@ -1,0 +1,1351 @@
+﻿opensource,era5_pressure,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+opensource,era5_pressure,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+opensource,era5_pressure,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+opensource,era5_pressure,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+opensource,era5_pressure,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+opensource,era5_pressure,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+opensource,era5_pressure,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+opensource,era5_pressure,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+opensource,era5_pressure,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+opensource,era5_pressure,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+opensource,era5_pressure,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+opensource,era5_pressure,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+opensource,era5_pressure,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+opensource,era5_pressure,1000hpa U wind component,u1000hpa,m/s,km/h | mph,气压层1000hpa风速U分量
+opensource,era5_pressure,925hpa U wind component,u925hpa,m/s,km/h | mph,气压层925hpa风速U分量
+opensource,era5_pressure,850hpa U wind component,u850hpa,m/s,km/h | mph,气压层850hpa风速U分量
+opensource,era5_pressure,700hpa U wind component,u700hpa,m/s,km/h | mph,气压层700hpa风速U分量
+opensource,era5_pressure,600hpa U wind component,u600hpa,m/s,km/h | mph,气压层600hpa风速U分量
+opensource,era5_pressure,500hpa U wind component,u500hpa,m/s,km/h | mph,气压层500hpa风速U分量
+opensource,era5_pressure,400hpa U wind component,u400hpa,m/s,km/h | mph,气压层400hpa风速U分量
+opensource,era5_pressure,300hpa U wind component,u300hpa,m/s,km/h | mph,气压层300hpa风速U分量
+opensource,era5_pressure,250hpa U wind component,u250hpa,m/s,km/h | mph,气压层250hpa风速U分量
+opensource,era5_pressure,200hpa U wind component,u200hpa,m/s,km/h | mph,气压层200hpa风速U分量
+opensource,era5_pressure,150hpa U wind component,u150hpa,m/s,km/h | mph,气压层150hpa风速U分量
+opensource,era5_pressure,100hpa U wind component,u100hpa,m/s,km/h | mph,气压层100hpa风速U分量
+opensource,era5_pressure,50hpa U wind component,u50hpa,m/s,km/h | mph,气压层50hpa风速U分量
+opensource,era5_pressure,1000hpa V wind component,v1000hpa,m/s,km/h | mph,气压层1000hpa风速V分量
+opensource,era5_pressure,925hpa V wind component,v925hpa,m/s,km/h | mph,气压层925hpa风速V分量
+opensource,era5_pressure,850hpa V wind component,v850hpa,m/s,km/h | mph,气压层850hpa风速V分量
+opensource,era5_pressure,700hpa V wind component,v700hpa,m/s,km/h | mph,气压层700hpa风速V分量
+opensource,era5_pressure,600hpa V wind component,v600hpa,m/s,km/h | mph,气压层600hpa风速V分量
+opensource,era5_pressure,500hpa V wind component,v500hpa,m/s,km/h | mph,气压层500hpa风速V分量
+opensource,era5_pressure,400hpa V wind component,v400hpa,m/s,km/h | mph,气压层400hpa风速V分量
+opensource,era5_pressure,300hpa V wind component,v300hpa,m/s,km/h | mph,气压层300hpa风速V分量
+opensource,era5_pressure,250hpa V wind component,v250hpa,m/s,km/h | mph,气压层250hpa风速V分量
+opensource,era5_pressure,200hpa V wind component,v200hpa,m/s,km/h | mph,气压层200hpa风速V分量
+opensource,era5_pressure,150hpa V wind component,v150hpa,m/s,km/h | mph,气压层150hpa风速V分量
+opensource,era5_pressure,100hpa V wind component,v100hpa,m/s,km/h | mph,气压层100hpa风速V分量
+opensource,era5_pressure,50hpa V wind component,v50hpa,m/s,km/h | mph,气压层50hpa风速V分量
+opensource,era5_pressure,wind speed 1000hpa,ws1000hpa,m/s,km/h | mph,[预处理]气压层1000hpa风速
+opensource,era5_pressure,wind direction 1000hpa,wd1000hpa,degree,rad,[预处理]气压层1000hpa风向
+opensource,era5_pressure,wind speed 925hpa,ws925hpa,m/s,km/h | mph,[预处理]气压层925hpa风速
+opensource,era5_pressure,wind direction 925hpa,wd925hpa,degree,rad,[预处理]气压层925hpa风向
+opensource,era5_pressure,wind speed 850hpa,ws850hpa,m/s,km/h | mph,[预处理]气压层850hpa风速
+opensource,era5_pressure,wind direction 850hpa,wd850hpa,degree,rad,[预处理]气压层850hpa风向
+opensource,era5_pressure,wind speed 700hpa,ws700hpa,m/s,km/h | mph,[预处理]气压层700hpa风速
+opensource,era5_pressure,wind direction 700hpa,wd700hpa,degree,rad,[预处理]气压层700hpa风向
+opensource,era5_pressure,wind speed 600hpa,ws600hpa,m/s,km/h | mph,[预处理]气压层600hpa风速
+opensource,era5_pressure,wind direction 600hpa,wd600hpa,degree,rad,[预处理]气压层600hpa风向
+opensource,era5_pressure,wind speed 500hpa,ws500hpa,m/s,km/h | mph,[预处理]气压层500hpa风速
+opensource,era5_pressure,wind direction 500hpa,wd500hpa,degree,rad,[预处理]气压层500hpa风向
+opensource,era5_pressure,wind speed 400hpa,ws400hpa,m/s,km/h | mph,[预处理]气压层400hpa风速
+opensource,era5_pressure,wind direction 400hpa,wd400hpa,degree,rad,[预处理]气压层400hpa风向
+opensource,era5_pressure,wind speed 300hpa,ws300hpa,m/s,km/h | mph,[预处理]气压层300hpa风速
+opensource,era5_pressure,wind direction 300hpa,wd300hpa,degree,rad,[预处理]气压层300hpa风向
+opensource,era5_pressure,wind speed 250hpa,ws250hpa,m/s,km/h | mph,[预处理]气压层250hpa风速
+opensource,era5_pressure,wind direction 250hpa,wd250hpa,degree,rad,[预处理]气压层250hpa风向
+opensource,era5_pressure,wind speed 200hpa,ws200hpa,m/s,km/h | mph,[预处理]气压层200hpa风速
+opensource,era5_pressure,wind direction 200hpa,wd200hpa,degree,rad,[预处理]气压层200hpa风向
+opensource,era5_pressure,wind speed 150hpa,ws150hpa,m/s,km/h | mph,[预处理]气压层150hpa风速
+opensource,era5_pressure,wind direction 150hpa,wd150hpa,degree,rad,[预处理]气压层150hpa风向
+opensource,era5_pressure,wind speed 100hpa,ws100hpa,m/s,km/h | mph,[预处理]气压层100hpa风速
+opensource,era5_pressure,wind direction 100hpa,wd100hpa,degree,rad,[预处理]气压层100hpa风向
+opensource,era5_pressure,wind speed 50hpa,ws50hpa,m/s,km/h | mph,[预处理]气压层50hpa风速
+opensource,era5_pressure,wind direction 50hpa,wd50hpa,degree,rad,[预处理]气压层50hpa风向
+opensource,era5_pressure,1000hpa Fraction of cloud cover,cc1000hpa,%,"[0,1]",气压层1000hpa云覆盖率
+opensource,era5_pressure,925hpa Fraction of cloud cover,cc925hpa,%,"[0,1]",气压层925hpa云覆盖率
+opensource,era5_pressure,850hpa Fraction of cloud cover,cc850hpa,%,"[0,1]",气压层850hpa云覆盖率
+opensource,era5_pressure,700hpa Fraction of cloud cover,cc700hpa,%,"[0,1]",气压层700hpa云覆盖率
+opensource,era5_pressure,600hpa Fraction of cloud cover,cc600hpa,%,"[0,1]",气压层600hpa云覆盖率
+opensource,era5_pressure,500hpa Fraction of cloud cover,cc500hpa,%,"[0,1]",气压层500hpa云覆盖率
+opensource,era5_pressure,400hpa Fraction of cloud cover,cc400hpa,%,"[0,1]",气压层400hpa云覆盖率
+opensource,era5_pressure,300hpa Fraction of cloud cover,cc300hpa,%,"[0,1]",气压层300hpa云覆盖率
+opensource,era5_pressure,250hpa Fraction of cloud cover,cc250hpa,%,"[0,1]",气压层250hpa云覆盖率
+opensource,era5_pressure,200hpa Fraction of cloud cover,cc200hpa,%,"[0,1]",气压层200hpa云覆盖率
+opensource,era5_pressure,150hpa Fraction of cloud cover,cc150hpa,%,"[0,1]",气压层150hpa云覆盖率
+opensource,era5_pressure,100hpa Fraction of cloud cover,cc100hpa,%,"[0,1]",气压层100hpa云覆盖率
+opensource,era5_pressure,50hpa Fraction of cloud cover,cc50hpa,%,"[0,1]",气压层50hpa云覆盖率
+opensource,era5_pressure,1000hpa geopotential height,z1000hpa,m,mm | inch,气压层1000hpa位势高度
+opensource,era5_pressure,925hpa geopotential height,z925hpa,m,mm | inch,气压层925hpa位势高度
+opensource,era5_pressure,850hpa geopotential height,z850hpa,m,mm | inch,气压层850hpa位势高度
+opensource,era5_pressure,700hpa geopotential height,z700hpa,m,mm | inch,气压层700hpa位势高度
+opensource,era5_pressure,600hpa geopotential height,z600hpa,m,mm | inch,气压层600hpa位势高度
+opensource,era5_pressure,500hpa geopotential height,z500hpa,m,mm | inch,气压层500hpa位势高度
+opensource,era5_pressure,400hpa geopotential height,z400hpa,m,mm | inch,气压层400hpa位势高度
+opensource,era5_pressure,300hpa geopotential height,z300hpa,m,mm | inch,气压层300hpa位势高度
+opensource,era5_pressure,250hpa geopotential height,z250hpa,m,mm | inch,气压层250hpa位势高度
+opensource,era5_pressure,200hpa geopotential height,z200hpa,m,mm | inch,气压层200hpa位势高度
+opensource,era5_pressure,150hpa geopotential height,z150hpa,m,mm | inch,气压层150hpa位势高度
+opensource,era5_pressure,100hpa geopotential height,z100hpa,m,mm | inch,气压层100hpa位势高度
+opensource,era5_pressure,50hpa geopotential height,z50hpa,m,mm | inch,气压层50hpa位势高度
+opensource,era5_pressure,1000hpa vertical verlocity,w1000hpa,Pa/s,,气压层1000hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,925hpa vertical verlocity,w925hpa,Pa/s,,气压层925hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,850hpa vertical verlocity,w850hpa,Pa/s,,气压层850hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,700hpa vertical verlocity,w700hpa,Pa/s,,气压层700hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,600hpa vertical verlocity,w600hpa,Pa/s,,气压层600hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,500hpa vertical verlocity,w500hpa,Pa/s,,气压层500hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,400hpa vertical verlocity,w400hpa,Pa/s,,气压层400hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,300hpa vertical verlocity,w300hpa,Pa/s,,气压层300hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,250hpa vertical verlocity,w250hpa,Pa/s,,气压层250hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,200hpa vertical verlocity,w200hpa,Pa/s,,气压层200hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,150hpa vertical verlocity,w150hpa,Pa/s,,气压层150hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,100hpa vertical verlocity,w100hpa,Pa/s,,气压层100hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,50hpa vertical verlocity,w50hpa,Pa/s,,气压层50hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,era5_pressure,1000hPa relative humidity,r1000hpa,%,"[0,1]",气压层1000hpa相对湿度
+opensource,era5_pressure,925hPa relative humidity,r925hPa,%,"[0,1]",气压层925hPa相对湿度
+opensource,era5_pressure,850hPa relative humidity,r850hPa,%,"[0,1]",气压层850hPa相对湿度
+opensource,era5_pressure,700hPa relative humidity,r700hPa,%,"[0,1]",气压层700hPa相对湿度
+opensource,era5_pressure,600hPa relative humidity,r600hPa,%,"[0,1]",气压层600hPa相对湿度
+opensource,era5_pressure,500hPa relative humidity,r500hPa,%,"[0,1]",气压层500hPa相对湿度
+opensource,era5_pressure,400hPa relative humidity,r400hPa,%,"[0,1]",气压层400hPa相对湿度
+opensource,era5_pressure,300hPa relative humidity,r300hPa,%,"[0,1]",气压层300hPa相对湿度
+opensource,era5_pressure,250hPa relative humidity,r250hPa,%,"[0,1]",气压层250hPa相对湿度
+opensource,era5_pressure,200hPa relative humidity,r200hPa,%,"[0,1]",气压层200hPa相对湿度
+opensource,era5_pressure,150hPa relative humidity,r150hPa,%,"[0,1]",气压层150hPa相对湿度
+opensource,era5_pressure,100hPa relative humidity,r100hPa,%,"[0,1]",气压层100hPa相对湿度
+opensource,era5_pressure,50hPa relative humidity,r50hPa,%,"[0,1]",气压层50hPa相对湿度
+opensource,cfs_h6_surface,temperature (0m),t,K,C | F,地面0米气温
+opensource,cfs_h6_surface,temperature (2m),t2m,K,C | F,地面2米气温
+opensource,cfs_h6_surface,Maximum temperature,tmax,K,C | F,最高温度
+opensource,cfs_h6_surface,Minimum temperature,tmin,K,C | F,最低温度
+opensource,cfs_h6_surface,10 metre U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+opensource,cfs_h6_surface,10 metre V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+opensource,cfs_h6_surface,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,cfs_h6_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,cfs_h6_surface,cloud cover total,tcc,%,"[0,1]",总体云覆盖率
+opensource,cfs_h6_surface,cloud cover low,lcc,%,"[0,1]",低空云覆盖率
+opensource,cfs_h6_surface,cloud cover mid,mcc,%,"[0,1]",中空云覆盖率
+opensource,cfs_h6_surface,cloud cover high,hcc,%,"[0,1]",高空云覆盖率
+opensource,cfs_h6_surface,downward short-wave radiation flux,dswrf,W/m^2,,下行短波辐照通量
+opensource,cfs_h6_surface,downward long-wave radiation flux,dlwrf,W/m^2,,下行长波辐照通量
+opensource,cfs_h6_surface,upward short-wave radiation flux,uswrf,W/m^2,,上行短波辐照通量
+opensource,cfs_h6_surface,upward long-wave radiation flux,ulwrf,W/m^2,,上行长波辐照通量
+opensource,cfs_h6_surface,Precipitable water,pwat,mm,m | inch,可降水量
+opensource,cfs_h6_surface,Precipitation rate,prate,mm,m | inch,降水速率（每秒降水量）
+opensource,cfs_h6_surface,Volumetric soil moisture content depthBelowLandLayer=0,soilw1,%,"[0,1]",土壤水分含量层1（0m）
+opensource,cfs_h6_surface,Volumetric soil moisture content depthBelowLandLayer=0.1m,soilw2,%,"[0,1]",土壤水分含量层2（0.1m）
+opensource,cfs_h6_surface,Volumetric soil moisture content depthBelowLandLayer=0.4m,soilw3,%,"[0,1]",土壤水分含量层3（0.4m）
+opensource,cfs_h6_surface,Volumetric soil moisture content depthBelowLandLayer=1m,soilw4,%,"[0,1]",土壤水分含量层4（1m）
+opensource,cfs_h6_surface,Liquid volumetric soil moisture depthBelowLandLayer=0,soill1,%,"[0,1]",土壤液态水分含量层1（0m）
+opensource,cfs_h6_surface,Liquid volumetric soil moisture depthBelowLandLayer=0.1m,soill2,%,"[0,1]",土壤液态水分含量层2（0.1m）
+opensource,cfs_h6_surface,Liquid volumetric soil moisture depthBelowLandLayer=0.4m,soill3,%,"[0,1]",土壤液态水分含量层3（0.4m）
+opensource,cfs_h6_surface,Liquid volumetric soil moisture depthBelowLandLayer=1m,soill4,%,"[0,1]",土壤液态水分含量层4（1m）
+opensource,cfs_h6_surface,2 metre specific humidity,sh2,"[0,1]",%,2米比湿
+opensource,cfs_h6_surface,Surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,cfs_h6_surface,Snow depth,sde,m,mm | inch,雪深度
+opensource,cfs_h6_surface,Water runoff,watr,mm,m｜inch,地表径流
+opensource,cfs_h6_surface,Forecast albedo,al,%,"[0, 1]",预报反照率
+opensource,icon_surface,2 metre dewpoint temperature,d2m,K,C | F,2米露点温度
+opensource,icon_surface,2 metre temperature,t2m,K,C | F,2米气温
+opensource,icon_surface,Max 2m Temperature,t2m_max,K,C | F,2米最大气温
+opensource,icon_surface,Min 2m Temperature,t2m_min,K,C | F,2米最小气温
+opensource,icon_surface,Snow temperature (top of snow),t_snow,K,C | F,积雪顶层温度
+opensource,icon_surface,10 metre U wind component,u10m,m/s,km/h | mph,地表10米风速U分量
+opensource,icon_surface,10 metre V wind component,v10m,m/s,km/h | mph,地表10米风速V分量
+opensource,icon_surface,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,icon_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,icon_surface,Gust at 10m since end of previous full 01H since model start,gust10,m/s,km/h | mph,10米最大阵风
+opensource,icon_surface,Latent Heat Net Flux,lhf,W/m^2,,潜热通量
+opensource,icon_surface,Sensible Heat Net Flux,shf,W/m^2,,感热通量
+opensource,icon_surface,Net short wave radiation flux at surface,nswrf-acc,W/m^2,,[原始值]地表净短波辐射通量
+opensource,icon_surface,Net short wave radiation flux on model top,nswrf_top-acc,W/m^2,,[原始值]模型顶层净短波辐射通量
+opensource,icon_surface,"Net short-wave radiation flux, clear sky",nswrfcs-acc,W/m^2,,[原始值]晴空净短波辐射通量
+opensource,icon_surface,Downward diffusive short wave radiation flux at surface,dswdif-acc,W/m^2,,[原始值]地表向下散射短波辐射通量
+opensource,icon_surface,Upward diffusive short wave radiation flux at surface,uswdif-acc,W/m^2,,[原始值]地表向上散射短波辐射通量
+opensource,icon_surface,Downward direct short wave radiation flux at surface,dswdir-acc,W/m^2,,[原始值]地表向下直射短波辐射通量
+opensource,icon_surface,Net short wave radiation flux at surface,nswrf,W/m^2,,[预处理]地表净短波辐射通量
+opensource,icon_surface,Net short wave radiation flux on model top,nswrf_top,W/m^2,,[预处理]模型顶层净短波辐射通量
+opensource,icon_surface,"Net short-wave radiation flux, clear sky",nswrfcs,W/m^2,,[预处理]晴空净短波辐射通量
+opensource,icon_surface,Downward diffusive short wave radiation flux at surface,dswdif,W/m^2,,[预处理]地表向下散射短波辐射通量
+opensource,icon_surface,Upward diffusive short wave radiation flux at surface,uswdif,W/m^2,,[预处理]地表向上散射短波辐射通量
+opensource,icon_surface,Downward direct short wave radiation flux at surface,dswdir,W/m^2,,[预处理]地表向下直射短波辐射通量
+opensource,icon_surface,Net long wave radiation flux at surface,nlwrf,W/m^2,,地表净长波辐射通量
+opensource,icon_surface,Net long wave radiation flux on model top,nlwrf_top,W/m^2,,模型顶层净长波辐射通量
+opensource,icon_surface,Cloud Cover (0 - 400 hPa),hcc,%,"[0,1]",云量 (0 - 400 hPa)
+opensource,icon_surface,Cloud Cover (800 hPa - Soil),lcc,%,"[0,1]",云量 (800 hPa - 土壤)
+opensource,icon_surface,Cloud Cover (400 - 800 hPa),mcc,%,"[0,1]",云量 (400 - 800 hPa)
+opensource,icon_surface,Total Cloud Cover,tcc,%,"[0,1]",总云量
+opensource,icon_surface,Soil Temperature,t_s,K,C | F,土壤温度
+opensource,icon_surface,0cm Soil Temperature (multilayer model),t_so_0,K,C | F,0cm土壤温度
+opensource,icon_surface,6cm Soil Temperature (multilayer model),t_so_6,K,C | F,6cm土壤温度
+opensource,icon_surface,18cm Soil Temperature (multilayer model),t_so_18,K,C | F,18cm土壤温度
+opensource,icon_surface,54cm Soil Temperature (multilayer model),t_so_54,K,C | F,54cm土壤温度
+opensource,icon_surface,0cm Column-integrated Soil Moisture,w_so_0,mm,m | inch,0cm土壤湿度
+opensource,icon_surface,1cm Column-integrated Soil Moisture,w_so_1,mm,m | inch,1cm土壤湿度
+opensource,icon_surface,3cm Column-integrated Soil Moisture,w_so_3,mm,m | inch,3cm土壤湿度
+opensource,icon_surface,9cm Column-integrated Soil Moisture,w_so_9,mm,m | inch,9cm土壤湿度
+opensource,icon_surface,27cm Column-integrated Soil Moisture,w_so_27,mm,m | inch,27cm土壤湿度
+opensource,icon_surface,Specific Humidity at Surface,qv_s,%,"[0,1]",地表比湿
+opensource,icon_surface,Convective rain,rain_con-acc,mm,m | inch,[累积值]对流降雨
+opensource,icon_surface,Large scale rain (Accumulation),rain_gsp-acc,mm,m | inch,[累积值]大尺度降雨（积累）
+opensource,icon_surface,Convective rain,rain_con,mm,m | inch,[预处理]对流降雨
+opensource,icon_surface,Large scale rain,rain_gsp,mm,m | inch,[预处理]大尺度降雨
+opensource,icon_surface,Water Runoff (ground),runoff_g,mm,m | inch,地下水径流
+opensource,icon_surface,Water Runoff (surface),runoff_s,mm,m | inch,地表径流
+opensource,icon_surface,Convective Snowfall water equivalent,snow_con,mm,m | inch,对流降雪水当量
+opensource,icon_surface,Large-Scale snowfall - water equivalent (Accumulation),snow_gsp,mm,m | inch,大尺度降雪（积累）
+opensource,icon_surface,Total Column-Integrated Cloud Water,tqc,mm,m | inch,总柱云水含量
+opensource,icon_surface,Total Column-Integrated Cloud Ice,tqi,mm,m | inch,总柱云冰含量
+opensource,icon_surface,Total column integrated rain,tcolr,mm,m | inch,总柱集成降雨
+opensource,icon_surface,Total column integrated snow,tcols,mm,m | inch,总柱集成降雪
+opensource,icon_surface,Total column vertically-integrated water vapour,tcwv,mm,m | inch,总柱垂直集成水汽
+opensource,icon_surface,Total Precipitation,tp-acc,mm,m | inch,[累积值]总降水量
+opensource,icon_surface,Total Precipitation,tp,mm,m | inch,[预处理]总降水量
+opensource,icon_surface,Pressure reduced to MSL,prmsl,Pa,hPa | kPa | MPa,海平面气压
+opensource,icon_surface,Surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,icon_surface,2 metre relative humidity,rh,%,"[0,1]",2米高度相对湿度
+opensource,icon_surface,Convective Available Potential Energy,cape,J/kg,,对流有效位能
+opensource,icon_surface,Snow density,rsn,kg/m^3,,雪密度
+opensource,icon_surface,Snow depth,sde,m,mm | inch,积雪深度
+opensource,icon_surface,Surface roughness,sr,m,mm | inch,地表粗糙度
+opensource,aifs_surface,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,aifs_surface,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,aifs_surface,skin temperature,skt,K,C | F,地表温度
+opensource,aifs_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,aifs_surface,10 metre U wind component,u10m,m/s,km/h｜ mph,地面10米风U分量
+opensource,aifs_surface,10 metre V wind component,v10m,m/s,km/h｜ mph,地面10米风V分量
+opensource,aifs_surface,10 metre wind speed,ws10m,m/s,km/h｜ mph,[预处理]地面10米风速
+opensource,aifs_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,aifs_surface,100 metre U wind component,u100m,m/s,km/h | mph,地面100米风U分量
+opensource,aifs_surface,100 metre V wind component,v100m,m/s,km/h | mph,地面100米风V分量
+opensource,aifs_surface,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地面100米风速
+opensource,aifs_surface,100 metre wind direction,wd100m,degree,rad,[预处理]地面100米风向
+opensource,aifs_surface,convective precipitation,cp-acc,mm,m｜inch,[原始累积值]指由于对流过程引起的大气中的水分凝结形成的降水
+opensource,aifs_surface,convective precipitation,cp,mm,m｜inch,[预处理]指由于对流过程引起的大气中的水分凝结形成的降水
+opensource,aifs_surface,total precipitation accumulated,tp-acc,mm,m｜inch,[原始累积值]总降水
+opensource,aifs_surface,total precipitation,tp,mm,m | inch,[预处理]一小时内总降水
+opensource,aifs_surface,total column water,tcw,mm,m｜inch,大气总柱水含量，指从地面到大气顶端的整个垂直柱状区域中所有形式的水的总含量，包括水蒸气、云水、云冰、雨水和雪等
+opensource,aifs_surface,water equivalent snowfall,sf-acc,m,mm | inch,[原始累积值]降雪等量水的深度
+opensource,aifs_surface,water equivalent snowfall,sf,mm,m | inch,[预处理]降雪等量水的深度
+opensource,aifs_surface,Runoff water equivalent (surface plus subsurface),rowe,m,mm | inch,径流水当量（地表及次表层）
+opensource,aifs_surface,Soil temperature layer 1,sot,K,C | F,0-7cm土壤温度
+opensource,aifs_surface,Soil temperature layer 2,sot2,K,C | F,7-28cm土壤温度
+opensource,aifs_surface,Volumetric soil moisture layer 1,vsw,m^3/m^3,,0-7cm土壤湿度
+opensource,aifs_surface,Volumetric soil moisture layer 2,vsw2,m^3/m^3,,7-28cm土壤湿度
+opensource,aifs_surface,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,aifs_surface,surface long-wave (thermal) radiation downwards accumulated,strd-acc,J/m^2,,[原始累积值] 地表下行长波（热）辐射
+opensource,aifs_surface,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,aifs_surface,surface long-wave (thermal) radiation downwards,strd,W/m^2,,[预处理] 地表下行长波（热）辐射
+opensource,aifs_surface,total cloud cover,tcc,"[0,1]",%,总云量
+opensource,aifs_surface,low cloud cover,lcc,"[0,1]",%,低云量
+opensource,aifs_surface,mid cloud cover,mcc,"[0,1]",%,中云量
+opensource,aifs_surface,high cloud cover,hcc,"[0,1]",%,高云量
+opensource,aifs_surface,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,aifs_surface,mean sea level pressure,msl,Pa,hPa | kPa | MPa,平均海平面气压
+opensource,aifs_surface,relative humidity,rh,"[0,1]",%,[预处理]相对湿度
+opensource,aifs_surface,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理]水汽压亏缺
+opensource,gfs_surface,temperature (2m),t2m,K,C | F,地面2米气温
+opensource,gfs_surface,dewpoint (2m),d2m,K,C | F,地面2米露点温度
+opensource,gfs_surface,skin temperature,skt,K,C | F,地表温度
+opensource,gfs_surface,surface temperature,t0m,K,C | F,地面0米气温
+opensource,gfs_surface,temperature (80m),t80m,K,C | F,地面80米气温
+opensource,gfs_surface,temperature (100m),t100m,K,C | F,地面100米气温
+opensource,gfs_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,gfs_surface,10m U wind component,u10m,m/s,km/h | mph,地表10米风速U分量
+opensource,gfs_surface,10m V wind component,v10m,m/s,km/h | mph,地表10米风速V分量
+opensource,gfs_surface,20m U wind component,u20m,m/s,km/h | mph,地表20米风速U分量
+opensource,gfs_surface,20m V wind component,v20m,m/s,km/h | mph,地表20米风速V分量
+opensource,gfs_surface,30m U wind component,u30m,m/s,km/h | mph,地表30米风速U分量
+opensource,gfs_surface,30m V wind component,v30m,m/s,km/h | mph,地表30米风速V分量
+opensource,gfs_surface,40m U wind component,u40m,m/s,km/h | mph,地表40米风速U分量
+opensource,gfs_surface,40m V wind component,v40m,m/s,km/h | mph,地表40米风速V分量
+opensource,gfs_surface,50m U wind component,u50m,m/s,km/h | mph,地表50米风速U分量
+opensource,gfs_surface,50m V wind component,v50m,m/s,km/h | mph,地表50米风速V分量
+opensource,gfs_surface,80m U wind component,u80m,m/s,km/h | mph,地表80米风速U分量
+opensource,gfs_surface,80m V wind component,v80m,m/s,km/h | mph,地表80米风速V分量
+opensource,gfs_surface,100m U wind component,u100m,m/s,km/h | mph,地表100米风速U分量
+opensource,gfs_surface,100m V wind component,v100m,m/s,km/h | mph,地表100米风速V分量
+opensource,gfs_surface,wind gust,gust,m/s,km/h | mph,阵风
+opensource,gfs_surface,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,gfs_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,gfs_surface,20 metre wind speed,ws20m,m/s,km/h | mph,[预处理]地面20米风速
+opensource,gfs_surface,20 metre wind direction,wd20m,degree,rad,[预处理]地面20米风向
+opensource,gfs_surface,30 metre wind speed,ws30m,m/s,km/h | mph,[预处理]地面30米风速
+opensource,gfs_surface,30 metre wind direction,wd30m,degree,rad,[预处理]地面30米风向
+opensource,gfs_surface,40 metre wind speed,ws40m,m/s,km/h | mph,[预处理]地面40米风速
+opensource,gfs_surface,40 metre wind direction,wd40m,degree,rad,[预处理]地面40米风向
+opensource,gfs_surface,50 metre wind speed,ws50m,m/s,km/h | mph,[预处理]地面50米风速
+opensource,gfs_surface,50 metre wind direction,wd50m,degree,rad,[预处理]地面50米风向
+opensource,gfs_surface,80 metre wind speed,ws80m,m/s,km/h | mph,[预处理]地面80米风速
+opensource,gfs_surface,80 metre wind direction,wd80m,degree,rad,[预处理]地面80米风向
+opensource,gfs_surface,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地面100米风速
+opensource,gfs_surface,100 metre wind direction,wd100m,degree,rad,[预处理]地面100米风向
+opensource,gfs_surface,cloud cover total,tcc,%,"[0,1]",总体云覆盖率
+opensource,gfs_surface,cloud cover low,lcc,%,"[0,1]",低空云覆盖率
+opensource,gfs_surface,cloud cover mid,mcc,%,"[0,1]",中空云覆盖率
+opensource,gfs_surface,cloud cover high,hcc,%,"[0,1]",高空云覆盖率
+opensource,gfs_surface,downward short-wave radiation flux,dswrf,W/m^2,,下行短波辐照通量
+opensource,gfs_surface,downward long-wave radiation flux,dlwrf,W/m^2,,下行长波辐照通量
+opensource,gfs_surface,upward short-wave radiation flux,uswrf,W/m^2,,上行短波辐照通量
+opensource,gfs_surface,upward long-wave radiation flux,ulwrf,W/m^2,,上行长波辐照通量
+opensource,gfs_surface,soil temperature (0-10cm),st,K,C | F,0-10cm土壤温度
+opensource,gfs_surface,soil temperature (10-40cm),stl2,K,C | F,10-40cm土壤温度
+opensource,gfs_surface,soil temperature (40-100cm),stl3,K,C | F,40-100cm土壤温度
+opensource,gfs_surface,soil temperature (100-200cm),stl4,K,C | F,100-200cm土壤温度
+opensource,gfs_surface,soil moisture (0-10cm),swvl,m^3/m^3,,0-10cm土壤湿度
+opensource,gfs_surface,soil moisture (10-40cm),swvl2,m^3/m^3,,10-40cm土壤湿度
+opensource,gfs_surface,soil moisture (40-100cm),swvl3,m^3/m^3,,40-100cm土壤湿度
+opensource,gfs_surface,soil moisture (100-200cm),swvl4,m^3/m^3,,100-200cm土壤湿度
+opensource,gfs_surface,precipitation（rain+showers+snow),tp-acc,mm,m | inch,[原始累积值] 六小时内总降水(包括雨和雪)
+opensource,gfs_surface,precipitation（rain+showers+snow),tp,mm,m | inch,[预处理] 一小时内总降水(包括雨和雪)
+opensource,gfs_surface,snow depth,snd,mm,m｜inch,雪厚度
+opensource,gfs_surface,sealevel pressure,msl,Pa,hPa | kPa | MPa,平均海平面气压
+opensource,gfs_surface,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,gfs_surface,visibility,vis,m,mm | inch,能见度
+opensource,gfs_surface,2m relative humidity,rh,%,"[0, 1]",相对湿度
+opensource,gfs_surface,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理]水汽压亏缺
+opensource,ifs_surface,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,ifs_surface,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,ifs_surface,skin temperature,skt,K,C | F,地表温度
+opensource,ifs_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,ifs_surface,10 metre U wind component,u10m,m/s,km/h | mph,地面10米风U分量
+opensource,ifs_surface,10 metre V wind component,v10m,m/s,km/h | mph,地面10米风V分量
+opensource,ifs_surface,100 metre U wind component,u100m,m/s,km/h | mph,地面100米风U分量
+opensource,ifs_surface,100 metre V wind component,v100m,m/s,km/h | mph,地面100米风V分量
+opensource,ifs_surface,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,ifs_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,ifs_surface,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地面100米风速
+opensource,ifs_surface,100 metre wind direction,wd100m,degree,rad,[预处理]地面100米风向
+opensource,ifs_surface,top net long-wave (thermal) radiation accumulated,ttr-acc,J/m^2,,[原始累积值] 顶部净长波（热）辐射<br>地表和大气向外辐射的长波辐射 - 从外太空向地球辐射的长波辐射
+opensource,ifs_surface,surface net short-wave (solar) radiation accumulated,ssr-acc,J/m^2,,[原始累积值] 地表净短波（太阳）辐射<br>地表接收的短波(太阳)辐射 - 地表反射回大气的短波辐射<br>地球年平均地表净短波辐射约为168W/m^2
+opensource,ifs_surface,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,ifs_surface,surface net long-wave (thermal) radiation accumulated,str-acc,J/m^2,,[原始累积值] 地表净长波（热）辐射
+opensource,ifs_surface,surface long-wave (thermal) radiation downwards accumulated,strd-acc,J/m^2,,[原始累积值] 地表下行长波（热）辐射
+opensource,ifs_surface,top net long-wave (thermal) radiation,ttr,W/m^2,,[预处理] 顶部净长波（热）辐射<br>地表和大气向外辐射的长波辐射 - 从外太空向地球辐射的长波辐射
+opensource,ifs_surface,surface net short-wave (solar) radiation,ssr,W/m^2,,[预处理] 地表净短波（太阳）辐射<br>地表接收的短波(太阳)辐射 - 地表反射回大气的短波辐射<br>地球年平均地表净短波辐射约为168W/m^2
+opensource,ifs_surface,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,ifs_surface,surface net long-wave (thermal) radiation,str,W/m^2,,[预处理] 地表净长波（热）辐射
+opensource,ifs_surface,surface long-wave (thermal) radiation downwards,strd,W/m^2,,[预处理] 地表下行长波（热）辐射
+opensource,ifs_surface,soil temperature,st,K,C | F,0-7cm土壤温度
+opensource,ifs_surface,soil temperature 2,stl2,K,C | F,7-28cm土壤温度
+opensource,ifs_surface,soil temperature 3,stl3,K,C | F,28-100cm土壤温度
+opensource,ifs_surface,soil temperature 4,stl4,K,C | F,100-289cm土壤温度
+opensource,ifs_surface,volumetric soil water layer 1,swvl1,m^3/m^3,,0-7cm土壤含水量
+opensource,ifs_surface,volumetric soil water layer 2,swvl2,m^3/m^3,,7-28cm土壤含水量
+opensource,ifs_surface,volumetric soil water layer 3,swvl3,m^3/m^3,,28-100cm土壤含水量
+opensource,ifs_surface,volumetric soil water layer 4,swvl4,m^3/m^3,,100-289cm土壤含水量
+opensource,ifs_surface,runoff,ro-acc,mm,m | inch,[原始累积值]径流<br>指从地标和地下流入河流、湖泊或其它水体的水量
+opensource,ifs_surface,runoff,ro,mm,m | inch,[预处理]径流<br>指从地标和地下流入河流、湖泊或其它水体的水量
+opensource,ifs_surface,total precipitation accumulated,tp-acc,mm,m | inch,[原始累积值] 总降水
+opensource,ifs_surface,total precipitation,tp,mm,m | inch,[预处理] 一小时内总降水
+opensource,ifs_surface,total column water vapour,tcwv,mm,m | inch,大气总柱水汽含量<br>指从地面到大气顶的整个大气柱中全部水汽量
+opensource,ifs_surface,snow albedo,asn,"[0,1]",%,雪反照率<br>新鲜的雪大约在0.95左右，随着杂质累积会降低到0.4左右
+opensource,ifs_surface,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,ifs_surface,mean sea level pressure,msl,Pa,hPa | kPa | MPa,平均海平面气压
+opensource,ifs_surface,land-sea mask,lsm,"[0,1]",%,陆海掩膜
+opensource,ifs_surface,convective available potential energy,cape,J/kg,,对流有效位能<br>反映大气对流不稳定程度
+opensource,ifs_surface,relative humidity,rh,"[0,1]",%,[预处理] 相对湿度
+opensource,ifs_surface,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
+opensource,gfs_graphcast,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,gfs_graphcast,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+opensource,gfs_graphcast,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+opensource,gfs_graphcast,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+opensource,gfs_graphcast,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+opensource,gfs_graphcast,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+opensource,gfs_graphcast,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+opensource,gfs_graphcast,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+opensource,gfs_graphcast,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+opensource,gfs_graphcast,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+opensource,gfs_graphcast,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+opensource,gfs_graphcast,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+opensource,gfs_graphcast,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+opensource,gfs_graphcast,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+opensource,gfs_graphcast,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+opensource,gfs_graphcast,1000hpa U wind component,u1000hpa,m/s,km/h | mph,气压层1000hpa风速U分量
+opensource,gfs_graphcast,925hpa U wind component,u925hpa,m/s,km/h | mph,气压层925hpa风速U分量
+opensource,gfs_graphcast,850hpa U wind component,u850hpa,m/s,km/h | mph,气压层850hpa风速U分量
+opensource,gfs_graphcast,700hpa U wind component,u700hpa,m/s,km/h | mph,气压层700hpa风速U分量
+opensource,gfs_graphcast,600hpa U wind component,u600hpa,m/s,km/h | mph,气压层600hpa风速U分量
+opensource,gfs_graphcast,500hpa U wind component,u500hpa,m/s,km/h | mph,气压层500hpa风速U分量
+opensource,gfs_graphcast,400hpa U wind component,u400hpa,m/s,km/h | mph,气压层400hpa风速U分量
+opensource,gfs_graphcast,300hpa U wind component,u300hpa,m/s,km/h | mph,气压层300hpa风速U分量
+opensource,gfs_graphcast,250hpa U wind component,u250hpa,m/s,km/h | mph,气压层250hpa风速U分量
+opensource,gfs_graphcast,200hpa U wind component,u200hpa,m/s,km/h | mph,气压层200hpa风速U分量
+opensource,gfs_graphcast,150hpa U wind component,u150hpa,m/s,km/h | mph,气压层150hpa风速U分量
+opensource,gfs_graphcast,100hpa U wind component,u100hpa,m/s,km/h | mph,气压层100hpa风速U分量
+opensource,gfs_graphcast,50hpa U wind component,u50hpa,m/s,km/h | mph,气压层50hpa风速U分量
+opensource,gfs_graphcast,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+opensource,gfs_graphcast,1000hpa V wind component,v1000hpa,m/s,km/h | mph,气压层1000hpa风速V分量
+opensource,gfs_graphcast,925hpa V wind component,v925hpa,m/s,km/h | mph,气压层925hpa风速V分量
+opensource,gfs_graphcast,850hpa V wind component,v850hpa,m/s,km/h | mph,气压层850hpa风速V分量
+opensource,gfs_graphcast,700hpa V wind component,v700hpa,m/s,km/h | mph,气压层700hpa风速V分量
+opensource,gfs_graphcast,600hpa V wind component,v600hpa,m/s,km/h | mph,气压层600hpa风速V分量
+opensource,gfs_graphcast,500hpa V wind component,v500hpa,m/s,km/h | mph,气压层500hpa风速V分量
+opensource,gfs_graphcast,400hpa V wind component,v400hpa,m/s,km/h | mph,气压层400hpa风速V分量
+opensource,gfs_graphcast,300hpa V wind component,v300hpa,m/s,km/h | mph,气压层300hpa风速V分量
+opensource,gfs_graphcast,250hpa V wind component,v250hpa,m/s,km/h | mph,气压层250hpa风速V分量
+opensource,gfs_graphcast,200hpa V wind component,v200hpa,m/s,km/h | mph,气压层200hpa风速V分量
+opensource,gfs_graphcast,150hpa V wind component,v150hpa,m/s,km/h | mph,气压层150hpa风速V分量
+opensource,gfs_graphcast,100hpa V wind component,v100hpa,m/s,km/h | mph,气压层100hpa风速V分量
+opensource,gfs_graphcast,50hpa V wind component,v50hpa,m/s,km/h | mph,气压层50hpa风速V分量
+opensource,gfs_graphcast,wind speed 1000hpa,ws1000hpa,m/s,km/h | mph,[预处理]气压层1000hpa风速
+opensource,gfs_graphcast,wind direction 1000hpa,wd1000hpa,degree,rad,[预处理]气压层1000hpa风向
+opensource,gfs_graphcast,wind speed 925hpa,ws925hpa,m/s,km/h | mph,[预处理]气压层925hpa风速
+opensource,gfs_graphcast,wind direction 925hpa,wd925hpa,degree,rad,[预处理]气压层925hpa风向
+opensource,gfs_graphcast,wind speed 850hpa,ws850hpa,m/s,km/h | mph,[预处理]气压层850hpa风速
+opensource,gfs_graphcast,wind direction 850hpa,wd850hpa,degree,rad,[预处理]气压层850hpa风向
+opensource,gfs_graphcast,wind speed 700hpa,ws700hpa,m/s,km/h | mph,[预处理]气压层700hpa风速
+opensource,gfs_graphcast,wind direction 700hpa,wd700hpa,degree,rad,[预处理]气压层700hpa风向
+opensource,gfs_graphcast,wind speed 600hpa,ws600hpa,m/s,km/h | mph,[预处理]气压层600hpa风速
+opensource,gfs_graphcast,wind direction 600hpa,wd600hpa,degree,rad,[预处理]气压层600hpa风向
+opensource,gfs_graphcast,wind speed 500hpa,ws500hpa,m/s,km/h | mph,[预处理]气压层500hpa风速
+opensource,gfs_graphcast,wind direction 500hpa,wd500hpa,degree,rad,[预处理]气压层500hpa风向
+opensource,gfs_graphcast,wind speed 400hpa,ws400hpa,m/s,km/h | mph,[预处理]气压层400hpa风速
+opensource,gfs_graphcast,wind direction 400hpa,wd400hpa,degree,rad,[预处理]气压层400hpa风向
+opensource,gfs_graphcast,wind speed 300hpa,ws300hpa,m/s,km/h | mph,[预处理]气压层300hpa风速
+opensource,gfs_graphcast,wind direction 300hpa,wd300hpa,degree,rad,[预处理]气压层300hpa风向
+opensource,gfs_graphcast,wind speed 250hpa,ws250hpa,m/s,km/h | mph,[预处理]气压层250hpa风速
+opensource,gfs_graphcast,wind direction 250hpa,wd250hpa,degree,rad,[预处理]气压层250hpa风向
+opensource,gfs_graphcast,wind speed 200hpa,ws200hpa,m/s,km/h | mph,[预处理]气压层200hpa风速
+opensource,gfs_graphcast,wind direction 200hpa,wd200hpa,degree,rad,[预处理]气压层200hpa风向
+opensource,gfs_graphcast,wind speed 150hpa,ws150hpa,m/s,km/h | mph,[预处理]气压层150hpa风速
+opensource,gfs_graphcast,wind direction 150hpa,wd150hpa,degree,rad,[预处理]气压层150hpa风向
+opensource,gfs_graphcast,wind speed 100hpa,ws100hpa,m/s,km/h | mph,[预处理]气压层100hpa风速
+opensource,gfs_graphcast,wind direction 100hpa,wd100hpa,degree,rad,[预处理]气压层100hpa风向
+opensource,gfs_graphcast,wind speed 50hpa,ws50hpa,m/s,km/h | mph,[预处理]气压层50hpa风速
+opensource,gfs_graphcast,wind direction 50hpa,wd50hpa,degree,rad,[预处理]气压层50hpa风向
+opensource,gfs_graphcast,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,gfs_graphcast,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,gfs_graphcast,1000hpa vertical verlocity,w1000hpa,m/s,km/h | mph,气压层1000hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,925hpa vertical verlocity,w925hpa,m/s,km/h | mph,气压层925hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,850hpa vertical verlocity,w850hpa,m/s,km/h | mph,气压层850hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,700hpa vertical verlocity,w700hpa,m/s,km/h | mph,气压层700hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,600hpa vertical verlocity,w600hpa,m/s,km/h | mph,气压层600hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,500hpa vertical verlocity,w500hpa,m/s,km/h | mph,气压层500hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,400hpa vertical verlocity,w400hpa,m/s,km/h | mph,气压层400hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,300hpa vertical verlocity,w300hpa,m/s,km/h | mph,气压层300hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,250hpa vertical verlocity,w250hpa,m/s,km/h | mph,气压层250hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,200hpa vertical verlocity,w200hpa,m/s,km/h | mph,气压层200hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,150hpa vertical verlocity,w150hpa,m/s,km/h | mph,气压层150hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,100hpa vertical verlocity,w100hpa,m/s,km/h | mph,气压层100hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,50hpa vertical verlocity,w50hpa,m/s,km/h | mph,气压层50hpa垂直速度，指大气中空气质点在垂直方向上的速度
+opensource,gfs_graphcast,1000hpa specific humidity,q1000hpa,kg/kg,,气压层1000hpa比湿
+opensource,gfs_graphcast,925hpa specific humidity,q925hpa,kg/kg,,气压层925hpa比湿
+opensource,gfs_graphcast,850hpa specific humidity,q850hpa,kg/kg,,气压层850hpa比湿
+opensource,gfs_graphcast,700hpa specific humidity,q700hpa,kg/kg,,气压层700hpa比湿
+opensource,gfs_graphcast,600hpa specific humidity,q600hpa,kg/kg,,气压层600hpa比湿
+opensource,gfs_graphcast,500hpa specific humidity,q500hpa,kg/kg,,气压层500hpa比湿
+opensource,gfs_graphcast,400hpa specific humidity,q400hpa,kg/kg,,气压层400hpa比湿
+opensource,gfs_graphcast,300hpa specific humidity,q300hpa,kg/kg,,气压层300hpa比湿
+opensource,gfs_graphcast,250hpa specific humidity,q250hpa,kg/kg,,气压层250hpa比湿
+opensource,gfs_graphcast,200hpa specific humidity,q200hpa,kg/kg,,气压层200hpa比湿
+opensource,gfs_graphcast,150hpa specific humidity,q150hpa,kg/kg,,气压层150hpa比湿
+opensource,gfs_graphcast,100hpa specific humidity,q100hpa,kg/kg,,气压层100hpa比湿
+opensource,gfs_graphcast,50hpa specific humidity,q50hpa,kg/kg,,气压层50hpa比湿
+opensource,gfs_graphcast,cloud cover total,tcc,%,"[0,1]",[预处理]总体云覆盖率
+opensource,gfs_graphcast,cloud cover low,lcc,%,"[0,1]",[预处理]低空云覆盖率
+opensource,gfs_graphcast,cloud cover mid,mcc,%,"[0,1]",[预处理]中空云覆盖率
+opensource,gfs_graphcast,cloud cover high,hcc,%,"[0,1]",[预处理]高空云覆盖率
+opensource,gfs_graphcast,1000hpa geopotential height,gh1000hpa,m,mm | inch,气压层1000hpa位势高度
+opensource,gfs_graphcast,925hpa geopotential height,gh925hpa,m,mm | inch,气压层925hpa位势高度
+opensource,gfs_graphcast,850hpa geopotential height,gh850hpa,m,mm | inch,气压层850hpa位势高度
+opensource,gfs_graphcast,700hpa geopotential height,gh700hpa,m,mm | inch,气压层700hpa位势高度
+opensource,gfs_graphcast,600hpa geopotential height,gh600hpa,m,mm | inch,气压层600hpa位势高度
+opensource,gfs_graphcast,500hpa geopotential height,gh500hpa,m,mm | inch,气压层500hpa位势高度
+opensource,gfs_graphcast,400hpa geopotential height,gh400hpa,m,mm | inch,气压层400hpa位势高度
+opensource,gfs_graphcast,300hpa geopotential height,gh300hpa,m,mm | inch,气压层300hpa位势高度
+opensource,gfs_graphcast,250hpa geopotential height,gh250hpa,m,mm | inch,气压层250hpa位势高度
+opensource,gfs_graphcast,200hpa geopotential height,gh200hpa,m,mm | inch,气压层200hpa位势高度
+opensource,gfs_graphcast,150hpa geopotential height,gh150hpa,m,mm | inch,气压层150hpa位势高度
+opensource,gfs_graphcast,100hpa geopotential height,gh100hpa,m,mm | inch,气压层100hpa位势高度
+opensource,gfs_graphcast,50hpa geopotential height,gh50hpa,m,mm | inch,气压层50hpa位势高度
+opensource,iconeps_surface,2 metre temperature,t2m,K,C | F,2米气温
+opensource,iconeps_surface,2 metre dewpoint temperature,d2m,K,C | F,2米露点温度
+opensource,iconeps_surface,10 metre U wind component,u10m,m/s,km/h | mph,地表10米风速U分量
+opensource,iconeps_surface,10 metre V wind component,v10m,m/s,km/h | mph,地表10米风速V分量
+opensource,iconeps_surface,Wind speed at 10m,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,iconeps_surface,Wind direction at 10m,wd10m,degree,rad,[预处理]地面10米风向
+opensource,iconeps_surface,Net short wave radiation flux (at the surface),msnswrf-acc,W/m^2,,[原始值]地表净短波辐射通量
+opensource,iconeps_surface,Net short wave radiation flux,nswrf,W/m^2,,净短波辐射通量
+opensource,iconeps_surface,Net short wave radiation flux (at the surface),msnswrf,W/m^2,,[预处理]地表净短波辐射通量
+opensource,iconeps_surface,Net long wave radiation flux (at the surface),msnlwrf,W/m^2,,地表净长波辐射通量
+opensource,iconeps_surface,Net long wave radiation flux,nlwrf,W/m^2,,净长波辐射通量
+opensource,iconeps_surface,Total cloud cover,tcc,%,"[0,1]",总云量
+opensource,iconeps_surface,2 metre relative humidity,rh,%,"[0,1]",2米相对湿度
+opensource,iconeps_surface,Total precipitation,tp-acc,mm,m | inch,[累积值]总降水量
+opensource,iconeps_surface,Total precipitation,tp,mm,m | inch,[预处理]总降水量
+opensource,iconeps_surface,Surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,gefs_p25,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,gefs_p25,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,gefs_p25,skin temperature,skt,K,C | F,[预处理] 体感温度
+opensource,gefs_p25,wet bulb temp,wbt,K,C | F,[预处理] 湿球温度
+opensource,gefs_p25,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+opensource,gefs_p25,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+opensource,gefs_p25,gust,gust,m/s,km/h | mph,风切变
+opensource,gefs_p25,wind speed 10m,ws10m,m/s,km/h | mph,[预处理] 地表10米风速
+opensource,gefs_p25,downward short-wave rad flux,dswrf,W/m^2,,下行短波辐射通量
+opensource,gefs_p25,upward short-wave rad flux,uswrf,W/m^2,,上行短波辐射通量
+opensource,gefs_p25,downard long-wave rad flux,dlwrf,W/m^2,,下行长波辐射通量
+opensource,gefs_p25,upward long-wave rad flux,ulwrf,W/m^2,,上行长波辐射通量
+opensource,gefs_p25,mean surface latent heat flux,msshf,W/m^2,,平均表面潜热通量主要涉及水的蒸发和凝结过程
+opensource,gefs_p25,mean surface sensible heat flux,mslhf,W/m^2,,平均表面感热通量是衡量地标通过传导和对流过程向大气传输的显热量的平均值
+opensource,gefs_p25,total cloud cover,tcc,"[0,1]",%,云覆盖比例
+opensource,gefs_p25,vibilitity,vis,m,mm | inch,能见度
+opensource,gefs_p25,precipitable water,pwat,mm,m | inch,可降水量高度
+opensource,gefs_p25,snow depth,sde,m,mm | inch,雪厚度
+opensource,gefs_p25,total precipitation,tp-acc,mm,m | inch,[原始累积值] 三小时总降水(包括雨和雪)
+opensource,gefs_p25,total precipitation,tp,mm,m | inch,[预处理] 一小时内总降水(包括雨和雪)
+opensource,gefs_p25,soil temperature,st,K,C | F,土壤温度
+opensource,gefs_p25,volumetric soil moisture,soilw,m^3/m^3,,土壤含水量
+opensource,gefs_p25,surface pressure,sp,Pa,hPa | kPa | MPa,表面气压
+opensource,gefs_p25,2 metre relative humidity,r2,"[0,1]",%,2米相对湿度
+opensource,gefs_p25,mean sea level pressure,mslet,Pa,hPa | kPa | MPa,海平面气压
+opensource,gefs_p25,convective available potential energy,cape,J/kg,,对流有效位能<br>反映大气对流不稳定程度
+opensource,gefs_p25,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
+opensource,gefs_p50,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,gefs_p50,2 metre dewpoint temperature,d2m,K,C | F,[预处理] 地面2米露点温度
+opensource,gefs_p50,skin temperature,skt,K,C | F,[预处理] 体感温度
+opensource,gefs_p50,wet bulb temp,wbt,K,C | F,[预处理] 湿球温度
+opensource,gefs_p50,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+opensource,gefs_p50,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+opensource,gefs_p50,wind speed 10m,ws10m,m/s,km/h | mph,[预处理] 地表10米风速
+opensource,gefs_p50,downward short-wave rad flux,dswrf,W/m^2,,下行短波辐射通量
+opensource,gefs_p50,upward short-wave rad flux,uswrf,W/m^2,,上行短波辐射通量
+opensource,gefs_p50,downward long-wave rad flux,dlwrf,W/m^2,,下行长波辐射通量
+opensource,gefs_p50,upward long-wave rad flux,ulwrf,W/m^2,,上行长波辐射通量
+opensource,gefs_p50,mean surface latent heat flux,msshf,W/m^2,,平均表面潜热通量主要涉及水的蒸发和凝结过程
+opensource,gefs_p50,mean surface sensible heat flux,mslhf,W/m^2,,平均表面感热通量
+opensource,gefs_p50,total cloud cover,tcc,"[0,1]",%,云覆盖比例
+opensource,gefs_p50,precipitable water,pwat,mm,m | inch,可降水量高度
+opensource,gefs_p50,snow depth,sde,m,mm | inch,雪厚度
+opensource,gefs_p50,total precipitation accumulated,tp-acc,mm,m | inch,[原始累积值] 三小时总降水(包括雨和雪)
+opensource,gefs_p50,total precipitation,tp,mm,m | inch,[预处理] 一小时内总降水(包括雨和雪)
+opensource,gefs_p50,soil temperature,st,K,C | F,土壤温度
+opensource,gefs_p50,volumetric soil moisture,soilw,m^3/m^3,,土壤含水量
+opensource,gefs_p50,surface pressure,sp,Pa,hPa | kPa | MPa,表面气压
+opensource,gefs_p50,pressure reduced to MSL,prmsl,Pa,hPa | kPa | MPa,海平面气压
+opensource,gefs_p50,2 metre relative humidity,r2,"[0,1]",%,2米相对湿度
+opensource,gefs_p50,convective available potential energy,cape,J/kg,,对流有效位能
+opensource,gefs_p50,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
+opensource,gefs_p50,vertical velocity,w,m/s,km/h | mph,垂直速度
+opensource,gefs_p50,convective inhibition,cin,J/kg,,对流指数
+opensource,ens_open,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,ens_open,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,ens_open,skin temperature,skt,K,C | F,地表温度
+opensource,ens_open,wet bulb temp,wbt,K,C | F,[预处理] 湿球温度
+opensource,ens_open,10 metre U wind component,u10m,m/s,km/h | mph,地面10米风U分量
+opensource,ens_open,10 metre V wind component,v10m,m/s,km/h | mph,地面10米风V分量
+opensource,ens_open,100 metre U wind component,u100m,m/s,km/h | mph,地面100米风U分量
+opensource,ens_open,100 metre V wind component,v100m,m/s,km/h | mph,地面100米风V分量
+opensource,ens_open,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地表10米风速
+opensource,ens_open,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地表100米风速
+opensource,ens_open,top net long-wave (thermal) radiation accumulated,ttr-acc,J/m^2,,[原始累积值] 顶部净长波（热）辐射
+opensource,ens_open,surface net short-wave (solar) radiation accumulated,ssr-acc,J/m^2,,[原始累积值] 地表净短波（太阳）辐射
+opensource,ens_open,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射
+opensource,ens_open,surface net long-wave (thermal) radiation accumulated,str-acc,J/m^2,,[原始累积值] 地表净长波（热）辐射
+opensource,ens_open,surface long-wave (thermal) radiation downwards accumulated,strd-acc,J/m^2,,[原始累积值] 地表下行长波（热）辐射
+opensource,ens_open,top net long-wave (thermal) radiation,ttr,W/m^2,,[预处理] 顶部净长波（热）辐射
+opensource,ens_open,surface net short-wave (solar) radiation,ssr,W/m^2,,[预处理] 地表净短波（太阳）辐射
+opensource,ens_open,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射
+opensource,ens_open,surface net long-wave (thermal) radiation,str,W/m^2,,[预处理] 地表净长波（热）辐射
+opensource,ens_open,surface long-wave (thermal) radiation downwards,strd,W/m^2,,[预处理] 地表下行长波（热）辐射
+opensource,ens_open,soil temperature,st,K,C | F,0-7cm土壤温度
+opensource,ens_open,soil temperature 2,stl2,K,C | F,7-28cm土壤温度
+opensource,ens_open,soil temperature 3,stl3,K,C | F,28-100cm土壤温度
+opensource,ens_open,soil temperature 4,stl4,K,C | F,100-289cm土壤温度
+opensource,ens_open,volumetric soil water layer 1,swvl1,m^3/m^3,,0-7cm土壤含水量
+opensource,ens_open,volumetric soil water layer 2,swvl2,m^3/m^3,,7-28cm土壤含水量
+opensource,ens_open,volumetric soil water layer 3,swvl3,m^3/m^3,,28-100cm土壤含水量
+opensource,ens_open,volumetric soil water layer 4,swvl4,m^3/m^3,,100-289cm土壤含水量
+opensource,ens_open,runoff,ro-acc,mm,m | inch,[原始累积值]径流指从地标和地下流入河流、湖泊或其它水体的水量
+opensource,ens_open,runoff,ro,mm,m | inch,[预处理]径流指从地标和地下流入河流、湖泊或其它水体的水量
+opensource,ens_open,total precipitation - accumulated,tp-acc,mm,m | inch,[原始累积值]总降水
+opensource,ens_open,total precipitation,tp,mm,m | inch,[预处理]一小时内总降水
+opensource,ens_open,total column water vapour,tcwv,mm,m | inch,大气总柱水汽含量
+opensource,ens_open,snow albedo,asn,"[0,1]",%,雪反照率
+opensource,ens_open,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,ens_open,mean sea level pressure,msl,Pa,hPa | kPa | MPa,平均海平面气压
+opensource,ens_open,land-sea mask,lsm,"[0,1]",%,陆海掩膜
+opensource,ens_open,convective available potential energy,cape,J/kg,,对流有效位能
+opensource,ens_open,relative humidity,rh,"[0,1]",%,[预处理] 相对湿度
+opensource,ens_open,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
+opensource,gdas_surface,temperature (2m),t2m,K,C | F,地面2米气温
+opensource,gdas_surface,dewpoint (2m),d2m,K,C | F,地面2米露点温度
+opensource,gdas_surface,skin temperature,skt,K,C | F,地表温度
+opensource,gdas_surface,surface temperature,t0m,K,C | F,地面0米气温
+opensource,gdas_surface,temperature (80m),t80m,K,C | F,地面80米气温
+opensource,gdas_surface,temperature (100m),t100m,K,C | F,地面100米气温
+opensource,gdas_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,gdas_surface,10m U wind component,u10m,m/s,km/h | mph,地表10米风速U分量
+opensource,gdas_surface,10m V wind component,v10m,m/s,km/h | mph,地表10米风速V分量
+opensource,gdas_surface,20m U wind component,u20m,m/s,km/h | mph,地表20米风速U分量
+opensource,gdas_surface,20m V wind component,v20m,m/s,km/h | mph,地表20米风速V分量
+opensource,gdas_surface,30m U wind component,u30m,m/s,km/h | mph,地表30米风速U分量
+opensource,gdas_surface,30m V wind component,v30m,m/s,km/h | mph,地表30米风速V分量
+opensource,gdas_surface,40m U wind component,u40m,m/s,km/h | mph,地表40米风速U分量
+opensource,gdas_surface,40m V wind component,v40m,m/s,km/h | mph,地表40米风速V分量
+opensource,gdas_surface,50m U wind component,u50m,m/s,km/h | mph,地表50米风速U分量
+opensource,gdas_surface,50m V wind component,v50m,m/s,km/h | mph,地表50米风速V分量
+opensource,gdas_surface,80m U wind component,u80m,m/s,km/h | mph,地表80米风速U分量
+opensource,gdas_surface,80m V wind component,v80m,m/s,km/h | mph,地表80米风速V分量
+opensource,gdas_surface,100m U wind component,u100m,m/s,km/h | mph,地表100米风速U分量
+opensource,gdas_surface,100m V wind component,v100m,m/s,km/h | mph,地表100米风速V分量
+opensource,gdas_surface,wind gust,gust,m/s,km/h | mph,阵风
+opensource,gdas_surface,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,gdas_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,gdas_surface,20 metre wind speed,ws20m,m/s,km/h | mph,[预处理]地面20米风速
+opensource,gdas_surface,20 metre wind direction,wd20m,degree,rad,[预处理]地面20米风向
+opensource,gdas_surface,30 metre wind speed,ws30m,m/s,km/h | mph,[预处理]地面30米风速
+opensource,gdas_surface,30 metre wind direction,wd30m,degree,rad,[预处理]地面30米风向
+opensource,gdas_surface,40 metre wind speed,ws40m,m/s,km/h | mph,[预处理]地面40米风速
+opensource,gdas_surface,40 metre wind direction,wd40m,degree,rad,[预处理]地面40米风向
+opensource,gdas_surface,50 metre wind speed,ws50m,m/s,km/h | mph,[预处理]地面50米风速
+opensource,gdas_surface,50 metre wind direction,wd50m,degree,rad,[预处理]地面50米风向
+opensource,gdas_surface,80 metre wind speed,ws80m,m/s,km/h | mph,[预处理]地面80米风速
+opensource,gdas_surface,80 metre wind direction,wd80m,degree,rad,[预处理]地面80米风向
+opensource,gdas_surface,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地面100米风速
+opensource,gdas_surface,100 metre wind direction,wd100m,degree,rad,[预处理]地面100米风向
+opensource,gdas_surface,cloud cover total,tcc,%,"[0,1]",总体云覆盖率
+opensource,gdas_surface,cloud cover low,lcc,%,"[0,1]",低空云覆盖率
+opensource,gdas_surface,cloud cover mid,mcc,%,"[0,1]",中空云覆盖率
+opensource,gdas_surface,cloud cover high,hcc,%,"[0,1]",高空云覆盖率
+opensource,gdas_surface,downward short-wave radiation flux,dswrf,W/m^2,,下行短波辐照通量
+opensource,gdas_surface,downward long-wave radiation flux,dlwrf,W/m^2,,下行长波辐照通量
+opensource,gdas_surface,upward short-wave radiation flux,uswrf,W/m^2,,上行短波辐照通量
+opensource,gdas_surface,upward long-wave radiation flux,ulwrf,W/m^2,,上行长波辐照通量
+opensource,gdas_surface,soil temperature (0-10cm),st,K,C | F,0-10cm土壤温度
+opensource,gdas_surface,soil temperature (10-40cm),stl2,K,C | F,10-40cm土壤温度
+opensource,gdas_surface,soil temperature (40-100cm),stl3,K,C | F,40-100cm土壤温度
+opensource,gdas_surface,soil temperature (100-200cm),stl4,K,C | F,100-200cm土壤温度
+opensource,gdas_surface,soil moisture (0-10cm),swvl,m^3/m^3,,0-10cm土壤湿度
+opensource,gdas_surface,soil moisture (10-40cm),swvl2,m^3/m^3,,10-40cm土壤湿度
+opensource,gdas_surface,soil moisture (40-100cm),swvl3,m^3/m^3,,40-100cm土壤湿度
+opensource,gdas_surface,soil moisture (100-200cm),swvl4,m^3/m^3,,100-200cm土壤湿度
+opensource,gdas_surface,precipitation（rain+showers+snow),tp-acc,mm,m | inch,[原始累积值] 六小时内总降水(包括雨和雪)
+opensource,gdas_surface,precipitation（rain+showers+snow),tp,mm,m | inch,[预处理] 一小时内总降水(包括雨和雪)
+opensource,gdas_surface,snow depth,snd,mm,m｜inch,雪厚度
+opensource,gdas_surface,sealevel pressure,msl,Pa,hPa | kPa | MPa,平均海平面气压
+opensource,gdas_surface,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,gdas_surface,visibility,vis,m,mm | inch,能见度
+opensource,gdas_surface,2m relative humidity,rh,%,"[0, 1]",相对湿度
+opensource,gdas_surface,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理]水汽压亏缺
+opensource,era5_surface,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,era5_surface,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,era5_surface,skin temperature,skt,K,C | F,地表温度
+opensource,era5_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,era5_surface,10 metre U wind component,u10m,m/s,km/h | mph,地面10米风U分量
+opensource,era5_surface,10 metre V wind component,v10m,m/s,km/h | mph,地面10米风V分量
+opensource,era5_surface,100 metre U wind component,u100m,m/s,km/h | mph,地面100米风U分量
+opensource,era5_surface,100 metre V wind component,v100m,m/s,km/h | mph,地面100米风V分量
+opensource,era5_surface,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,era5_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,era5_surface,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地面100米风速
+opensource,era5_surface,100 metre wind direction,wd100m,degree,rad,[预处理]地面100米风向
+opensource,era5_surface,cloud cover total,tcc,"[0,1]",%,总体云覆盖率
+opensource,era5_surface,cloud cover low,lcc,"[0,1]",%,低空云覆盖率
+opensource,era5_surface,cloud cover mid,mcc,"[0,1]",%,中空云覆盖率
+opensource,era5_surface,cloud cover high,hcc,"[0,1]",%,高空云覆盖率
+opensource,era5_surface,surface solar radiation downwards,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波(太阳)辐射
+opensource,era5_surface,surface net solar radiation,ssr-acc,J/m^2,,[原始累积值] 地表净短波(太阳)辐射
+opensource,era5_surface,surface solar radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波(太阳)辐射
+opensource,era5_surface,surface net solar radiation,ssr,W/m^2,,[预处理] 地表净短波(太阳)辐射
+opensource,era5_surface,mean surface direct short-wave radiation flux,msdrswrf,W/m^2,,平均地表直接短波辐射通量
+opensource,era5_surface,mean surface downward short-wave radiation flux,msdwswrf,W/m^2,,平均地表下行短波辐射通量
+opensource,era5_surface,soil temperature,st,K,C | F,0-7cm土壤温度
+opensource,era5_surface,soil temperature 2,stl2,K,C | F,7-28cm土壤温度
+opensource,era5_surface,soil temperature 3,stl3,K,C | F,28-100cm土壤温度
+opensource,era5_surface,soil temperature 4,stl4,K,C | F,100-289cm土壤温度
+opensource,era5_surface,volumetric soil water layer 1,swvl1,m^3/m^3,,0-7cm土壤含水量
+opensource,era5_surface,volumetric soil water layer 2,swvl2,m^3/m^3,,7-28cm土壤含水量
+opensource,era5_surface,volumetric soil water layer 3,swvl3,m^3/m^3,,28-100cm土壤含水量
+opensource,era5_surface,volumetric soil water layer 4,swvl4,m^3/m^3,,100-289cm土壤含水量
+opensource,era5_surface,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,era5_surface,mean sea level pressure,msl,Pa,hPa | kPa | MPa,平均海平面气压
+opensource,era5_surface,snow depth,snd,m,mm | inch,雪厚度
+opensource,era5_surface,snow fall,sf,m,mm | inch,降雪
+opensource,era5_surface,2m relative humidity,rh,"[0,1]",%,相对湿度
+opensource,era5_surface,total precipitation,tp,mm,m | inch,一小时内总降水
+opensource,era5_surface,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
+opensource,era5_land,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,era5_land,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,era5_land,skin temperature,skt,K,C | F,地表温度
+opensource,era5_land,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,era5_land,10 metre U wind component,u10m,m/s,km/h | mph,地面10米风U分量
+opensource,era5_land,10 metre V wind component,v10m,m/s,km/h | mph,地面10米风V分量
+opensource,era5_land,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+opensource,era5_land,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+opensource,era5_land,surface net solar radiation,ssr-acc,J/m^2,,[原始累积值] 地表净短波(太阳)辐射
+opensource,era5_land,surface net thermal radiation,str-acc,J/m^2,,[原始累积值] 地表净热辐射
+opensource,era5_land,surface solar radiation downwards,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波(太阳)辐射
+opensource,era5_land,surface thermal radiation downwards,strd-acc,J/m^2,,[原始累积值] 地表下行热辐射
+opensource,era5_land,surface latent heat flux,slhf-acc,J/m^2,,[原始累积值] 地表潜热通量
+opensource,era5_land,surface sensible heat flux,sshf-acc,J/m^2,,[原始累积值] 地表感热通量
+opensource,era5_land,surface net solar radiation,ssr,W/m^2,,[预处理] 地表净短波(太阳)辐射
+opensource,era5_land,surface net thermal radiation,str,W/m^2,,[预处理] 地表净热辐射
+opensource,era5_land,surface solar radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波(太阳)辐射
+opensource,era5_land,surface thermal radiation downwards,strd,W/m^2,,[预处理] 地表下行热辐射
+opensource,era5_land,surface latent heat flux,slhf,W/m^2,,[预处理] 地表潜热通量
+opensource,era5_land,surface sensible heat flux,sshf,W/m^2,,[预处理] 地表感热通量
+opensource,era5_land,soil temperature,st,K,C | F,0-7cm土壤温度
+opensource,era5_land,soil temperature 2,stl2,K,C | F,7-28cm土壤温度
+opensource,era5_land,soil temperature 3,stl3,K,C | F,28-100cm土壤温度
+opensource,era5_land,soil temperature 4,stl4,K,C | F,100-289cm土壤温度
+opensource,era5_land,volumetric soil water layer 1,swvl1,m^3/m^3,,0-7cm土壤含水量
+opensource,era5_land,volumetric soil water layer 2,swvl2,m^3/m^3,,7-28cm土壤含水量
+opensource,era5_land,volumetric soil water layer 3,swvl3,m^3/m^3,,28-100cm土壤含水量
+opensource,era5_land,volumetric soil water layer 4,swvl4,m^3/m^3,,100-289cm土壤含水量
+opensource,era5_land,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+opensource,era5_land,snow depth,snd,m,mm | inch,雪厚度
+opensource,era5_land,snow fall,sf-acc,m,mm | inch,[原始累积值]降雪
+opensource,era5_land,snow fall,sf,m,mm | inch,[预处理]降雪
+opensource,era5_land,2m relative humidity,rh,"[0,1]",%,[预处理] 相对湿度
+opensource,era5_land,total precipitation,tp-acc,mm,m | inch,[原始累积值] 当天24小时(UTC)内总降水
+opensource,era5_land,total precipitation,tp,mm,m | inch,[预处理] 一小时内总降水
+opensource,era5_land,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
+tqai,aurora_0p1_tq,2 metre temperature,t2m,K,C | F,地面2米气温
+tqai,aurora_0p1_tq,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+tqai,aurora_0p1_tq,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+tqai,aurora_0p1_tq,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+tqai,aurora_0p1_tq,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+tqai,aurora_0p1_tq,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+tqai,aurora_0p1_tq,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+tqai,aurora_0p1_tq,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+tqai,aurora_0p1_tq,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+tqai,aurora_0p1_tq,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+tqai,aurora_0p1_tq,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+tqai,aurora_0p1_tq,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+tqai,aurora_0p1_tq,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+tqai,aurora_0p1_tq,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+tqai,aurora_0p1_tq,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+tqai,aurora_0p1_tq,1000hpa U wind component,u1000hpa,m/s,km/h | mph,气压层1000hpa风速U分量
+tqai,aurora_0p1_tq,925hpa U wind component,u925hpa,m/s,km/h | mph,气压层925hpa风速U分量
+tqai,aurora_0p1_tq,850hpa U wind component,u850hpa,m/s,km/h | mph,气压层850hpa风速U分量
+tqai,aurora_0p1_tq,700hpa U wind component,u700hpa,m/s,km/h | mph,气压层700hpa风速U分量
+tqai,aurora_0p1_tq,600hpa U wind component,u600hpa,m/s,km/h | mph,气压层600hpa风速U分量
+tqai,aurora_0p1_tq,500hpa U wind component,u500hpa,m/s,km/h | mph,气压层500hpa风速U分量
+tqai,aurora_0p1_tq,400hpa U wind component,u400hpa,m/s,km/h | mph,气压层400hpa风速U分量
+tqai,aurora_0p1_tq,300hpa U wind component,u300hpa,m/s,km/h | mph,气压层300hpa风速U分量
+tqai,aurora_0p1_tq,250hpa U wind component,u250hpa,m/s,km/h | mph,气压层250hpa风速U分量
+tqai,aurora_0p1_tq,200hpa U wind component,u200hpa,m/s,km/h | mph,气压层200hpa风速U分量
+tqai,aurora_0p1_tq,150hpa U wind component,u150hpa,m/s,km/h | mph,气压层150hpa风速U分量
+tqai,aurora_0p1_tq,100hpa U wind component,u100hpa,m/s,km/h | mph,气压层100hpa风速U分量
+tqai,aurora_0p1_tq,50hpa U wind component,u50hpa,m/s,km/h | mph,气压层50hpa风速U分量
+tqai,aurora_0p1_tq,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+tqai,aurora_0p1_tq,1000hpa V wind component,v1000hpa,m/s,km/h | mph,气压层1000hpa风速V分量
+tqai,aurora_0p1_tq,925hpa V wind component,v925hpa,m/s,km/h | mph,气压层925hpa风速V分量
+tqai,aurora_0p1_tq,850hpa V wind component,v850hpa,m/s,km/h | mph,气压层850hpa风速V分量
+tqai,aurora_0p1_tq,700hpa V wind component,v700hpa,m/s,km/h | mph,气压层700hpa风速V分量
+tqai,aurora_0p1_tq,600hpa V wind component,v600hpa,m/s,km/h | mph,气压层600hpa风速V分量
+tqai,aurora_0p1_tq,500hpa V wind component,v500hpa,m/s,km/h | mph,气压层500hpa风速V分量
+tqai,aurora_0p1_tq,400hpa V wind component,v400hpa,m/s,km/h | mph,气压层400hpa风速V分量
+tqai,aurora_0p1_tq,300hpa V wind component,v300hpa,m/s,km/h | mph,气压层300hpa风速V分量
+tqai,aurora_0p1_tq,250hpa V wind component,v250hpa,m/s,km/h | mph,气压层250hpa风速V分量
+tqai,aurora_0p1_tq,200hpa V wind component,v200hpa,m/s,km/h | mph,气压层200hpa风速V分量
+tqai,aurora_0p1_tq,150hpa V wind component,v150hpa,m/s,km/h | mph,气压层150hpa风速V分量
+tqai,aurora_0p1_tq,100hpa V wind component,v100hpa,m/s,km/h | mph,气压层100hpa风速V分量
+tqai,aurora_0p1_tq,50hpa V wind component,v50hpa,m/s,km/h | mph,气压层50hpa风速V分量
+tqai,aurora_0p1_tq,wind speed 1000hpa,ws1000hpa,m/s,km/h | mph,[预处理]气压层1000hpa风速
+tqai,aurora_0p1_tq,wind direction 1000hpa,wd1000hpa,degree,rad,[预处理]气压层1000hpa风向
+tqai,aurora_0p1_tq,wind speed 925hpa,ws925hpa,m/s,km/h | mph,[预处理]气压层925hpa风速
+tqai,aurora_0p1_tq,wind direction 925hpa,wd925hpa,degree,rad,[预处理]气压层925hpa风向
+tqai,aurora_0p1_tq,wind speed 850hpa,ws850hpa,m/s,km/h | mph,[预处理]气压层850hpa风速
+tqai,aurora_0p1_tq,wind direction 850hpa,wd850hpa,degree,rad,[预处理]气压层850hpa风向
+tqai,aurora_0p1_tq,wind speed 700hpa,ws700hpa,m/s,km/h | mph,[预处理]气压层700hpa风速
+tqai,aurora_0p1_tq,wind direction 700hpa,wd700hpa,degree,rad,[预处理]气压层700hpa风向
+tqai,aurora_0p1_tq,wind speed 600hpa,ws600hpa,m/s,km/h | mph,[预处理]气压层600hpa风速
+tqai,aurora_0p1_tq,wind direction 600hpa,wd600hpa,degree,rad,[预处理]气压层600hpa风向
+tqai,aurora_0p1_tq,wind speed 500hpa,ws500hpa,m/s,km/h | mph,[预处理]气压层500hpa风速
+tqai,aurora_0p1_tq,wind direction 500hpa,wd500hpa,degree,rad,[预处理]气压层500hpa风向
+tqai,aurora_0p1_tq,wind speed 400hpa,ws400hpa,m/s,km/h | mph,[预处理]气压层400hpa风速
+tqai,aurora_0p1_tq,wind direction 400hpa,wd400hpa,degree,rad,[预处理]气压层400hpa风向
+tqai,aurora_0p1_tq,wind speed 300hpa,ws300hpa,m/s,km/h | mph,[预处理]气压层300hpa风速
+tqai,aurora_0p1_tq,wind direction 300hpa,wd300hpa,degree,rad,[预处理]气压层300hpa风向
+tqai,aurora_0p1_tq,wind speed 250hpa,ws250hpa,m/s,km/h | mph,[预处理]气压层250hpa风速
+tqai,aurora_0p1_tq,wind direction 250hpa,wd250hpa,degree,rad,[预处理]气压层250hpa风向
+tqai,aurora_0p1_tq,wind speed 200hpa,ws200hpa,m/s,km/h | mph,[预处理]气压层200hpa风速
+tqai,aurora_0p1_tq,wind direction 200hpa,wd200hpa,degree,rad,[预处理]气压层200hpa风向
+tqai,aurora_0p1_tq,wind speed 150hpa,ws150hpa,m/s,km/h | mph,[预处理]气压层150hpa风速
+tqai,aurora_0p1_tq,wind direction 150hpa,wd150hpa,degree,rad,[预处理]气压层150hpa风向
+tqai,aurora_0p1_tq,wind speed 100hpa,ws100hpa,m/s,km/h | mph,[预处理]气压层100hpa风速
+tqai,aurora_0p1_tq,wind direction 100hpa,wd100hpa,degree,rad,[预处理]气压层100hpa风向
+tqai,aurora_0p1_tq,wind speed 50hpa,ws50hpa,m/s,km/h | mph,[预处理]气压层50hpa风速
+tqai,aurora_0p1_tq,wind direction 50hpa,wd50hpa,degree,rad,[预处理]气压层50hpa风向
+tqai,aurora_0p1_tq,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+tqai,aurora_0p1_tq,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+tqai,aurora_0p1_tq,pressure reduced to MSL,prmsl,Pa,hPa | kPa | MPa,海平面气压
+tqai,aurora_0p1_tq,1000hpa specific humidity,q1000hpa,kg/kg,,气压层1000hpa比湿
+tqai,aurora_0p1_tq,925hpa specific humidity,q925hpa,kg/kg,,气压层925hpa比湿
+tqai,aurora_0p1_tq,850hpa specific humidity,q850hpa,kg/kg,,气压层850hpa比湿
+tqai,aurora_0p1_tq,700hpa specific humidity,q700hpa,kg/kg,,气压层700hpa比湿
+tqai,aurora_0p1_tq,600hpa specific humidity,q600hpa,kg/kg,,气压层600hpa比湿
+tqai,aurora_0p1_tq,500hpa specific humidity,q500hpa,kg/kg,,气压层500hpa比湿
+tqai,aurora_0p1_tq,400hpa specific humidity,q400hpa,kg/kg,,气压层400hpa比湿
+tqai,aurora_0p1_tq,300hpa specific humidity,q300hpa,kg/kg,,气压层300hpa比湿
+tqai,aurora_0p1_tq,250hpa specific humidity,q250hpa,kg/kg,,气压层250hpa比湿
+tqai,aurora_0p1_tq,200hpa specific humidity,q200hpa,kg/kg,,气压层200hpa比湿
+tqai,aurora_0p1_tq,150hpa specific humidity,q150hpa,kg/kg,,气压层150hpa比湿
+tqai,aurora_0p1_tq,100hpa specific humidity,q100hpa,kg/kg,,气压层100hpa比湿
+tqai,aurora_0p1_tq,50hpa specific humidity,q50hpa,kg/kg,,气压层50hpa比湿
+tqai,aurora_0p1_tq,cloud cover total,tcc,%,"[0,1]",[预处理]总体云覆盖率
+tqai,aurora_0p1_tq,cloud cover low,lcc,%,"[0,1]",[预处理]低空云覆盖率
+tqai,aurora_0p1_tq,cloud cover mid,mcc,%,"[0,1]",[预处理]中空云覆盖率
+tqai,aurora_0p1_tq,cloud cover high,hcc,%,"[0,1]",[预处理]高空云覆盖率
+tqai,aurora_0p1_tq,1000hpa geopotential height,z1000hpa,m,mm | inch,气压层1000hpa位势高度
+tqai,aurora_0p1_tq,925hpa geopotential height,z925hpa,m,mm | inch,气压层925hpa位势高度
+tqai,aurora_0p1_tq,850hpa geopotential height,z850hpa,m,mm | inch,气压层850hpa位势高度
+tqai,aurora_0p1_tq,700hpa geopotential height,z700hpa,m,mm | inch,气压层700hpa位势高度
+tqai,aurora_0p1_tq,600hpa geopotential height,z600hpa,m,mm | inch,气压层600hpa位势高度
+tqai,aurora_0p1_tq,500hpa geopotential height,z500hpa,m,mm | inch,气压层500hpa位势高度
+tqai,aurora_0p1_tq,400hpa geopotential height,z400hpa,m,mm | inch,气压层400hpa位势高度
+tqai,aurora_0p1_tq,300hpa geopotential height,z300hpa,m,mm | inch,气压层300hpa位势高度
+tqai,aurora_0p1_tq,250hpa geopotential height,z250hpa,m,mm | inch,气压层250hpa位势高度
+tqai,aurora_0p1_tq,200hpa geopotential height,z200hpa,m,mm | inch,气压层200hpa位势高度
+tqai,aurora_0p1_tq,150hpa geopotential height,z150hpa,m,mm | inch,气压层150hpa位势高度
+tqai,aurora_0p1_tq,100hpa geopotential height,z100hpa,m,mm | inch,气压层100hpa位势高度
+tqai,aurora_0p1_tq,50hpa geopotential height,z50hpa,m,mm | inch,气压层50hpa位势高度
+tqai,aurora_tq,2 metre temperature,t2m,K,C | F,地面2米气温
+tqai,aurora_tq,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+tqai,aurora_tq,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+tqai,aurora_tq,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+tqai,aurora_tq,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+tqai,aurora_tq,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+tqai,aurora_tq,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+tqai,aurora_tq,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+tqai,aurora_tq,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+tqai,aurora_tq,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+tqai,aurora_tq,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+tqai,aurora_tq,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+tqai,aurora_tq,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+tqai,aurora_tq,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+tqai,aurora_tq,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+tqai,aurora_tq,1000hpa U wind component,u1000hpa,m/s,km/h | mph,气压层1000hpa风速U分量
+tqai,aurora_tq,925hpa U wind component,u925hpa,m/s,km/h | mph,气压层925hpa风速U分量
+tqai,aurora_tq,850hpa U wind component,u850hpa,m/s,km/h | mph,气压层850hpa风速U分量
+tqai,aurora_tq,700hpa U wind component,u700hpa,m/s,km/h | mph,气压层700hpa风速U分量
+tqai,aurora_tq,600hpa U wind component,u600hpa,m/s,km/h | mph,气压层600hpa风速U分量
+tqai,aurora_tq,500hpa U wind component,u500hpa,m/s,km/h | mph,气压层500hpa风速U分量
+tqai,aurora_tq,400hpa U wind component,u400hpa,m/s,km/h | mph,气压层400hpa风速U分量
+tqai,aurora_tq,300hpa U wind component,u300hpa,m/s,km/h | mph,气压层300hpa风速U分量
+tqai,aurora_tq,250hpa U wind component,u250hpa,m/s,km/h | mph,气压层250hpa风速U分量
+tqai,aurora_tq,200hpa U wind component,u200hpa,m/s,km/h | mph,气压层200hpa风速U分量
+tqai,aurora_tq,150hpa U wind component,u150hpa,m/s,km/h | mph,气压层150hpa风速U分量
+tqai,aurora_tq,100hpa U wind component,u100hpa,m/s,km/h | mph,气压层100hpa风速U分量
+tqai,aurora_tq,50hpa U wind component,u50hpa,m/s,km/h | mph,气压层50hpa风速U分量
+tqai,aurora_tq,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+tqai,aurora_tq,1000hpa V wind component,v1000hpa,m/s,km/h | mph,气压层1000hpa风速V分量
+tqai,aurora_tq,925hpa V wind component,v925hpa,m/s,km/h | mph,气压层925hpa风速V分量
+tqai,aurora_tq,850hpa V wind component,v850hpa,m/s,km/h | mph,气压层850hpa风速V分量
+tqai,aurora_tq,700hpa V wind component,v700hpa,m/s,km/h | mph,气压层700hpa风速V分量
+tqai,aurora_tq,600hpa V wind component,v600hpa,m/s,km/h | mph,气压层600hpa风速V分量
+tqai,aurora_tq,500hpa V wind component,v500hpa,m/s,km/h | mph,气压层500hpa风速V分量
+tqai,aurora_tq,400hpa V wind component,v400hpa,m/s,km/h | mph,气压层400hpa风速V分量
+tqai,aurora_tq,300hpa V wind component,v300hpa,m/s,km/h | mph,气压层300hpa风速V分量
+tqai,aurora_tq,250hpa V wind component,v250hpa,m/s,km/h | mph,气压层250hpa风速V分量
+tqai,aurora_tq,200hpa V wind component,v200hpa,m/s,km/h | mph,气压层200hpa风速V分量
+tqai,aurora_tq,150hpa V wind component,v150hpa,m/s,km/h | mph,气压层150hpa风速V分量
+tqai,aurora_tq,100hpa V wind component,v100hpa,m/s,km/h | mph,气压层100hpa风速V分量
+tqai,aurora_tq,50hpa V wind component,v50hpa,m/s,km/h | mph,气压层50hpa风速V分量
+tqai,aurora_tq,wind speed 1000hpa,ws1000hpa,m/s,km/h | mph,[预处理]气压层1000hpa风速
+tqai,aurora_tq,wind direction 1000hpa,wd1000hpa,degree,rad,[预处理]气压层1000hpa风向
+tqai,aurora_tq,wind speed 925hpa,ws925hpa,m/s,km/h | mph,[预处理]气压层925hpa风速
+tqai,aurora_tq,wind direction 925hpa,wd925hpa,degree,rad,[预处理]气压层925hpa风向
+tqai,aurora_tq,wind speed 850hpa,ws850hpa,m/s,km/h | mph,[预处理]气压层850hpa风速
+tqai,aurora_tq,wind direction 850hpa,wd850hpa,degree,rad,[预处理]气压层850hpa风向
+tqai,aurora_tq,wind speed 700hpa,ws700hpa,m/s,km/h | mph,[预处理]气压层700hpa风速
+tqai,aurora_tq,wind direction 700hpa,wd700hpa,degree,rad,[预处理]气压层700hpa风向
+tqai,aurora_tq,wind speed 600hpa,ws600hpa,m/s,km/h | mph,[预处理]气压层600hpa风速
+tqai,aurora_tq,wind direction 600hpa,wd600hpa,degree,rad,[预处理]气压层600hpa风向
+tqai,aurora_tq,wind speed 500hpa,ws500hpa,m/s,km/h | mph,[预处理]气压层500hpa风速
+tqai,aurora_tq,wind direction 500hpa,wd500hpa,degree,rad,[预处理]气压层500hpa风向
+tqai,aurora_tq,wind speed 400hpa,ws400hpa,m/s,km/h | mph,[预处理]气压层400hpa风速
+tqai,aurora_tq,wind direction 400hpa,wd400hpa,degree,rad,[预处理]气压层400hpa风向
+tqai,aurora_tq,wind speed 300hpa,ws300hpa,m/s,km/h | mph,[预处理]气压层300hpa风速
+tqai,aurora_tq,wind direction 300hpa,wd300hpa,degree,rad,[预处理]气压层300hpa风向
+tqai,aurora_tq,wind speed 250hpa,ws250hpa,m/s,km/h | mph,[预处理]气压层250hpa风速
+tqai,aurora_tq,wind direction 250hpa,wd250hpa,degree,rad,[预处理]气压层250hpa风向
+tqai,aurora_tq,wind speed 200hpa,ws200hpa,m/s,km/h | mph,[预处理]气压层200hpa风速
+tqai,aurora_tq,wind direction 200hpa,wd200hpa,degree,rad,[预处理]气压层200hpa风向
+tqai,aurora_tq,wind speed 150hpa,ws150hpa,m/s,km/h | mph,[预处理]气压层150hpa风速
+tqai,aurora_tq,wind direction 150hpa,wd150hpa,degree,rad,[预处理]气压层150hpa风向
+tqai,aurora_tq,wind speed 100hpa,ws100hpa,m/s,km/h | mph,[预处理]气压层100hpa风速
+tqai,aurora_tq,wind direction 100hpa,wd100hpa,degree,rad,[预处理]气压层100hpa风向
+tqai,aurora_tq,wind speed 50hpa,ws50hpa,m/s,km/h | mph,[预处理]气压层50hpa风速
+tqai,aurora_tq,wind direction 50hpa,wd50hpa,degree,rad,[预处理]气压层50hpa风向
+tqai,aurora_tq,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+tqai,aurora_tq,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+tqai,aurora_tq,pressure reduced to MSL,prmsl,Pa,hPa | kPa | MPa,海平面气压
+tqai,aurora_tq,1000hpa specific humidity,q1000hpa,kg/kg,,气压层1000hpa比湿
+tqai,aurora_tq,925hpa specific humidity,q925hpa,kg/kg,,气压层925hpa比湿
+tqai,aurora_tq,850hpa specific humidity,q850hpa,kg/kg,,气压层850hpa比湿
+tqai,aurora_tq,700hpa specific humidity,q700hpa,kg/kg,,气压层700hpa比湿
+tqai,aurora_tq,600hpa specific humidity,q600hpa,kg/kg,,气压层600hpa比湿
+tqai,aurora_tq,500hpa specific humidity,q500hpa,kg/kg,,气压层500hpa比湿
+tqai,aurora_tq,400hpa specific humidity,q400hpa,kg/kg,,气压层400hpa比湿
+tqai,aurora_tq,300hpa specific humidity,q300hpa,kg/kg,,气压层300hpa比湿
+tqai,aurora_tq,250hpa specific humidity,q250hpa,kg/kg,,气压层250hpa比湿
+tqai,aurora_tq,200hpa specific humidity,q200hpa,kg/kg,,气压层200hpa比湿
+tqai,aurora_tq,150hpa specific humidity,q150hpa,kg/kg,,气压层150hpa比湿
+tqai,aurora_tq,100hpa specific humidity,q100hpa,kg/kg,,气压层100hpa比湿
+tqai,aurora_tq,50hpa specific humidity,q50hpa,kg/kg,,气压层50hpa比湿
+tqai,aurora_tq,cloud cover total,tcc,%,"[0,1]",[预处理]总体云覆盖率
+tqai,aurora_tq,cloud cover low,lcc,%,"[0,1]",[预处理]低空云覆盖率
+tqai,aurora_tq,cloud cover mid,mcc,%,"[0,1]",[预处理]中空云覆盖率
+tqai,aurora_tq,cloud cover high,hcc,%,"[0,1]",[预处理]高空云覆盖率
+tqai,aurora_tq,1000hpa geopotential height,z1000hpa,m,mm | inch,气压层1000hpa位势高度
+tqai,aurora_tq,925hpa geopotential height,z925hpa,m,mm | inch,气压层925hpa位势高度
+tqai,aurora_tq,850hpa geopotential height,z850hpa,m,mm | inch,气压层850hpa位势高度
+tqai,aurora_tq,700hpa geopotential height,z700hpa,m,mm | inch,气压层700hpa位势高度
+tqai,aurora_tq,600hpa geopotential height,z600hpa,m,mm | inch,气压层600hpa位势高度
+tqai,aurora_tq,500hpa geopotential height,z500hpa,m,mm | inch,气压层500hpa位势高度
+tqai,aurora_tq,400hpa geopotential height,z400hpa,m,mm | inch,气压层400hpa位势高度
+tqai,aurora_tq,300hpa geopotential height,z300hpa,m,mm | inch,气压层300hpa位势高度
+tqai,aurora_tq,250hpa geopotential height,z250hpa,m,mm | inch,气压层250hpa位势高度
+tqai,aurora_tq,200hpa geopotential height,z200hpa,m,mm | inch,气压层200hpa位势高度
+tqai,aurora_tq,150hpa geopotential height,z150hpa,m,mm | inch,气压层150hpa位势高度
+tqai,aurora_tq,100hpa geopotential height,z100hpa,m,mm | inch,气压层100hpa位势高度
+tqai,aurora_tq,50hpa geopotential height,z50hpa,m,mm | inch,气压层50hpa位势高度
+tqai,fcnv2sm_tq,2 metre temperature,t2m,K,C | F,地面2米气温
+tqai,fcnv2sm_tq,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+tqai,fcnv2sm_tq,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+tqai,fcnv2sm_tq,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+tqai,fcnv2sm_tq,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+tqai,fcnv2sm_tq,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+tqai,fcnv2sm_tq,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+tqai,fcnv2sm_tq,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+tqai,fcnv2sm_tq,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+tqai,fcnv2sm_tq,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+tqai,fcnv2sm_tq,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+tqai,fcnv2sm_tq,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+tqai,fcnv2sm_tq,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+tqai,fcnv2sm_tq,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+tqai,fcnv2sm_tq,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+tqai,fcnv2sm_tq,100m U wind component,u100,m/s,km/h | mph,地表100米风速U分量
+tqai,fcnv2sm_tq,1000hpa U wind component,u1000hpa,m/s,km/h | mph,气压层1000hpa风速U分量
+tqai,fcnv2sm_tq,925hpa U wind component,u925hpa,m/s,km/h | mph,气压层925hpa风速U分量
+tqai,fcnv2sm_tq,850hpa U wind component,u850hpa,m/s,km/h | mph,气压层850hpa风速U分量
+tqai,fcnv2sm_tq,700hpa U wind component,u700hpa,m/s,km/h | mph,气压层700hpa风速U分量
+tqai,fcnv2sm_tq,600hpa U wind component,u600hpa,m/s,km/h | mph,气压层600hpa风速U分量
+tqai,fcnv2sm_tq,500hpa U wind component,u500hpa,m/s,km/h | mph,气压层500hpa风速U分量
+tqai,fcnv2sm_tq,400hpa U wind component,u400hpa,m/s,km/h | mph,气压层400hpa风速U分量
+tqai,fcnv2sm_tq,300hpa U wind component,u300hpa,m/s,km/h | mph,气压层300hpa风速U分量
+tqai,fcnv2sm_tq,250hpa U wind component,u250hpa,m/s,km/h | mph,气压层250hpa风速U分量
+tqai,fcnv2sm_tq,200hpa U wind component,u200hpa,m/s,km/h | mph,气压层200hpa风速U分量
+tqai,fcnv2sm_tq,150hpa U wind component,u150hpa,m/s,km/h | mph,气压层150hpa风速U分量
+tqai,fcnv2sm_tq,100hpa U wind component,u100hpa,m/s,km/h | mph,气压层100hpa风速U分量
+tqai,fcnv2sm_tq,50hpa U wind component,u50hpa,m/s,km/h | mph,气压层50hpa风速U分量
+tqai,fcnv2sm_tq,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+tqai,fcnv2sm_tq,100m V wind component,v100,m/s,km/h | mph,地表100米风速V分量
+tqai,fcnv2sm_tq,1000hpa V wind component,v1000hpa,m/s,km/h | mph,气压层1000hpa风速V分量
+tqai,fcnv2sm_tq,925hpa V wind component,v925hpa,m/s,km/h | mph,气压层925hpa风速V分量
+tqai,fcnv2sm_tq,850hpa V wind component,v850hpa,m/s,km/h | mph,气压层850hpa风速V分量
+tqai,fcnv2sm_tq,700hpa V wind component,v700hpa,m/s,km/h | mph,气压层700hpa风速V分量
+tqai,fcnv2sm_tq,600hpa V wind component,v600hpa,m/s,km/h | mph,气压层600hpa风速V分量
+tqai,fcnv2sm_tq,500hpa V wind component,v500hpa,m/s,km/h | mph,气压层500hpa风速V分量
+tqai,fcnv2sm_tq,400hpa V wind component,v400hpa,m/s,km/h | mph,气压层400hpa风速V分量
+tqai,fcnv2sm_tq,300hpa V wind component,v300hpa,m/s,km/h | mph,气压层300hpa风速V分量
+tqai,fcnv2sm_tq,250hpa V wind component,v250hpa,m/s,km/h | mph,气压层250hpa风速V分量
+tqai,fcnv2sm_tq,200hpa V wind component,v200hpa,m/s,km/h | mph,气压层200hpa风速V分量
+tqai,fcnv2sm_tq,150hpa V wind component,v150hpa,m/s,km/h | mph,气压层150hpa风速V分量
+tqai,fcnv2sm_tq,100hpa V wind component,v100hpa,m/s,km/h | mph,气压层100hpa风速V分量
+tqai,fcnv2sm_tq,50hpa V wind component,v50hpa,m/s,km/h | mph,气压层50hpa风速V分量
+tqai,fcnv2sm_tq,wind speed 1000hpa,ws1000hpa,m/s,km/h | mph,[预处理]气压层1000hpa风速
+tqai,fcnv2sm_tq,wind direction 1000hpa,wd1000hpa,degree,rad,[预处理]气压层1000hpa风向
+tqai,fcnv2sm_tq,wind speed 925hpa,ws925hpa,m/s,km/h | mph,[预处理]气压层925hpa风速
+tqai,fcnv2sm_tq,wind direction 925hpa,wd925hpa,degree,rad,[预处理]气压层925hpa风向
+tqai,fcnv2sm_tq,wind speed 850hpa,ws850hpa,m/s,km/h | mph,[预处理]气压层850hpa风速
+tqai,fcnv2sm_tq,wind direction 850hpa,wd850hpa,degree,rad,[预处理]气压层850hpa风向
+tqai,fcnv2sm_tq,wind speed 700hpa,ws700hpa,m/s,km/h | mph,[预处理]气压层700hpa风速
+tqai,fcnv2sm_tq,wind direction 700hpa,wd700hpa,degree,rad,[预处理]气压层700hpa风向
+tqai,fcnv2sm_tq,wind speed 600hpa,ws600hpa,m/s,km/h | mph,[预处理]气压层600hpa风速
+tqai,fcnv2sm_tq,wind direction 600hpa,wd600hpa,degree,rad,[预处理]气压层600hpa风向
+tqai,fcnv2sm_tq,wind speed 500hpa,ws500hpa,m/s,km/h | mph,[预处理]气压层500hpa风速
+tqai,fcnv2sm_tq,wind direction 500hpa,wd500hpa,degree,rad,[预处理]气压层500hpa风向
+tqai,fcnv2sm_tq,wind speed 400hpa,ws400hpa,m/s,km/h | mph,[预处理]气压层400hpa风速
+tqai,fcnv2sm_tq,wind direction 400hpa,wd400hpa,degree,rad,[预处理]气压层400hpa风向
+tqai,fcnv2sm_tq,wind speed 300hpa,ws300hpa,m/s,km/h | mph,[预处理]气压层300hpa风速
+tqai,fcnv2sm_tq,wind direction 300hpa,wd300hpa,degree,rad,[预处理]气压层300hpa风向
+tqai,fcnv2sm_tq,wind speed 250hpa,ws250hpa,m/s,km/h | mph,[预处理]气压层250hpa风速
+tqai,fcnv2sm_tq,wind direction 250hpa,wd250hpa,degree,rad,[预处理]气压层250hpa风向
+tqai,fcnv2sm_tq,wind speed 200hpa,ws200hpa,m/s,km/h | mph,[预处理]气压层200hpa风速
+tqai,fcnv2sm_tq,wind direction 200hpa,wd200hpa,degree,rad,[预处理]气压层200hpa风向
+tqai,fcnv2sm_tq,wind speed 150hpa,ws150hpa,m/s,km/h | mph,[预处理]气压层150hpa风速
+tqai,fcnv2sm_tq,wind direction 150hpa,wd150hpa,degree,rad,[预处理]气压层150hpa风向
+tqai,fcnv2sm_tq,wind speed 100hpa,ws100hpa,m/s,km/h | mph,[预处理]气压层100hpa风速
+tqai,fcnv2sm_tq,wind direction 100hpa,wd100hpa,degree,rad,[预处理]气压层100hpa风向
+tqai,fcnv2sm_tq,wind speed 50hpa,ws50hpa,m/s,km/h | mph,[预处理]气压层50hpa风速
+tqai,fcnv2sm_tq,wind direction 50hpa,wd50hpa,degree,rad,[预处理]气压层50hpa风向
+tqai,fcnv2sm_tq,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+tqai,fcnv2sm_tq,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+tqai,fcnv2sm_tq,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地面100米风速
+tqai,fcnv2sm_tq,100 metre wind direction,wd100m,degree,rad,[预处理]地面100米风向
+tqai,fcnv2sm_tq,total column water,tcw,mm,m｜inch,大气总柱水含量指从地面到大气顶端的整个垂直柱状区域中所有形式的水的总含量，包括水蒸气、云水、云冰、雨水和雪等
+tqai,fcnv2sm_tq,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+tqai,fcnv2sm_tq,Mean sea level pressure,msl,Pa,hPa | kPa | MPa,海平面气压
+tqai,fcnv2sm_tq,1000hPa relative humidity,r1000hpa,%,"[0,1]",气压层1000hpa相对湿度
+tqai,fcnv2sm_tq,925hPa relative humidity,r925hPa,%,"[0,1]",气压层925hPa相对湿度
+tqai,fcnv2sm_tq,850hPa relative humidity,r850hPa,%,"[0,1]",气压层850hPa相对湿度
+tqai,fcnv2sm_tq,700hPa relative humidity,r700hPa,%,"[0,1]",气压层700hPa相对湿度
+tqai,fcnv2sm_tq,600hPa relative humidity,r600hPa,%,"[0,1]",气压层600hPa相对湿度
+tqai,fcnv2sm_tq,500hPa relative humidity,r500hPa,%,"[0,1]",气压层500hPa相对湿度
+tqai,fcnv2sm_tq,400hPa relative humidity,r400hPa,%,"[0,1]",气压层400hPa相对湿度
+tqai,fcnv2sm_tq,300hPa relative humidity,r300hPa,%,"[0,1]",气压层300hPa相对湿度
+tqai,fcnv2sm_tq,250hPa relative humidity,r250hPa,%,"[0,1]",气压层250hPa相对湿度
+tqai,fcnv2sm_tq,200hPa relative humidity,r200hPa,%,"[0,1]",气压层200hPa相对湿度
+tqai,fcnv2sm_tq,150hPa relative humidity,r150hPa,%,"[0,1]",气压层150hPa相对湿度
+tqai,fcnv2sm_tq,100hPa relative humidity,r100hPa,%,"[0,1]",气压层100hPa相对湿度
+tqai,fcnv2sm_tq,50hPa relative humidity,r50hPa,%,"[0,1]",气压层50hPa相对湿度
+tqai,fcnv2sm_tq,cloud cover total,tcc,%,"[0,1]",[预处理]总体云覆盖率
+tqai,fcnv2sm_tq,cloud cover low,lcc,%,"[0,1]",[预处理]低空云覆盖率
+tqai,fcnv2sm_tq,cloud cover mid,mcc,%,"[0,1]",[预处理]中空云覆盖率
+tqai,fcnv2sm_tq,cloud cover high,hcc,%,"[0,1]",[预处理]高空云覆盖率
+tqai,fcnv2sm_tq,1000hpa geopotential height,z1000hpa,m,mm | inch,气压层1000hpa位势高度
+tqai,fcnv2sm_tq,925hpa geopotential height,z925hpa,m,mm | inch,气压层925hpa位势高度
+tqai,fcnv2sm_tq,850hpa geopotential height,z850hpa,m,mm | inch,气压层850hpa位势高度
+tqai,fcnv2sm_tq,700hpa geopotential height,z700hpa,m,mm | inch,气压层700hpa位势高度
+tqai,fcnv2sm_tq,600hpa geopotential height,z600hpa,m,mm | inch,气压层600hpa位势高度
+tqai,fcnv2sm_tq,500hpa geopotential height,z500hpa,m,mm | inch,气压层500hpa位势高度
+tqai,fcnv2sm_tq,400hpa geopotential height,z400hpa,m,mm | inch,气压层400hpa位势高度
+tqai,fcnv2sm_tq,300hpa geopotential height,z300hpa,m,mm | inch,气压层300hpa位势高度
+tqai,fcnv2sm_tq,250hpa geopotential height,z250hpa,m,mm | inch,气压层250hpa位势高度
+tqai,fcnv2sm_tq,200hpa geopotential height,z200hpa,m,mm | inch,气压层200hpa位势高度
+tqai,fcnv2sm_tq,150hpa geopotential height,z150hpa,m,mm | inch,气压层150hpa位势高度
+tqai,fcnv2sm_tq,100hpa geopotential height,z100hpa,m,mm | inch,气压层100hpa位势高度
+tqai,fcnv2sm_tq,50hpa geopotential height,z50hpa,m,mm | inch,气压层50hpa位势高度
+tqai,graphcast_tq,2 metre temperature,t2m,K,C | F,地面2米气温
+tqai,graphcast_tq,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+tqai,graphcast_tq,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+tqai,graphcast_tq,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+tqai,graphcast_tq,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+tqai,graphcast_tq,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+tqai,graphcast_tq,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+tqai,graphcast_tq,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+tqai,graphcast_tq,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+tqai,graphcast_tq,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+tqai,graphcast_tq,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+tqai,graphcast_tq,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+tqai,graphcast_tq,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+tqai,graphcast_tq,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+tqai,graphcast_tq,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+tqai,graphcast_tq,1000hpa U wind component,u1000hpa,m/s,km/h | mph,气压层1000hpa风速U分量
+tqai,graphcast_tq,925hpa U wind component,u925hpa,m/s,km/h | mph,气压层925hpa风速U分量
+tqai,graphcast_tq,850hpa U wind component,u850hpa,m/s,km/h | mph,气压层850hpa风速U分量
+tqai,graphcast_tq,700hpa U wind component,u700hpa,m/s,km/h | mph,气压层700hpa风速U分量
+tqai,graphcast_tq,600hpa U wind component,u600hpa,m/s,km/h | mph,气压层600hpa风速U分量
+tqai,graphcast_tq,500hpa U wind component,u500hpa,m/s,km/h | mph,气压层500hpa风速U分量
+tqai,graphcast_tq,400hpa U wind component,u400hpa,m/s,km/h | mph,气压层400hpa风速U分量
+tqai,graphcast_tq,300hpa U wind component,u300hpa,m/s,km/h | mph,气压层300hpa风速U分量
+tqai,graphcast_tq,250hpa U wind component,u250hpa,m/s,km/h | mph,气压层250hpa风速U分量
+tqai,graphcast_tq,200hpa U wind component,u200hpa,m/s,km/h | mph,气压层200hpa风速U分量
+tqai,graphcast_tq,150hpa U wind component,u150hpa,m/s,km/h | mph,气压层150hpa风速U分量
+tqai,graphcast_tq,100hpa U wind component,u100hpa,m/s,km/h | mph,气压层100hpa风速U分量
+tqai,graphcast_tq,50hpa U wind component,u50hpa,m/s,km/h | mph,气压层50hpa风速U分量
+tqai,graphcast_tq,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+tqai,graphcast_tq,1000hpa V wind component,v1000hpa,m/s,km/h | mph,气压层1000hpa风速V分量
+tqai,graphcast_tq,925hpa V wind component,v925hpa,m/s,km/h | mph,气压层925hpa风速V分量
+tqai,graphcast_tq,850hpa V wind component,v850hpa,m/s,km/h | mph,气压层850hpa风速V分量
+tqai,graphcast_tq,700hpa V wind component,v700hpa,m/s,km/h | mph,气压层700hpa风速V分量
+tqai,graphcast_tq,600hpa V wind component,v600hpa,m/s,km/h | mph,气压层600hpa风速V分量
+tqai,graphcast_tq,500hpa V wind component,v500hpa,m/s,km/h | mph,气压层500hpa风速V分量
+tqai,graphcast_tq,400hpa V wind component,v400hpa,m/s,km/h | mph,气压层400hpa风速V分量
+tqai,graphcast_tq,300hpa V wind component,v300hpa,m/s,km/h | mph,气压层300hpa风速V分量
+tqai,graphcast_tq,250hpa V wind component,v250hpa,m/s,km/h | mph,气压层250hpa风速V分量
+tqai,graphcast_tq,200hpa V wind component,v200hpa,m/s,km/h | mph,气压层200hpa风速V分量
+tqai,graphcast_tq,150hpa V wind component,v150hpa,m/s,km/h | mph,气压层150hpa风速V分量
+tqai,graphcast_tq,100hpa V wind component,v100hpa,m/s,km/h | mph,气压层100hpa风速V分量
+tqai,graphcast_tq,50hpa V wind component,v50hpa,m/s,km/h | mph,气压层50hpa风速V分量
+tqai,graphcast_tq,wind speed 1000hpa,ws1000hpa,m/s,km/h | mph,[预处理]气压层1000hpa风速
+tqai,graphcast_tq,wind direction 1000hpa,wd1000hpa,degree,rad,[预处理]气压层1000hpa风向
+tqai,graphcast_tq,wind speed 925hpa,ws925hpa,m/s,km/h | mph,[预处理]气压层925hpa风速
+tqai,graphcast_tq,wind direction 925hpa,wd925hpa,degree,rad,[预处理]气压层925hpa风向
+tqai,graphcast_tq,wind speed 850hpa,ws850hpa,m/s,km/h | mph,[预处理]气压层850hpa风速
+tqai,graphcast_tq,wind direction 850hpa,wd850hpa,degree,rad,[预处理]气压层850hpa风向
+tqai,graphcast_tq,wind speed 700hpa,ws700hpa,m/s,km/h | mph,[预处理]气压层700hpa风速
+tqai,graphcast_tq,wind direction 700hpa,wd700hpa,degree,rad,[预处理]气压层700hpa风向
+tqai,graphcast_tq,wind speed 600hpa,ws600hpa,m/s,km/h | mph,[预处理]气压层600hpa风速
+tqai,graphcast_tq,wind direction 600hpa,wd600hpa,degree,rad,[预处理]气压层600hpa风向
+tqai,graphcast_tq,wind speed 500hpa,ws500hpa,m/s,km/h | mph,[预处理]气压层500hpa风速
+tqai,graphcast_tq,wind direction 500hpa,wd500hpa,degree,rad,[预处理]气压层500hpa风向
+tqai,graphcast_tq,wind speed 400hpa,ws400hpa,m/s,km/h | mph,[预处理]气压层400hpa风速
+tqai,graphcast_tq,wind direction 400hpa,wd400hpa,degree,rad,[预处理]气压层400hpa风向
+tqai,graphcast_tq,wind speed 300hpa,ws300hpa,m/s,km/h | mph,[预处理]气压层300hpa风速
+tqai,graphcast_tq,wind direction 300hpa,wd300hpa,degree,rad,[预处理]气压层300hpa风向
+tqai,graphcast_tq,wind speed 250hpa,ws250hpa,m/s,km/h | mph,[预处理]气压层250hpa风速
+tqai,graphcast_tq,wind direction 250hpa,wd250hpa,degree,rad,[预处理]气压层250hpa风向
+tqai,graphcast_tq,wind speed 200hpa,ws200hpa,m/s,km/h | mph,[预处理]气压层200hpa风速
+tqai,graphcast_tq,wind direction 200hpa,wd200hpa,degree,rad,[预处理]气压层200hpa风向
+tqai,graphcast_tq,wind speed 150hpa,ws150hpa,m/s,km/h | mph,[预处理]气压层150hpa风速
+tqai,graphcast_tq,wind direction 150hpa,wd150hpa,degree,rad,[预处理]气压层150hpa风向
+tqai,graphcast_tq,wind speed 100hpa,ws100hpa,m/s,km/h | mph,[预处理]气压层100hpa风速
+tqai,graphcast_tq,wind direction 100hpa,wd100hpa,degree,rad,[预处理]气压层100hpa风向
+tqai,graphcast_tq,wind speed 50hpa,ws50hpa,m/s,km/h | mph,[预处理]气压层50hpa风速
+tqai,graphcast_tq,wind direction 50hpa,wd50hpa,degree,rad,[预处理]气压层50hpa风向
+tqai,graphcast_tq,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+tqai,graphcast_tq,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+tqai,graphcast_tq,Mean sea level pressure,msl,Pa,hPa | kPa | MPa,海平面气压
+tqai,graphcast_tq,1000hpa vertical verlocity,w1000hpa,m/s,km/h | mph,气压层1000hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,925hpa vertical verlocity,w925hpa,m/s,km/h | mph,气压层925hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,850hpa vertical verlocity,w850hpa,m/s,km/h | mph,气压层850hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,700hpa vertical verlocity,w700hpa,m/s,km/h | mph,气压层700hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,600hpa vertical verlocity,w600hpa,m/s,km/h | mph,气压层600hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,500hpa vertical verlocity,w500hpa,m/s,km/h | mph,气压层500hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,400hpa vertical verlocity,w400hpa,m/s,km/h | mph,气压层400hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,300hpa vertical verlocity,w300hpa,m/s,km/h | mph,气压层300hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,250hpa vertical verlocity,w250hpa,m/s,km/h | mph,气压层250hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,200hpa vertical verlocity,w200hpa,m/s,km/h | mph,气压层200hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,150hpa vertical verlocity,w150hpa,m/s,km/h | mph,气压层150hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,100hpa vertical verlocity,w100hpa,m/s,km/h | mph,气压层100hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,50hpa vertical verlocity,w50hpa,m/s,km/h | mph,气压层50hpa垂直速度，指大气中空气质点在垂直方向上的速度
+tqai,graphcast_tq,1000hpa specific humidity,q1000hpa,kg/kg,,气压层1000hpa比湿
+tqai,graphcast_tq,925hpa specific humidity,q925hpa,kg/kg,,气压层925hpa比湿
+tqai,graphcast_tq,850hpa specific humidity,q850hpa,kg/kg,,气压层850hpa比湿
+tqai,graphcast_tq,700hpa specific humidity,q700hpa,kg/kg,,气压层700hpa比湿
+tqai,graphcast_tq,600hpa specific humidity,q600hpa,kg/kg,,气压层600hpa比湿
+tqai,graphcast_tq,500hpa specific humidity,q500hpa,kg/kg,,气压层500hpa比湿
+tqai,graphcast_tq,400hpa specific humidity,q400hpa,kg/kg,,气压层400hpa比湿
+tqai,graphcast_tq,300hpa specific humidity,q300hpa,kg/kg,,气压层300hpa比湿
+tqai,graphcast_tq,250hpa specific humidity,q250hpa,kg/kg,,气压层250hpa比湿
+tqai,graphcast_tq,200hpa specific humidity,q200hpa,kg/kg,,气压层200hpa比湿
+tqai,graphcast_tq,150hpa specific humidity,q150hpa,kg/kg,,气压层150hpa比湿
+tqai,graphcast_tq,100hpa specific humidity,q100hpa,kg/kg,,气压层100hpa比湿
+tqai,graphcast_tq,50hpa specific humidity,q50hpa,kg/kg,,气压层50hpa比湿
+tqai,graphcast_tq,cloud cover total,tcc,%,"[0,1]",[预处理]总体云覆盖率
+tqai,graphcast_tq,cloud cover low,lcc,%,"[0,1]",[预处理]低空云覆盖率
+tqai,graphcast_tq,cloud cover mid,mcc,%,"[0,1]",[预处理]中空云覆盖率
+tqai,graphcast_tq,cloud cover high,hcc,%,"[0,1]",[预处理]高空云覆盖率
+tqai,graphcast_tq,1000hpa geopotential height,z1000hpa,m,mm | inch,气压层1000hpa位势高度
+tqai,graphcast_tq,925hpa geopotential height,z925hpa,m,mm | inch,气压层925hpa位势高度
+tqai,graphcast_tq,850hpa geopotential height,z850hpa,m,mm | inch,气压层850hpa位势高度
+tqai,graphcast_tq,700hpa geopotential height,z700hpa,m,mm | inch,气压层700hpa位势高度
+tqai,graphcast_tq,600hpa geopotential height,z600hpa,m,mm | inch,气压层600hpa位势高度
+tqai,graphcast_tq,500hpa geopotential height,z500hpa,m,mm | inch,气压层500hpa位势高度
+tqai,graphcast_tq,400hpa geopotential height,z400hpa,m,mm | inch,气压层400hpa位势高度
+tqai,graphcast_tq,300hpa geopotential height,z300hpa,m,mm | inch,气压层300hpa位势高度
+tqai,graphcast_tq,250hpa geopotential height,z250hpa,m,mm | inch,气压层250hpa位势高度
+tqai,graphcast_tq,200hpa geopotential height,z200hpa,m,mm | inch,气压层200hpa位势高度
+tqai,graphcast_tq,150hpa geopotential height,z150hpa,m,mm | inch,气压层150hpa位势高度
+tqai,graphcast_tq,100hpa geopotential height,z100hpa,m,mm | inch,气压层100hpa位势高度
+tqai,graphcast_tq,50hpa geopotential height,z50hpa,m,mm | inch,气压层50hpa位势高度
+tqai,fengwu_tq,2 metre temperature,t2m,K,C | F,地面2米气温
+tqai,fengwu_tq,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+tqai,fengwu_tq,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+tqai,fengwu_tq,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+tqai,fengwu_tq,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+tqai,fengwu_tq,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+tqai,fengwu_tq,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+tqai,fengwu_tq,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+tqai,fengwu_tq,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+tqai,fengwu_tq,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+tqai,fengwu_tq,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+tqai,fengwu_tq,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+tqai,fengwu_tq,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+tqai,fengwu_tq,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+tqai,fengwu_tq,10m U wind component,u10,m/s,km/h | mph,地表10米风速U分量
+tqai,fengwu_tq,1000hpa U wind component,u1000hpa,m/s,km/h | mph,气压层1000hpa风速U分量
+tqai,fengwu_tq,925hpa U wind component,u925hpa,m/s,km/h | mph,气压层925hpa风速U分量
+tqai,fengwu_tq,850hpa U wind component,u850hpa,m/s,km/h | mph,气压层850hpa风速U分量
+tqai,fengwu_tq,700hpa U wind component,u700hpa,m/s,km/h | mph,气压层700hpa风速U分量
+tqai,fengwu_tq,600hpa U wind component,u600hpa,m/s,km/h | mph,气压层600hpa风速U分量
+tqai,fengwu_tq,500hpa U wind component,u500hpa,m/s,km/h | mph,气压层500hpa风速U分量
+tqai,fengwu_tq,400hpa U wind component,u400hpa,m/s,km/h | mph,气压层400hpa风速U分量
+tqai,fengwu_tq,300hpa U wind component,u300hpa,m/s,km/h | mph,气压层300hpa风速U分量
+tqai,fengwu_tq,250hpa U wind component,u250hpa,m/s,km/h | mph,气压层250hpa风速U分量
+tqai,fengwu_tq,200hpa U wind component,u200hpa,m/s,km/h | mph,气压层200hpa风速U分量
+tqai,fengwu_tq,150hpa U wind component,u150hpa,m/s,km/h | mph,气压层150hpa风速U分量
+tqai,fengwu_tq,100hpa U wind component,u100hpa,m/s,km/h | mph,气压层100hpa风速U分量
+tqai,fengwu_tq,50hpa U wind component,u50hpa,m/s,km/h | mph,气压层50hpa风速U分量
+tqai,fengwu_tq,10m V wind component,v10,m/s,km/h | mph,地表10米风速V分量
+tqai,fengwu_tq,1000hpa V wind component,v1000hpa,m/s,km/h | mph,气压层1000hpa风速V分量
+tqai,fengwu_tq,925hpa V wind component,v925hpa,m/s,km/h | mph,气压层925hpa风速V分量
+tqai,fengwu_tq,850hpa V wind component,v850hpa,m/s,km/h | mph,气压层850hpa风速V分量
+tqai,fengwu_tq,700hpa V wind component,v700hpa,m/s,km/h | mph,气压层700hpa风速V分量
+tqai,fengwu_tq,600hpa V wind component,v600hpa,m/s,km/h | mph,气压层600hpa风速V分量
+tqai,fengwu_tq,500hpa V wind component,v500hpa,m/s,km/h | mph,气压层500hpa风速V分量
+tqai,fengwu_tq,400hpa V wind component,v400hpa,m/s,km/h | mph,气压层400hpa风速V分量
+tqai,fengwu_tq,300hpa V wind component,v300hpa,m/s,km/h | mph,气压层300hpa风速V分量
+tqai,fengwu_tq,250hpa V wind component,v250hpa,m/s,km/h | mph,气压层250hpa风速V分量
+tqai,fengwu_tq,200hpa V wind component,v200hpa,m/s,km/h | mph,气压层200hpa风速V分量
+tqai,fengwu_tq,150hpa V wind component,v150hpa,m/s,km/h | mph,气压层150hpa风速V分量
+tqai,fengwu_tq,100hpa V wind component,v100hpa,m/s,km/h | mph,气压层100hpa风速V分量
+tqai,fengwu_tq,50hpa V wind component,v50hpa,m/s,km/h | mph,气压层50hpa风速V分量
+tqai,fengwu_tq,wind speed 1000hpa,ws1000hpa,m/s,km/h | mph,[预处理]气压层1000hpa风速
+tqai,fengwu_tq,wind direction 1000hpa,wd1000hpa,degree,rad,[预处理]气压层1000hpa风向
+tqai,fengwu_tq,wind speed 925hpa,ws925hpa,m/s,km/h | mph,[预处理]气压层925hpa风速
+tqai,fengwu_tq,wind direction 925hpa,wd925hpa,degree,rad,[预处理]气压层925hpa风向
+tqai,fengwu_tq,wind speed 850hpa,ws850hpa,m/s,km/h | mph,[预处理]气压层850hpa风速
+tqai,fengwu_tq,wind direction 850hpa,wd850hpa,degree,rad,[预处理]气压层850hpa风向
+tqai,fengwu_tq,wind speed 700hpa,ws700hpa,m/s,km/h | mph,[预处理]气压层700hpa风速
+tqai,fengwu_tq,wind direction 700hpa,wd700hpa,degree,rad,[预处理]气压层700hpa风向
+tqai,fengwu_tq,wind speed 600hpa,ws600hpa,m/s,km/h | mph,[预处理]气压层600hpa风速
+tqai,fengwu_tq,wind direction 600hpa,wd600hpa,degree,rad,[预处理]气压层600hpa风向
+tqai,fengwu_tq,wind speed 500hpa,ws500hpa,m/s,km/h | mph,[预处理]气压层500hpa风速
+tqai,fengwu_tq,wind direction 500hpa,wd500hpa,degree,rad,[预处理]气压层500hpa风向
+tqai,fengwu_tq,wind speed 400hpa,ws400hpa,m/s,km/h | mph,[预处理]气压层400hpa风速
+tqai,fengwu_tq,wind direction 400hpa,wd400hpa,degree,rad,[预处理]气压层400hpa风向
+tqai,fengwu_tq,wind speed 300hpa,ws300hpa,m/s,km/h | mph,[预处理]气压层300hpa风速
+tqai,fengwu_tq,wind direction 300hpa,wd300hpa,degree,rad,[预处理]气压层300hpa风向
+tqai,fengwu_tq,wind speed 250hpa,ws250hpa,m/s,km/h | mph,[预处理]气压层250hpa风速
+tqai,fengwu_tq,wind direction 250hpa,wd250hpa,degree,rad,[预处理]气压层250hpa风向
+tqai,fengwu_tq,wind speed 200hpa,ws200hpa,m/s,km/h | mph,[预处理]气压层200hpa风速
+tqai,fengwu_tq,wind direction 200hpa,wd200hpa,degree,rad,[预处理]气压层200hpa风向
+tqai,fengwu_tq,wind speed 150hpa,ws150hpa,m/s,km/h | mph,[预处理]气压层150hpa风速
+tqai,fengwu_tq,wind direction 150hpa,wd150hpa,degree,rad,[预处理]气压层150hpa风向
+tqai,fengwu_tq,wind speed 100hpa,ws100hpa,m/s,km/h | mph,[预处理]气压层100hpa风速
+tqai,fengwu_tq,wind direction 100hpa,wd100hpa,degree,rad,[预处理]气压层100hpa风向
+tqai,fengwu_tq,wind speed 50hpa,ws50hpa,m/s,km/h | mph,[预处理]气压层50hpa风速
+tqai,fengwu_tq,wind direction 50hpa,wd50hpa,degree,rad,[预处理]气压层50hpa风向
+tqai,fengwu_tq,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地面10米风速
+tqai,fengwu_tq,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+tqai,fengwu_tq,pressure reduced to MSL,prmsl,Pa,hPa | kPa | MPa,海平面气压
+tqai,fengwu_tq,1000hpa specific humidity,q1000hpa,kg/kg,,气压层1000hpa比湿
+tqai,fengwu_tq,925hpa specific humidity,q925hpa,kg/kg,,气压层925hpa比湿
+tqai,fengwu_tq,850hpa specific humidity,q850hpa,kg/kg,,气压层850hpa比湿
+tqai,fengwu_tq,700hpa specific humidity,q700hpa,kg/kg,,气压层700hpa比湿
+tqai,fengwu_tq,600hpa specific humidity,q600hpa,kg/kg,,气压层600hpa比湿
+tqai,fengwu_tq,500hpa specific humidity,q500hpa,kg/kg,,气压层500hpa比湿
+tqai,fengwu_tq,400hpa specific humidity,q400hpa,kg/kg,,气压层400hpa比湿
+tqai,fengwu_tq,300hpa specific humidity,q300hpa,kg/kg,,气压层300hpa比湿
+tqai,fengwu_tq,250hpa specific humidity,q250hpa,kg/kg,,气压层250hpa比湿
+tqai,fengwu_tq,200hpa specific humidity,q200hpa,kg/kg,,气压层200hpa比湿
+tqai,fengwu_tq,150hpa specific humidity,q150hpa,kg/kg,,气压层150hpa比湿
+tqai,fengwu_tq,100hpa specific humidity,q100hpa,kg/kg,,气压层100hpa比湿
+tqai,fengwu_tq,50hpa specific humidity,q50hpa,kg/kg,,气压层50hpa比湿
+tqai,fengwu_tq,cloud cover total,tcc,%,"[0,1]",[预处理]总体云覆盖率
+tqai,fengwu_tq,cloud cover low,lcc,%,"[0,1]",[预处理]低空云覆盖率
+tqai,fengwu_tq,cloud cover mid,mcc,%,"[0,1]",[预处理]中空云覆盖率
+tqai,fengwu_tq,cloud cover high,hcc,%,"[0,1]",[预处理]高空云覆盖率
+tqai,fengwu_tq,1000hpa geopotential height,z1000hpa,m,mm | inch,气压层1000hpa位势高度
+tqai,fengwu_tq,925hpa geopotential height,z925hpa,m,mm | inch,气压层925hpa位势高度
+tqai,fengwu_tq,850hpa geopotential height,z850hpa,m,mm | inch,气压层850hpa位势高度
+tqai,fengwu_tq,700hpa geopotential height,z700hpa,m,mm | inch,气压层700hpa位势高度
+tqai,fengwu_tq,600hpa geopotential height,z600hpa,m,mm | inch,气压层600hpa位势高度
+tqai,fengwu_tq,500hpa geopotential height,z500hpa,m,mm | inch,气压层500hpa位势高度
+tqai,fengwu_tq,400hpa geopotential height,z400hpa,m,mm | inch,气压层400hpa位势高度
+tqai,fengwu_tq,300hpa geopotential height,z300hpa,m,mm | inch,气压层300hpa位势高度
+tqai,fengwu_tq,250hpa geopotential height,z250hpa,m,mm | inch,气压层250hpa位势高度
+tqai,fengwu_tq,200hpa geopotential height,z200hpa,m,mm | inch,气压层200hpa位势高度
+tqai,fengwu_tq,150hpa geopotential height,z150hpa,m,mm | inch,气压层150hpa位势高度
+tqai,fengwu_tq,100hpa geopotential height,z100hpa,m,mm | inch,气压层100hpa位势高度
+tqai,fengwu_tq,50hpa geopotential height,z50hpa,m,mm | inch,气压层50hpa位势高度
+ecbiz,hres_surface,2 metre temperature,t2m,K,C | F,地面2米气温
+ecbiz,hres_surface,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+ecbiz,hres_surface,skin temperature,skt,K,C | F,[预处理]体感温度
+ecbiz,hres_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+ecbiz,hres_surface,sea surface temperature,sst,K,C | F,海平面温度
+ecbiz,hres_surface,10 metre U wind component,u10,m/s,km/h｜ mph,地面10米风U分量
+ecbiz,hres_surface,10 metre V wind component,v10,m/s,km/h｜ mph,地面10米风V分量
+ecbiz,hres_surface,10 metre wind speed,ws10m,m/s,km/h｜ mph,[预处理]地面10米风速
+ecbiz,hres_surface,10 metre wind direction,wd10m,degree,rad,[预处理]地面10米风向
+ecbiz,hres_surface,100 metre U wind component,u100,m/s,km/h｜ mph,地面100米风U分量
+ecbiz,hres_surface,100 metre V wind component,v100,m/s,km/h｜ mph,地面100米风U分量
+ecbiz,hres_surface,100 metre wind speed,ws100m,m/s,km/h｜ mph,[预处理]地面100米风速
+ecbiz,hres_surface,100 metre wind direction,wd100m,degree,rad,[预处理]地面100米风向
+ecbiz,hres_surface,200 metre U wind component,u200,m/s,km/h｜ mph,地面200米风U分量
+ecbiz,hres_surface,200 metre V wind component,v200,m/s,km/h｜ mph,地面200米风V分量
+ecbiz,hres_surface,200 metre wind speed,ws200m,m/s,km/h｜ mph,[预处理]地面200米风速
+ecbiz,hres_surface,200 metre wind direction,wd200m,degree,rad,[预处理]地面200米风向
+ecbiz,hres_surface,maximum 10 metre wind gust in the last 6 hours,p10fg6,m/s,km/h｜ mph,地面10米过去6小时的最大阵风
+ecbiz,hres_surface,maximun 10 metre wind gust since previous post-processing,fg10,m/s,km/h｜ mph,自上次后处理以来地面10米的最大阵风
+ecbiz,hres_surface,total cloud cover,tcc,"[0,1]",%,总云量
+ecbiz,hres_surface,low cloud cover,lcc,"[0,1]",%,低层云量
+ecbiz,hres_surface,mid cloud cover,mcc,"[0,1]",%,中层云量
+ecbiz,hres_surface,high cloud cover,hcc,"[0,1]",%,高层云量
+ecbiz,hres_surface,surface net short-wave (solar) radiation accumulated,ssr-acc,J/m^2,,[原始累积值] 地表净短波（太阳）辐射
+ecbiz,hres_surface,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射
+ecbiz,hres_surface,direct solar radiation accumulated,dsrp-acc,J/m^2,,[原始累积值] 太阳直射辐射
+ecbiz,hres_surface,total sky direct short-wave (solar) radiation at surface accumulated,fdir-acc,J/m^2,,[原始累积值]全天太阳短波表面直射辐射
+ecbiz,hres_surface,photosynthetically active radiation accumulated,par-acc,J/m^2,,[原始累积值]光合有效辐照
+ecbiz,hres_surface,surface net short-wave (solar) radiation,ssr,W/m^2,,[预处理] 地表净短波（太阳）辐射
+ecbiz,hres_surface,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射
+ecbiz,hres_surface,direct solar radiation,dsrp,W/m^2,,[预处理] 太阳直射辐射
+ecbiz,hres_surface,total sky direct short-wave (solar) radiation at surface,fdir,W/m^2,,[预处理]全天太阳短波表面直射辐射
+ecbiz,hres_surface,photosynthetically active radiation,par,W/m^2,,[预处理]光合有效辐照
+ecbiz,hres_surface,"Surface direct short-wave radiation, clear sky accumulated",cdir-acc,J/m^2,,[原始累积值]净空地表直接短波（太阳）辐射
+ecbiz,hres_surface,"Surface net short-wave (solar) radiation, clear sky accumulated",ssrc-acc,J/m^2,,[原始累积值] 净空地表净短波（太阳）辐射
+ecbiz,hres_surface,"Surface direct short-wave radiation, clear sky",cdir,W/m^2,,[预处理] 净空地表直接短波（太阳）辐射
+ecbiz,hres_surface,"Surface net short-wave (solar) radiation, clear sky",ssrc,W/m^2,,[预处理] 净空地表净短波（太阳）辐射
+ecbiz,hres_surface,total precipitation accumulated,tp-acc,m,mm｜inch,[原始累积值]总降水
+ecbiz,hres_surface,total precipitation,tp,mm,m | inch,[预处理]一小时内总降水
+ecbiz,hres_surface,total column water vapour,tcwv,mm,m｜inch,大气总柱水汽含量
+ecbiz,hres_surface,water equivalent snowfall,sf-acc,m,mm | inch,[原始累积值]降雪等量水的深度
+ecbiz,hres_surface,water equivalent snowfall,sf,mm,m | inch,[预处理]降雪等量水的深度
+ecbiz,hres_surface,snow depth m of water equivalent,sd,m,mm | inch,等量水的雪深度
+ecbiz,hres_surface,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+ecbiz,hres_surface,relative humidity,rh,"[0,1]",%,[预处理]相对湿度
+ecbiz,hres_surface,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理]水汽压亏缺
+ecbiz,hres_surface,visibility,vis,m,mm | inch,能见度
+ecbiz,hres_surface,Convective available potential energy shear,capes,J/kg,,对流可用势能剪切
+ecbiz,hres_surface,Volumetric soil water layer 1,swvl1,m^3/m^3,,0-7cm土壤含水量
+ecbiz,ens_comm,2 metre temperature,t2m,K,C | F,地面2米气温
+ecbiz,ens_comm,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+ecbiz,ens_comm,skin temperature,skt,K,C | F,[预处理] 体感温度
+ecbiz,ens_comm,wet bulb temp,wbt,K,C | F,[预处理] 湿球温度
+ecbiz,ens_comm,10 metre U wind component,u10,m/s,km/h | mph,地面10米风U分量
+ecbiz,ens_comm,10 metre V wind component,v10,m/s,km/h | mph,地面10米风V分量
+ecbiz,ens_comm,100 metre U wind component,u100,m/s,km/h | mph,地面100米风U分量
+ecbiz,ens_comm,100 metre V wind component,v100,m/s,km/h | mph,地面100米风V分量
+ecbiz,ens_comm,200 metre U wind component,u200,m/s,km/h | mph,地面200米风U分量
+ecbiz,ens_comm,200 metre V wind component,v200,m/s,km/h | mph,地面200米风V分量
+ecbiz,ens_comm,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地表10米风速
+ecbiz,ens_comm,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地表100米风速
+ecbiz,ens_comm,200 metre wind speed,ws200m,m/s,km/h | mph,[预处理]地表200米风速
+ecbiz,ens_comm,10 metre wind direction,wd10m,degree,,[预处理]地表10米风向
+ecbiz,ens_comm,100 metre wind direction,wd100m,degree,,[预处理]地表100米风向
+ecbiz,ens_comm,200 metre wind direction,wd200m,degree,,[预处理]地表200米风向
+ecbiz,ens_comm,surface net short-wave (solar) radiation accumulated,ssr-acc,J/m^2,,[原始累积值] 地表净短波（太阳）辐射
+ecbiz,ens_comm,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射
+ecbiz,ens_comm,Direct solar radiation accumulated,dsrp-acc,J/m^2,,[原始累积值] 太阳直射辐射
+ecbiz,ens_comm,Total sky direct short-wave (solar) radiation at surface accumulated,fdir-acc,J/m^2,,[原始累积值]全天太阳短波表面直射辐射
+ecbiz,ens_comm,surface net short-wave (solar) radiation,ssr,W/m^2,,[预处理]地表净短波（太阳）辐射
+ecbiz,ens_comm,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理]地表下行短波（太阳）辐射
+ecbiz,ens_comm,Direct solar radiation,dsrp,W/m^2,,[预处理]太阳直射辐射
+ecbiz,ens_comm,Total sky direct short-wave (solar) radiation at surface,fdir,W/m^2,,[预处理]全天太阳短波表面直射辐射
+ecbiz,ens_comm,Total cloud cover,tcc,"[0,1]",%,总云覆盖
+ecbiz,ens_comm,Low cloud cover,lcc,"[0,1]",%,低云覆盖
+ecbiz,ens_comm,Mid cloud cover,mcc,"[0,1]",%,中云覆盖
+ecbiz,ens_comm,High cloud cover,hcc,"[0,1]",%,高云覆盖
+ecbiz,ens_comm,total precipitation,tp,mm,m | inch,[预处理]一小时内总降水
+ecbiz,ens_comm,total precipitation accumulated,tp-acc,mm,m | inch,[原始累积值]总降水
+ecbiz,ens_comm,total column vertically-integrated water vapour,tcwv,mm,m | inch,大气总柱水汽含量指从地面到大气顶的整个大气柱中全部水汽量
+ecbiz,ens_comm,Water equivalent snowfall,sf-acc,m,mm | inch,[原始累积值]降雪等量水的深度
+ecbiz,ens_comm,Water equivalent snowfall,sf,mm,m | inch,[预处理]降雪等量水的深度
+ecbiz,ens_comm,surface pressure,sp,Pa,hPa | kPa | MPa,地表气压
+ecbiz,ens_comm,visibility,vis,m,mm | inch,能见度
+ecbiz,ens_comm,relative humidity,rh,"[0,1]",%,[预处理] 相对湿度
+ecbiz,ens_comm,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
+ecbiz,ens_extended,2 metre temperature,t2m,K,C | F,地面2米气温
+ecbiz,ens_extended,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+ecbiz,ens_extended,skin temperature,skt,K,C | F,[预处理] 体感温度
+ecbiz,ens_extended,wet bulb temp,wbt,K,C | F,[预处理] 湿球温度
+ecbiz,ens_extended,10 metre U wind component,u10,m/s,km/h | mph,地面10米风U分量
+ecbiz,ens_extended,10 metre V wind component,v10,m/s,km/h | mph,地面10米风V分量
+ecbiz,ens_extended,100 metre U wind component,u100,m/s,km/h | mph,地面100米风U分量
+ecbiz,ens_extended,100 metre V wind component,v100,m/s,km/h | mph,地面100米风V分量
+ecbiz,ens_extended,200 metre U wind component,u200,m/s,km/h | mph,地面200米风U分量
+ecbiz,ens_extended,200 metre V wind component,v200,m/s,km/h | mph,地面200米风V分量
+ecbiz,ens_extended,maximum 10 metre wind gust in the last 6 hours,p10fg6,m/s,km/h | mph,地面10米过去6小时的最大阵风
+ecbiz,ens_extended,maximum 10 metre wind gust since previous post-processing,fg10,m/s,km/h | mph,地面10米自上次后处理后最大阵风
+ecbiz,ens_extended,10 metre wind speed,ws10m,m/s,km/h | mph,[预处理]地表10米风速
+ecbiz,ens_extended,100 metre wind speed,ws100m,m/s,km/h | mph,[预处理]地表100米风速
+ecbiz,ens_extended,200 metre wind speed,ws200m,m/s,km/h | mph,[预处理]地表200米风速
+ecbiz,ens_extended,10 metre wind direction,wd10m,degree,rad,[预处理]地表10米风向
+ecbiz,ens_extended,100 metre wind direction,wd100m,degree,rad,[预处理]地表100米风向
+ecbiz,ens_extended,200 metre wind direction,wd200m,degree,rad,[预处理]地表200米风向
+ecbiz,ens_extended,surface net short-wave (solar) radiation,ssr-acc,J/m^2,,[原始累积值] 地表净短波（太阳）辐射
+ecbiz,ens_extended,surface short-wave (solar) radiation downwards,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射
+ecbiz,ens_extended,direct solar radiation,dsrp-acc,J/m^2,,[原始累积值] 直接太阳辐射
+ecbiz,ens_extended,total sky direct short-wave (solar) radiation at surface,fdir-acc,J/m^2,,[原始累积值] 地表天空直接短波（太阳）辐射
+ecbiz,ens_extended,surface net short-wave (solar) radiation,ssr,W/m^2,,[预处理] 地表净短波（太阳）辐射
+ecbiz,ens_extended,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射
+ecbiz,ens_extended,direct solar radiation,dsrp,W/m^2,,[预处理] 直接太阳辐射
+ecbiz,ens_extended,total sky direct short-wave (solar) radiation at surface,fdir,W/m^2,,[预处理] 地表天空直接短波（太阳）辐射
+ecbiz,ens_extended,total cloud cover,tcc,"[0,1]",%,云覆盖比例
+ecbiz,ens_extended,visibility,vis,m,mm| inch,能见度
+ecbiz,ens_extended,total precipitation,tp-acc,mm,m | inch,[原始累积值] 总降水
+ecbiz,ens_extended,total precipitation,tp,mm,m | inch,[预处理] 一小时内总降水
+ecbiz,ens_extended,water equivalent snowfall,sf-acc,m,mm | inch,[原始累积值]降雪的水当量
+ecbiz,ens_extended,water equivalent snowfall,sf,mm,m | inch,[预处理]降雪的水当量
+ecbiz,ens_extended,total column vertically-integrated water vapour,tcwv,mm,m | inch,大气总柱水汽含量<br>指从地面到大气顶的整个大气柱中全部水汽量
+ecbiz,ens_extended,surface pressure,sp,Pa,hPa | kPa | MPa,表面气压
+ecbiz,ens_extended,2 metre relative humidity,rh,"[0,1]",%,2米相对湿度
+ecbiz,ens_extended,vapour pressure deficit,vpd,Pa,hPa | kPa | MPa,[预处理] 水汽压亏缺
