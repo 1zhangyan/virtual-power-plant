@@ -22,7 +22,7 @@ public class InverterDataLindormService {
     private static final Logger logger = LoggerFactory.getLogger(InverterDataLindormService.class);
 
 
-    private static final String TABLE_NAME = "inverter_realtime_test";
+    private static final String TABLE_NAME = "inverter_realtime";
 
 
     public void writeRealTimeData(List<InverterRealTimeData> dataList) {
