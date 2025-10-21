@@ -7,10 +7,7 @@ import com.virtualpowerplant.service.WeatherDataLindormService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,7 +41,7 @@ public class WeatherDataController {
     }
 
 
-    @GetMapping("/selectWeatherData")
+    @PostMapping("/selectWeatherData")
     @Operation(summary = "获取指定经纬度，小时范围，天气预报数据", description = "获取指定经纬度，小时范围，天气预报数据")
     List<SimpleWeatherForestData> selectWeatherData(@RequestParam Double longitude, @RequestParam Double latitude, @RequestParam Long timeStamp) {
        return weatherDataLindormService.selectWeatherData(longitude,latitude,timeStamp);
