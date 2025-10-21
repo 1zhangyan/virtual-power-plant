@@ -5,7 +5,6 @@ import java.util.Map;
 
 /**
  * 气象数据模型，用于存储解析后的天气预报数据
- * 对应 GfsSurfaceDataService.fetchWeatherData 的结果
  */
 public class WeatherForestData {
 

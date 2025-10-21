@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 public class InverterRealTimeData {
 
-    private Long id;
 
     private String psName;
 
@@ -27,13 +26,6 @@ public class InverterRealTimeData {
         this.createTime = LocalDateTime.now();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getPsName() {
         return psName;

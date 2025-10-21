@@ -2,6 +2,7 @@
 
 package com.virtualpowerplant.service;
 
+import com.mysql.cj.util.StringUtils;
 import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.model.*;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,14 +21,14 @@ import java.util.*;
 import static com.virtualpowerplant.constant.Constant.objectMapper;
 
 @Service
-public class WeatherDataService {
+public class WeatherDataCollectService {
 
-    private static final Logger logger = LoggerFactory.getLogger(WeatherDataService.class);
+    private static final Logger logger = LoggerFactory.getLogger(WeatherDataCollectService.class);
     private static final String BASE_API_URL = "https://api-pro-openet.terraqt.com/v1";
     private static final String dataType = "gfs_surface";
 
     @Autowired
-    private InverterGfsSurfaceLindormService inverterGfsSurfaceLindormService;
+    private WeatherDataLindormService weatherDataLindormService;
 
     @Autowired
     private DatasetMetaInfoService datasetMetaInfoService;
@@ -34,15 +36,29 @@ public class WeatherDataService {
     @Autowired
     private DeviceService deviceService;
 
+    /**
+     * 定期拿到库所有坐标，构造APi参数访问天气数据
+     */
+    public void collectWeatherData(String time) {
+        try {
+            logger.info("开始定时收集天气预报...");
+            List<String> invertersLocations = deviceService.getInverterLocations();
+            List<String> metaTypes = datasetMetaInfoService.selectAllValidMetaType();
+            collectAndMergeWeatherData(invertersLocations, metaTypes, time);
+        } catch (Exception e) {
+            logger.error("定时收集天气预报失败: {}", e.getMessage(), e);
+        }
+    }
+
+    @Scheduled(fixedRate = 4*60*60*1000)
+    public void collectWeatherData() {
+        collectWeatherData("");
+    }
 
     /**
-     * 获取气象数据的通用函数
-     *
-     * @param longitude 经度
-     * @param latitude  纬度
-     * @return WeatherDataResult 包含时间戳和指标值的结果
+     * 构造APi参数访问天气数据
      */
-    private WeatherForestData fetchWeatherData(double longitude, double latitude, String metaType, String time) {
+    private WeatherForestData fetchWeatherDataFromApi(double longitude, double latitude, String metaType, String time) {
         try {
             String token = SecretConfigManager.getWeatherApiToken();
             String apiUrl = BASE_API_URL + "/" + dataType + "/point";
@@ -58,8 +74,9 @@ public class WeatherDataService {
             requestBody.put("lat", latitude);
             List<String> metaVars = datasetMetaInfoService.selectMetaVarByMetaType(metaType);
             requestBody.put("mete_vars", metaVars);
-            requestBody.put("time", time);
-
+            if (!StringUtils.isNullOrEmpty(time)) {
+                requestBody.put("time", time);
+            }
             HttpEntity<Map<String, Object>> request = new HttpEntity<>(requestBody, headers);
 
             // 发送请求
@@ -181,59 +198,26 @@ public class WeatherDataService {
         }
     }
 
-    //    @Scheduled(fixedRate = 6*60*1000)
-    public void collectWeatherData(String time) {
-        try {
-            logger.info("开始定时收集天气预报...");
-            long startTime = System.currentTimeMillis();
-
-            List<String> inverters = deviceService.getInverterLocations();
-            List<String> metaTypes = datasetMetaInfoService.selectAllValidMetaType();
-            // 2. 根据逆变器坐标收集天气预报数据
-            collectAndMergeWeatherData(inverters, metaTypes, time);
-            long endTime = System.currentTimeMillis();
-            logger.info("天气预报收集完成，耗时: {} ms", endTime - startTime);
-
-        } catch (Exception e) {
-            logger.error("定时收集天气预报失败: {}", e.getMessage(), e);
-        }
-    }
-
     /**
-     * 收集并合并天气预报数据
-     * 根据逆变器坐标查询天气预报，将预报结果和设备信息合并写入Lindorm
+     * 将预报结果和设备信息合并写入Lindorm
      */
     private void collectAndMergeWeatherData(List<String> invertersLocations, List<String> metaTypes, String time) {
         try {
-
             for (String invertersLocation : invertersLocations) {
                 for (String metaType : metaTypes) {
                     Double longitude = Double.valueOf(invertersLocation.split("#")[0]);
                     Double latitude = Double.valueOf(invertersLocation.split("#")[1]);
-                    WeatherForestData weatherForestData = getWeatherDataForLocation(latitude, longitude, metaType, time);
-                    inverterGfsSurfaceLindormService.writeInverterWeatherData(weatherForestData);
+                    WeatherForestData weatherForestData = fetchWeatherDataFromApi(longitude, latitude, metaType, time);
+                    if (weatherForestData == null || weatherForestData.getTimestamps() == null || weatherForestData.getTimestamps().isEmpty()) {
+                        logger.error("位置 [{}, {}] 未获取到天气数据", latitude, longitude);
+                        return;
+                    }
+                    weatherDataLindormService.writeWeatherData(weatherForestData);
                 }
             }
         } catch (Exception e) {
             logger.error("收集和合并天气数据失败: {}", e.getMessage(), e);
         }
-    }
-
-    /**
-     * 根据坐标获取天气预报数据
-     * 这里需要根据实际的天气
-     */
-    private WeatherForestData getWeatherDataForLocation(Double latitude, Double longitude, String metaType, String time) {
-        logger.debug("获取位置 [{}, {}] 的天气数据", latitude, longitude);
-
-        WeatherForestData weatherForestData = fetchWeatherData(longitude, latitude, metaType, time);
-
-        if (weatherForestData == null || weatherForestData.getTimestamps() == null || weatherForestData.getTimestamps().isEmpty()) {
-            logger.warn("位置 [{}, {}] 未获取到天气数据", latitude, longitude);
-            return null;
-        }
-        logger.debug("位置 [{}, {}] 成功获取 {} 条天气数据", latitude, longitude, weatherForestData.getTimestamps().size());
-        return weatherForestData;
     }
 }
 

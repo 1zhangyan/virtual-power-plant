@@ -1,7 +1,10 @@
 package com.virtualpowerplant.controller;
 
+import com.virtualpowerplant.model.SimpleWeatherForestData;
 import com.virtualpowerplant.service.DatasetMetaInfoService;
-import com.virtualpowerplant.service.WeatherDataService;
+import com.virtualpowerplant.service.WeatherDataCollectService;
+import com.virtualpowerplant.service.WeatherDataLindormService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +17,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/weather")
 @Tag(name = "天气接口管理", description = "天气接口管理")
-public class DatasetMetaInfoController {
+public class WeatherDataController {
     @Autowired
     private DatasetMetaInfoService datasetMetaInfoService;
 
     @Autowired
-    private WeatherDataService weatherDataService;
+    private WeatherDataLindormService weatherDataLindormService;
+
+    @Autowired
+    private WeatherDataCollectService weatherDataCollectService;
 
     @GetMapping("/dataset/getMetaVar")
     public List<String> selectMetaVarByMetaType(@RequestParam String metaType) {
@@ -31,18 +37,18 @@ public class DatasetMetaInfoController {
         return datasetMetaInfoService.selectMetaTypeByDatasetType(datasetType);
     }
 
-    @GetMapping("/dataset/collectWeatherData")
+    @GetMapping("/collectWeatherData")
+    @Operation(summary = "触发一次补开始时间后半个月的天气预测数据", description = "触发一次补开始时间后半个月的天气预测数据")
     void collectWeatherData(@RequestParam String time) {
-        weatherDataService.collectWeatherData(time);
+        weatherDataCollectService.collectWeatherData(time);
     }
 
 
-    @GetMapping("/dataset/getWeatherByTimeAndLocation")
-    void collectWeatherData(@RequestParam String time, @RequestParam String lat, @RequestParam String logi) {
-        weatherDataService.collectWeatherData(time);
+    @GetMapping("/selectWeatherData")
+    @Operation(summary = "获取指定经纬度，小时范围，天气预报数据", description = "获取指定经纬度，小时范围，天气预报数据")
+    List<SimpleWeatherForestData> selectWeatherData(@RequestParam Double longitude, @RequestParam Double latitude, @RequestParam Long timeStamp) {
+       return weatherDataLindormService.selectWeatherData(longitude,latitude,timeStamp);
     }
-
-
 
 
 }
