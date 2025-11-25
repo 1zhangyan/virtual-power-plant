@@ -1,7 +1,7 @@
 package com.virtualpowerplant.service;
 
 import com.virtualpowerplant.mapper.DeviceMapper;
-import com.virtualpowerplant.model.Device;
+import com.virtualpowerplant.model.SungrowDevice;
 import com.virtualpowerplant.model.PowerStation;
 import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.VirtualPowerPlant;
@@ -51,7 +51,7 @@ public class DeviceService {
 
         // 3. 获取所有设备信息
         logger.info("开始获取设备信息...");
-        List<Device> devices = SunGrowDataService.getDevicesAndParse();
+        List<SungrowDevice> devices = SunGrowDataService.getDevicesAndParse();
         logger.info("获取到 {} 个设备信息", devices.size());
 
         // 4. 为设备添加经纬度信息并保存到数据库
@@ -60,7 +60,7 @@ public class DeviceService {
         int processedCount = 0;
         int updatedCount = 0;
 
-        for (Device device : devices) {
+        for (SungrowDevice device : devices) {
             PowerStation ps = psMap.get(device.getPsId());
             if (ps != null) {
                 device.setLatitude(ps.getLatitude());
@@ -109,7 +109,7 @@ public class DeviceService {
     /**
      * 根据vppId查询逆变器设备
      */
-    public List<Device> getInvertersByVppId(Long vppId) {
+    public List<SungrowDevice> getInvertersByVppId(Long vppId) {
         return deviceMapper.selectInvertersByVppId(vppId);
     }
 }
