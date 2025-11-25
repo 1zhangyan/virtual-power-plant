@@ -16,7 +16,7 @@ public interface DatasetMetaInfoMapper {
     @Select("SELECT meta_type FROM vpp.dataset_meta_info WHERE dataset_type = #{datasetType} group by meta_type")
     List<String> selectMetaTypeByDatasetType(String datasetType);
 
-    @Select("SELECT meta_type FROM vpp.dataset_meta_info group by meta_type ")
+    @Select("SELECT meta_type FROM vpp.dataset_meta_info where valid = 1 group by meta_type ")
     List<String> selectAllValidMetaType();
 
 

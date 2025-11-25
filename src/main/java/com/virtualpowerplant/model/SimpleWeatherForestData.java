@@ -10,12 +10,11 @@ public class SimpleWeatherForestData {
 
     private String timestamp;
     private List<Double> metricValues;
-    private List<String> metricVars;
+
     private String metaType;
 
     public SimpleWeatherForestData(String timestamp,String metaType){
         metricValues = new ArrayList<>();
-        metricVars = new ArrayList<>();
         this.timestamp = timestamp;
         this.metaType = metaType;
     }
@@ -47,13 +46,5 @@ public class SimpleWeatherForestData {
 
     public void setMetricValues(List<Double> metricValues) {
         this.metricValues = metricValues;
-    }
-
-    public List<String> getMetricVars() {
-        return metricVars;
-    }
-
-    public void setMetricVars(List<String> metricVars) {
-        this.metricVars = metricVars;
     }
 }

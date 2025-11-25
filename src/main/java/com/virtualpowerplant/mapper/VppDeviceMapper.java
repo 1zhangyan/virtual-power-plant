@@ -23,9 +23,13 @@ public interface VppDeviceMapper {
            " province = #{province}, city = #{city}")
     void upsert(VppDevice device);
 
+
+    @Select("SELECT * FROM vpp.vpp_device WHERE device_type = '逆变器'")
+    List<VppDevice> selectInverters();
     /**
      * 根据vppId查询逆变器设备
      */
     @Select("SELECT * FROM vpp.vpp_device WHERE vpp_id = #{vppId}")
     List<VppDevice> selectInvertersByVppId(@Param("vppId") Long vppId);
+
 }

@@ -1,12 +1,14 @@
 package com.virtualpowerplant.utils;
 
 import java.sql.Timestamp;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class TimeUtils {
 
@@ -62,5 +64,15 @@ public class TimeUtils {
     public static boolean isHourlyData(String dateTime) {
         LocalTime time = LocalTime.parse(dateTime, formatter);
         return time.getMinute() == 0 && time.getSecond() == 0;
+    }
+    public static double calculateHoursDifference(String startDateTimeStr, String endDateTimeStr) {
+        LocalDateTime startDateTime = LocalDateTime.parse(startDateTimeStr, formatter);
+        LocalDateTime endDateTime = LocalDateTime.parse(endDateTimeStr, formatter);
+        Duration duration = Duration.between(startDateTime, endDateTime);
+        return duration.toNanos() / 1_000_000_000.0 / 3600.0;
+    }
+
+    public static String localTimeToStr(LocalDateTime dateTime) {
+        return formatter.format(dateTime);
     }
 }

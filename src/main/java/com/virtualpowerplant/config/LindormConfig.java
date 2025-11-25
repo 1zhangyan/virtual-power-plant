@@ -34,15 +34,15 @@ public class LindormConfig {
         }
     }
 
-    @PreDestroy
-    public void shutdown() {
-        if (connection != null) {
-            try {
-                connection.close();
-                logger.info("Lindorm TSDB JDBC连接已关闭");
-            } catch (SQLException e) {
-                logger.error("关闭Lindorm TSDB JDBC连接失败: {}", e.getMessage(), e);
-            }
-        }
-    }
+//    @PreDestroy
+//    public void shutdown() {
+//        if (connection != null) {
+//            try {
+//                connection.close();
+//                logger.info("Lindorm TSDB JDBC连接已关闭");
+//            } catch (SQLException e) {
+//                logger.error("关闭Lindorm TSDB JDBC连接失败: {}", e.getMessage(), e);
+//            }
+//        }
+//    }
 }

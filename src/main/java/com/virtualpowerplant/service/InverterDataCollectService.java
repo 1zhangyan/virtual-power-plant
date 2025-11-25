@@ -1,11 +1,11 @@
 package com.virtualpowerplant.service;
 
-import com.virtualpowerplant.mapper.DeviceMapper;
+import com.virtualpowerplant.mapper.VppDeviceMapper;
 import com.virtualpowerplant.model.*;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,27 +20,28 @@ public class InverterDataCollectService {
     private InverterDataLindormService inverterDataLindormService;
 
     @Autowired
-    private DeviceMapper deviceMapper;
+    private VppDeviceMapper vppDeviceMapper;
 
-//    @Scheduled(fixedRate = 2*60*1000)
-    public void collectInverterRealTimeData() {
+    //    @Scheduled(fixedRate = 2*60*1000)
+    public void collectInverterRealTimeData(Long vppId) {
         try {
-            logger.info("开始定时收集逆变器实时功率数据...");
-            long startTime = System.currentTimeMillis();
-            List<SungrowDevice> inverters = deviceMapper.selectInverters();
+            List<VppDevice> inverters = vppDeviceMapper.selectInvertersByVppId(vppId);
             if (inverters.isEmpty()) {
                 logger.warn("未找到任何逆变器设备，跳过实时数据收集");
                 return;
             }
-            List<String> snList = inverters.stream()
-                    .map(SungrowDevice::getDeviceSn)
-                    .filter(sn -> sn != null && !sn.isEmpty())
+            List<VppDevice> devices = inverters.stream()
+                    .filter(it -> StringUtils.isNotBlank(it.getDeviceSn()) && it.getLatitude() > 0.0 && it.getLatitude() > 0.0)
                     .collect(Collectors.toList());
-            if (snList.isEmpty()) {
+            if (devices.isEmpty()) {
                 logger.warn("逆变器设备没有有效的序列号，跳过实时数据收集");
                 return;
             }
-            List<DeviceRealTimeData> realTimeDataList = SunGrowDataService.getRealTimeDataAndParse(snList, inverters);
+            List<DeviceRealTimeData> realTimeDataList = SunGrowDataService.getRealTimeDataAndParse(devices)
+                    .stream().map(it -> {
+                        it.setVppId(vppId);
+                        return it;
+                    }).collect(Collectors.toList());
 
             if (realTimeDataList != null && !realTimeDataList.isEmpty()) {
                 inverterDataLindormService.writeRealTimeData(realTimeDataList);
@@ -48,10 +49,6 @@ public class InverterDataCollectService {
             } else {
                 logger.warn("未获取到任何逆变器实时数据");
             }
-
-            long endTime = System.currentTimeMillis();
-            logger.debug("逆变器实时数据收集完成，耗时: {} ms", endTime - startTime);
-
         } catch (Exception e) {
             logger.error("定时收集逆变器实时数据失败: {}", e.getMessage(), e);
         }

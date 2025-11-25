@@ -269,4 +269,14 @@ public class SecretConfigManager {
     public static String getLindormUrl() {
         return getString("lindorm.url");
     }
+
+    public static String getRedisUrl() {
+        return getString("redis.url");
+    }
+    public static String getRedisUsername() {
+        return getString("redis.username");
+    }
+    public static String getRedisPassword() {
+        return getString("redis.password");
+    }
 }

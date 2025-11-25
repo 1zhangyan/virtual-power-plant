@@ -4,6 +4,7 @@ import static com.virtualpowerplant.constant.Constant.objectMapper;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -20,6 +21,7 @@ import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.PowerStation;
 import com.virtualpowerplant.model.SungrowDevice;
 import com.virtualpowerplant.model.DeviceRealTimeData;
+import com.virtualpowerplant.model.VppDevice;
 import com.virtualpowerplant.utils.AESEncryptUtils;
 import com.virtualpowerplant.utils.RSAEncryptUtils;
 import com.virtualpowerplant.utils.SunGrowResponseParser;
@@ -256,42 +258,16 @@ public class SunGrowDataService {
             throw e;
         }
     }
-
-    public static List<DeviceRealTimeData> getRealTimeDataAndParse(List<String> snList) throws Exception {
+    public static List<DeviceRealTimeData> getRealTimeDataAndParse(List<VppDevice> devices) throws Exception {
         try {
-            if (snList == null || snList.isEmpty()) {
+            if (devices == null || devices.isEmpty()) {
                 logger.warn("设备序列号列表为空，无法获取实时数据");
                 return new ArrayList<>();
             }
 
-            logger.debug("获取设备实时数据，设备数量: {}", snList.size());
-            String jsonResponse = getRealTimeData(snList);
-            logger.debug("实时数据API响应: {}", jsonResponse);
+            logger.debug("获取设备实时数据，设备数量: {}", devices.size());
 
-            List<DeviceRealTimeData> realTimeDataList = SunGrowResponseParser.extractRealTimeData(jsonResponse);
-            if (realTimeDataList != null) {
-                logger.info("成功解析到 {} 条实时数据", realTimeDataList.size());
-            } else {
-                logger.warn("未获取到任何实时数据");
-                realTimeDataList = new ArrayList<>();
-            }
-
-            return realTimeDataList;
-        } catch (Exception e) {
-            logger.error("获取并解析实时数据失败: {}", e.getMessage(), e);
-            throw e;
-        }
-    }
-
-    public static List<DeviceRealTimeData> getRealTimeDataAndParse(List<String> snList, List<SungrowDevice> devices) throws Exception {
-        try {
-            if (snList == null || snList.isEmpty()) {
-                logger.warn("设备序列号列表为空，无法获取实时数据");
-                return new ArrayList<>();
-            }
-
-            logger.debug("获取设备实时数据，设备数量: {}", snList.size());
-            String jsonResponse = getRealTimeData(snList);
+            String jsonResponse = getRealTimeData(devices.stream().map(VppDevice::getDeviceSn).collect(Collectors.toList()));
             logger.debug("实时数据API响应: {}", jsonResponse);
 
             List<DeviceRealTimeData> realTimeDataList = SunGrowResponseParser.extractRealTimeDataWithDeviceInfo(jsonResponse, devices);

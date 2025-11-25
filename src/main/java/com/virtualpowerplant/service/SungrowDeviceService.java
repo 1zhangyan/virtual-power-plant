@@ -2,7 +2,6 @@ package com.virtualpowerplant.service;
 
 import static com.virtualpowerplant.utils.PositionStandard.positionStandard;
 
-import com.virtualpowerplant.mapper.DeviceMapper;
 import com.virtualpowerplant.mapper.VppDeviceMapper;
 import com.virtualpowerplant.model.SungrowDevice;
 import com.virtualpowerplant.model.PowerStation;
@@ -25,9 +24,6 @@ import java.util.stream.Collectors;
 public class SungrowDeviceService {
 
     private static final Logger logger = LoggerFactory.getLogger(SungrowDeviceService.class);
-
-    @Autowired
-    private DeviceMapper deviceMapper;
 
     @Autowired
     private VppDeviceMapper vppDeviceMapper;
@@ -74,17 +70,6 @@ public class SungrowDeviceService {
         }
     }
 
-    /**
-     * 查询所有带经纬度信息的逆变器
-     */
-    public List<String> getInverterLocations() {
-        return deviceMapper.selectInverters()
-                .stream()
-                .filter(it -> it.getLatitude() > 0.0 && it.getLongitude() > 0.0)
-                .map(it -> String.format("%s#%s", Math.round(it.getLongitude()), Math.round(it.getLatitude())))
-                .distinct()
-                .collect(Collectors.toList());
-    }
 
     /**
      * 根据vppId查询逆变器设备

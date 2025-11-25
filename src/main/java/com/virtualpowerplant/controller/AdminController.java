@@ -1,8 +1,9 @@
 package com.virtualpowerplant.controller;
 
+import com.virtualpowerplant.service.InverterDataCollectService;
 import com.virtualpowerplant.service.SungrowDeviceService;
-import com.virtualpowerplant.service.WeatherDataCollectService;
 import com.virtualpowerplant.service.WeatherDataLindormService;
+import com.virtualpowerplant.service.WeatherDataService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,24 +16,24 @@ public class AdminController {
     private SungrowDeviceService sungrowDeviceService;
 
     @Autowired
-    private WeatherDataLindormService weatherDataLindormService;
+    private InverterDataCollectService inverterDataCollectService;
 
     @Autowired
-    private WeatherDataCollectService weatherDataCollectService;
+    private WeatherDataService weatherDataService;
 
     @PostMapping("/syncDevicesWithCoordinates")
     public void syncDevicesWithCoordinates() {
         sungrowDeviceService.syncDevicesWithCoordinates();
     }
 
-    @PostMapping("/collectWeatherData")
-    public void collectWeatherData() {
-        weatherDataCollectService.collectWeatherData("2025-11-25 00:00:00", "2025-11-26 00:00:00");
+    @PostMapping("/collectInverterRealTimeData")
+    public void collectInverterRealTimeData() {
+        inverterDataCollectService.collectInverterRealTimeData(1L);
     }
 
-    @PostMapping("/initWeatherTable")
-    public void initWeatherTable() {
-        weatherDataLindormService.initWeatherTable();
+    @PostMapping("/getWeatherDataBy")
+    public void selectWeatherData() {
+        weatherDataService.collectWeatherData(1L);
     }
 
 }

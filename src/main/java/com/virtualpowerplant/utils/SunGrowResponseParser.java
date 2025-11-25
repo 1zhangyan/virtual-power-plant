@@ -12,6 +12,7 @@ import com.virtualpowerplant.model.SungrowDevice;
 import com.virtualpowerplant.model.DeviceRealTimeData;
 import com.virtualpowerplant.model.RealTimeDataResponse;
 import com.virtualpowerplant.model.SungrowDevicePoint;
+import com.virtualpowerplant.model.VppDevice;
 
 import java.util.List;
 import java.util.Map;
@@ -325,7 +326,7 @@ public class SunGrowResponseParser {
         }
     }
 
-    public static List<DeviceRealTimeData> extractRealTimeDataWithDeviceInfo(String jsonResponse, List<SungrowDevice> devices) {
+    public static List<DeviceRealTimeData> extractRealTimeDataWithDeviceInfo(String jsonResponse, List<VppDevice> devices) {
         try {
             JsonNode rootNode = objectMapper.readTree(jsonResponse);
             RealTimeDataResponse response = parseRealTimeDataResponse(rootNode);
@@ -340,8 +341,8 @@ public class SunGrowResponseParser {
                 return new ArrayList<>();
             }
 
-            Map<String, SungrowDevice> deviceMap = devices != null ? devices.stream()
-                    .collect(Collectors.toMap(SungrowDevice::getDeviceSn, device -> device, (existing, replacement) -> existing))
+            Map<String, VppDevice> deviceMap = devices != null ? devices.stream()
+                    .collect(Collectors.toMap(VppDevice::getDeviceSn, device -> device, (existing, replacement) -> existing))
                     : new java.util.HashMap<>();
 
             List<DeviceRealTimeData> realTimeDataList = new ArrayList<>();
@@ -352,7 +353,7 @@ public class SunGrowResponseParser {
                 if (devicePoint == null) continue;
 
                 DeviceRealTimeData realTimeData = new DeviceRealTimeData();
-                realTimeData.setInverterSn(devicePoint.getDeviceSn());
+                realTimeData.setDeviceSn(devicePoint.getDeviceSn());
 
                 // 解析p24字段作为有功功率
                 if (devicePoint.getP24() != null && !devicePoint.getP24().isEmpty()) {
@@ -377,23 +378,16 @@ public class SunGrowResponseParser {
                 } else {
                     realTimeData.setDeviceTime(LocalDateTime.now());
                 }
-
                 // 从Device信息中填充电站信息
-                SungrowDevice device = deviceMap.get(devicePoint.getDeviceSn());
+                VppDevice device = deviceMap.get(devicePoint.getDeviceSn());
                 if (device != null) {
-                    realTimeData.setPsName(device.getPsName());
-                    realTimeData.setPsKey(device.getPsKey());
+                    realTimeData.setDeviceSn(device.getDeviceSn());
+                    realTimeData.setVppId(device.getVppId());
                     realTimeData.setLatitude(device.getLatitude());
                     realTimeData.setLongitude(device.getLongitude());
-                } else {
-                    // 如果没有找到对应的Device，使用API返回的基本信息
-                    realTimeData.setPsKey(devicePoint.getPsKey());
-                    logger.debug("未找到设备 {} 的详细信息，使用API返回的基本信息", devicePoint.getDeviceSn());
                 }
-
                 realTimeDataList.add(realTimeData);
             }
-
             logger.info("成功解析 {} 条实时数据", realTimeDataList.size());
             return realTimeDataList;
         } catch (Exception e) {
