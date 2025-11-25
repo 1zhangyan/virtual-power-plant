@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.virtualpowerplant.mapper.DeviceMapper">
 
-    <!-- Device ResultMap -->
-    <resultMap id="DeviceResultMap" type="com.virtualpowerplant.model.Device">
+    <!-- SungrowDevice ResultMap -->
+    <resultMap id="DeviceResultMap" type="com.virtualpowerplant.model.SungrowDevice">
         <id property="id" column="id"/>
         <result property="uuid" column="uuid"/>
         <result property="psId" column="ps_id"/>
@@ -38,7 +38,7 @@
     </resultMap>
 
     <!-- 插入或更新设备信息 (使用UUID作为唯一键) -->
-    <insert id="insertOrUpdate" parameterType="com.virtualpowerplant.model.Device">
+    <insert id="insertOrUpdate" parameterType="com.virtualpowerplant.model.SungrowDevice">
         INSERT INTO vpp.sungrow_device (uuid, ps_id, ps_name, device_name, device_sn, device_type, device_code,
                            type_name, device_model_code, device_model_id, factory_name, channel_id, ps_key,
                            communication_dev_sn, dev_status, dev_fault_status, rel_state, rel_time, grid_connection_date,

@@ -22,25 +22,25 @@ public class InverterDataCollectService {
     @Autowired
     private DeviceMapper deviceMapper;
 
-    @Scheduled(fixedRate = 2*60*1000)
+//    @Scheduled(fixedRate = 2*60*1000)
     public void collectInverterRealTimeData() {
         try {
             logger.info("开始定时收集逆变器实时功率数据...");
             long startTime = System.currentTimeMillis();
-            List<Device> inverters = deviceMapper.selectInverters();
+            List<SungrowDevice> inverters = deviceMapper.selectInverters();
             if (inverters.isEmpty()) {
                 logger.warn("未找到任何逆变器设备，跳过实时数据收集");
                 return;
             }
             List<String> snList = inverters.stream()
-                    .map(Device::getDeviceSn)
+                    .map(SungrowDevice::getDeviceSn)
                     .filter(sn -> sn != null && !sn.isEmpty())
                     .collect(Collectors.toList());
             if (snList.isEmpty()) {
                 logger.warn("逆变器设备没有有效的序列号，跳过实时数据收集");
                 return;
             }
-            List<InverterRealTimeData> realTimeDataList = SunGrowDataService.getRealTimeDataAndParse(snList, inverters);
+            List<DeviceRealTimeData> realTimeDataList = SunGrowDataService.getRealTimeDataAndParse(snList, inverters);
 
             if (realTimeDataList != null && !realTimeDataList.isEmpty()) {
                 inverterDataLindormService.writeRealTimeData(realTimeDataList);

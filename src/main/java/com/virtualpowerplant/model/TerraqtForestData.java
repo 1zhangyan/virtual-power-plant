@@ -1,12 +1,11 @@
 package com.virtualpowerplant.model;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 气象数据模型，用于存储解析后的天气预报数据
  */
-public class WeatherForestData {
+public class TerraqtForestData {
 
     private List<Double> location;
     private List<String> timestamps;
@@ -16,9 +15,9 @@ public class WeatherForestData {
     private String timeFcst;
     private String metaType;
 
-    public WeatherForestData(List<Double> location, List<String> timestamps,
-                                List<List<Double>> metricValues, List<String> metricVars,
-                                List<String> metricUnits, String timeFcst, String metaType) {
+    public TerraqtForestData(List<Double> location, List<String> timestamps,
+                             List<List<Double>> metricValues, List<String> metricVars,
+                             List<String> metricUnits, String timeFcst, String metaType) {
         this.location = location;
         this.timestamps = timestamps;
         this.metricValues = metricValues;

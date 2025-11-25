@@ -6,6 +6,7 @@ import com.mysql.cj.util.StringUtils;
 import com.virtualpowerplant.config.SecretConfigManager;
 import com.virtualpowerplant.constant.Constant;
 import com.virtualpowerplant.model.*;
+import com.virtualpowerplant.utils.TimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,34 +35,27 @@ public class WeatherDataCollectService {
     private DatasetMetaInfoService datasetMetaInfoService;
 
     @Autowired
-    private DeviceService deviceService;
+    private SungrowDeviceService deviceService;
 
-    /**
-     * 定期拿到库所有坐标，构造APi参数访问天气数据
-     */
-    public void collectWeatherData(String time) {
+    public void collectWeatherData(String startTime, String endTime) {
         try {
             logger.info("开始定时收集天气预报...");
             List<String> invertersLocations = deviceService.getInverterLocations();
             List<String> metaTypes = datasetMetaInfoService.selectAllValidMetaType();
-            collectAndMergeWeatherData(invertersLocations, metaTypes, time);
+            collectAndMergeWeatherData(invertersLocations, metaTypes, startTime, endTime);
         } catch (Exception e) {
             logger.error("定时收集天气预报失败: {}", e.getMessage(), e);
         }
     }
 
-    @Scheduled(fixedRate = 4*60*60*1000)
+//    @Scheduled(fixedRate = 4*60*60*1000)
     public void collectWeatherData() {
-        collectWeatherData("");
+//        collectWeatherData();
     }
-
-    /**
-     * 构造APi参数访问天气数据
-     */
-    private WeatherForestData fetchWeatherDataFromApi(double longitude, double latitude, String metaType, String time) {
+    private TerraqtForestData fetchWeatherDataFromApi(double longitude, double latitude, String metaType, String startTime, String endTime) {
         try {
             String token = SecretConfigManager.getWeatherApiToken();
-            String apiUrl = BASE_API_URL + "/" + dataType + "/point";
+            String apiUrl = BASE_API_URL + "/" + metaType + "/point";
 
             // 构建请求头
             HttpHeaders headers = new HttpHeaders();
@@ -74,8 +68,9 @@ public class WeatherDataCollectService {
             requestBody.put("lat", latitude);
             List<String> metaVars = datasetMetaInfoService.selectMetaVarByMetaType(metaType);
             requestBody.put("mete_vars", metaVars);
-            if (!StringUtils.isNullOrEmpty(time)) {
-                requestBody.put("time", time);
+            if (!StringUtils.isNullOrEmpty(startTime) && !StringUtils.isNullOrEmpty(endTime)) {
+                requestBody.put("start_time", startTime);
+                requestBody.put("end_time", endTime);
             }
             HttpEntity<Map<String, Object>> request = new HttpEntity<>(requestBody, headers);
 
@@ -102,10 +97,8 @@ public class WeatherDataCollectService {
         }
     }
 
-    /**
-     * 解析API响应数据
-     */
-    private static WeatherForestData parseWeatherResponse(Map<String, Object> responseBody, double longitude, double latitude, String metaType) {
+
+    private static TerraqtForestData parseWeatherResponse(Map<String, Object> responseBody, double longitude, double latitude, String metaType) {
         try {
             // 首先打印原始响应以便调试
             logger.info("原始API响应: {}", objectMapper.writeValueAsString(responseBody));
@@ -185,7 +178,7 @@ public class WeatherDataCollectService {
                 }
             }
 
-            return new WeatherForestData(location, timestamps, metricValues, metricVars, metricUnits, timeFcst, metaType);
+            return new TerraqtForestData(location, timestamps, metricValues, metricVars, metricUnits, timeFcst, metaType);
 
         } catch (Exception e) {
             logger.error("解析响应数据失败: {}", e.getMessage(), e);
@@ -198,16 +191,13 @@ public class WeatherDataCollectService {
         }
     }
 
-    /**
-     * 将预报结果和设备信息合并写入Lindorm
-     */
-    private void collectAndMergeWeatherData(List<String> invertersLocations, List<String> metaTypes, String time) {
+    private void collectAndMergeWeatherData(List<String> invertersLocations, List<String> metaTypes, String startTime, String endTime) {
         try {
             for (String invertersLocation : invertersLocations) {
                 for (String metaType : metaTypes) {
                     Double longitude = Double.valueOf(invertersLocation.split("#")[0]);
                     Double latitude = Double.valueOf(invertersLocation.split("#")[1]);
-                    WeatherForestData weatherForestData = fetchWeatherDataFromApi(longitude, latitude, metaType, time);
+                    TerraqtForestData weatherForestData = fetchWeatherDataFromApi(longitude, latitude, metaType, startTime,endTime);
                     if (weatherForestData == null || weatherForestData.getTimestamps() == null || weatherForestData.getTimestamps().isEmpty()) {
                         logger.error("位置 [{}, {}] 未获取到天气数据", latitude, longitude);
                         return;

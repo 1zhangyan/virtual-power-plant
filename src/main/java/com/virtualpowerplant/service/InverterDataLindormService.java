@@ -2,19 +2,15 @@ package com.virtualpowerplant.service;
 
 
 import com.virtualpowerplant.config.LindormConfig;
-import com.virtualpowerplant.model.InverterRealTimeData;
-import com.virtualpowerplant.model.SimpleWeatherForestData;
-import com.virtualpowerplant.model.WeatherForestData;
+import com.virtualpowerplant.model.DeviceRealTimeData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @DependsOn(value = "DatasetMetaInfoService")
@@ -25,7 +21,7 @@ public class InverterDataLindormService {
     private static final String TABLE_NAME = "inverter_realtime";
 
 
-    public void writeRealTimeData(List<InverterRealTimeData> dataList) {
+    public void writeRealTimeData(List<DeviceRealTimeData> dataList) {
         if (dataList == null || dataList.isEmpty()) {
             logger.warn("实时数据列表为空，跳过写入");
             return;
@@ -39,7 +35,7 @@ public class InverterDataLindormService {
         try (PreparedStatement pstmt = LindormConfig.connection.prepareStatement(insertSQL)) {
             int batchCount = 0;
 
-            for (InverterRealTimeData data : dataList) {
+            for (DeviceRealTimeData data : dataList) {
                 if (data.getInverterSn() == null || data.getInverterSn().isEmpty()) {
                     logger.warn("逆变器序列号为空，跳过该条记录: {}", data);
                     continue;
@@ -76,7 +72,7 @@ public class InverterDataLindormService {
         }
     }
 
-    public List<InverterRealTimeData> queryBySNTimeRange(String inverterSn, long startTime, long endTime) {
+    public List<DeviceRealTimeData> queryBySNTimeRange(String inverterSn, long startTime, long endTime) {
         // 按照lindorm.md的示例，使用绑定参数和时间范围查询
         String sql = String.format(
                 "SELECT ps_name, ps_key, inverter_sn, time, latitude, longitude, active_power FROM %s WHERE inverter_sn = ? and time >= ? AND time <= ? ORDER BY time DESC",
@@ -96,11 +92,11 @@ public class InverterDataLindormService {
         }
     }
 
-    private List<InverterRealTimeData> parseResultSet(ResultSet rs) throws SQLException {
-        List<InverterRealTimeData> results = new ArrayList<>();
+    private List<DeviceRealTimeData> parseResultSet(ResultSet rs) throws SQLException {
+        List<DeviceRealTimeData> results = new ArrayList<>();
 
         while (rs.next()) {
-            InverterRealTimeData data = new InverterRealTimeData();
+            DeviceRealTimeData data = new DeviceRealTimeData();
 
             data.setPsName(rs.getString("ps_name"));
             data.setPsKey(rs.getString("ps_key"));

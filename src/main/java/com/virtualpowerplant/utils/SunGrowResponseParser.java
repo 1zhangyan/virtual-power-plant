@@ -7,11 +7,11 @@ import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.PowerStationList;
 import com.virtualpowerplant.model.PowerStation;
 import com.virtualpowerplant.model.PowerStationValue;
-import com.virtualpowerplant.model.DeviceList;
-import com.virtualpowerplant.model.Device;
-import com.virtualpowerplant.model.InverterRealTimeData;
+import com.virtualpowerplant.model.SungrowDeviceList;
+import com.virtualpowerplant.model.SungrowDevice;
+import com.virtualpowerplant.model.DeviceRealTimeData;
 import com.virtualpowerplant.model.RealTimeDataResponse;
-import com.virtualpowerplant.model.DevicePoint;
+import com.virtualpowerplant.model.SungrowDevicePoint;
 
 import java.util.List;
 import java.util.Map;
@@ -76,7 +76,7 @@ public class SunGrowResponseParser {
             return (T) parseSunGrowUserInfo(dataNode);
         } else if (dataType == PowerStationList.class) {
             return (T) parsePowerStationList(dataNode);
-        } else if (dataType == DeviceList.class) {
+        } else if (dataType == SungrowDeviceList.class) {
             return (T) parseDeviceList(dataNode);
         } else {
             try {
@@ -184,13 +184,13 @@ public class SunGrowResponseParser {
         return value;
     }
 
-    private static DeviceList parseDeviceList(JsonNode node) {
-        DeviceList list = new DeviceList();
+    private static SungrowDeviceList parseDeviceList(JsonNode node) {
+        SungrowDeviceList list = new SungrowDeviceList();
         list.setRowCount(getIntValue(node, "rowCount"));
 
         JsonNode pageListNode = node.get("pageList");
         if (pageListNode != null && pageListNode.isArray()) {
-            List<Device> devices = new ArrayList<>();
+            List<SungrowDevice> devices = new ArrayList<>();
             for (JsonNode deviceNode : pageListNode) {
                 devices.add(parseDevice(deviceNode));
             }
@@ -199,8 +199,8 @@ public class SunGrowResponseParser {
         return list;
     }
 
-    private static Device parseDevice(JsonNode node) {
-        Device device = new Device();
+    private static SungrowDevice parseDevice(JsonNode node) {
+        SungrowDevice device = new SungrowDevice();
         device.setUuid(getLongValue(node, "uuid"));
         device.setPsId(getLongValue(node, "ps_id"));
         device.setPsName(getTextValue(node, "ps_name"));
@@ -273,34 +273,34 @@ public class SunGrowResponseParser {
         return powerStationList != null ? powerStationList.getPageList() : null;
     }
 
-    public static SunGrowResponse<DeviceList> parseDeviceListResponse(String jsonResponse) {
-        return parseResponse(jsonResponse, DeviceList.class);
+    public static SunGrowResponse<SungrowDeviceList> parseDeviceListResponse(String jsonResponse) {
+        return parseResponse(jsonResponse, SungrowDeviceList.class);
     }
 
-    public static DeviceList extractDeviceList(String jsonResponse) {
-        SunGrowResponse<DeviceList> response = parseDeviceListResponse(jsonResponse);
+    public static SungrowDeviceList extractDeviceList(String jsonResponse) {
+        SunGrowResponse<SungrowDeviceList> response = parseDeviceListResponse(jsonResponse);
         return extractData(response);
     }
 
-    public static List<Device> extractDevices(String jsonResponse) {
-        DeviceList deviceList = extractDeviceList(jsonResponse);
+    public static List<SungrowDevice> extractDevices(String jsonResponse) {
+        SungrowDeviceList deviceList = extractDeviceList(jsonResponse);
         return deviceList != null ? deviceList.getPageList() : null;
     }
 
-    public static List<InverterRealTimeData> extractRealTimeData(String jsonResponse) {
+    public static List<DeviceRealTimeData> extractRealTimeData(String jsonResponse) {
         try {
             JsonNode rootNode = objectMapper.readTree(jsonResponse);
-            SunGrowResponse<List<InverterRealTimeData>> response = new SunGrowResponse<>();
+            SunGrowResponse<List<DeviceRealTimeData>> response = new SunGrowResponse<>();
 
             response.setReqSerialNum(getTextValue(rootNode, "req_serial_num"));
             response.setResultCode(getTextValue(rootNode, "result_code"));
             response.setResultMsg(getTextValue(rootNode, "result_msg"));
 
             JsonNode resultDataNode = rootNode.get("result_data");
-            List<InverterRealTimeData> realTimeDataList = new ArrayList<>();
+            List<DeviceRealTimeData> realTimeDataList = new ArrayList<>();
             if (resultDataNode != null && resultDataNode.isArray()) {
                 for (JsonNode dataNode : resultDataNode) {
-                    InverterRealTimeData data = objectMapper.treeToValue(dataNode, InverterRealTimeData.class);
+                    DeviceRealTimeData data = objectMapper.treeToValue(dataNode, DeviceRealTimeData.class);
                     if (data != null) {
                         realTimeDataList.add(data);
                     }
@@ -312,7 +312,7 @@ public class SunGrowResponseParser {
 
             LocalDateTime deviceTime = LocalDateTime.now();
             if (realTimeDataList != null) {
-                for (InverterRealTimeData data : realTimeDataList) {
+                for (DeviceRealTimeData data : realTimeDataList) {
                     data.setDeviceTime(deviceTime);
                 }
             }
@@ -325,7 +325,7 @@ public class SunGrowResponseParser {
         }
     }
 
-    public static List<InverterRealTimeData> extractRealTimeDataWithDeviceInfo(String jsonResponse, List<Device> devices) {
+    public static List<DeviceRealTimeData> extractRealTimeDataWithDeviceInfo(String jsonResponse, List<SungrowDevice> devices) {
         try {
             JsonNode rootNode = objectMapper.readTree(jsonResponse);
             RealTimeDataResponse response = parseRealTimeDataResponse(rootNode);
@@ -340,18 +340,18 @@ public class SunGrowResponseParser {
                 return new ArrayList<>();
             }
 
-            Map<String, Device> deviceMap = devices != null ? devices.stream()
-                    .collect(Collectors.toMap(Device::getDeviceSn, device -> device, (existing, replacement) -> existing))
+            Map<String, SungrowDevice> deviceMap = devices != null ? devices.stream()
+                    .collect(Collectors.toMap(SungrowDevice::getDeviceSn, device -> device, (existing, replacement) -> existing))
                     : new java.util.HashMap<>();
 
-            List<InverterRealTimeData> realTimeDataList = new ArrayList<>();
+            List<DeviceRealTimeData> realTimeDataList = new ArrayList<>();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
             for (RealTimeDataResponse.DevicePointWrapper wrapper : response.getResultData().getDevicePointList()) {
-                DevicePoint devicePoint = wrapper.getDevicePoint();
+                SungrowDevicePoint devicePoint = wrapper.getDevicePoint();
                 if (devicePoint == null) continue;
 
-                InverterRealTimeData realTimeData = new InverterRealTimeData();
+                DeviceRealTimeData realTimeData = new DeviceRealTimeData();
                 realTimeData.setInverterSn(devicePoint.getDeviceSn());
 
                 // 解析p24字段作为有功功率
@@ -379,7 +379,7 @@ public class SunGrowResponseParser {
                 }
 
                 // 从Device信息中填充电站信息
-                Device device = deviceMap.get(devicePoint.getDeviceSn());
+                SungrowDevice device = deviceMap.get(devicePoint.getDeviceSn());
                 if (device != null) {
                     realTimeData.setPsName(device.getPsName());
                     realTimeData.setPsKey(device.getPsKey());
@@ -429,7 +429,7 @@ public class SunGrowResponseParser {
                     RealTimeDataResponse.DevicePointWrapper wrapper = new RealTimeDataResponse.DevicePointWrapper();
                     JsonNode devicePointNode = wrapperNode.get("device_point");
                     if (devicePointNode != null && !devicePointNode.isNull()) {
-                        DevicePoint devicePoint = parseDevicePoint(devicePointNode);
+                        SungrowDevicePoint devicePoint = parseDevicePoint(devicePointNode);
                         wrapper.setDevicePoint(devicePoint);
                     }
                     devicePointList.add(wrapper);
@@ -443,8 +443,8 @@ public class SunGrowResponseParser {
         return response;
     }
 
-    private static DevicePoint parseDevicePoint(JsonNode node) {
-        DevicePoint devicePoint = new DevicePoint();
+    private static SungrowDevicePoint parseDevicePoint(JsonNode node) {
+        SungrowDevicePoint devicePoint = new SungrowDevicePoint();
         devicePoint.setDeviceSn(getTextValue(node, "device_sn"));
         devicePoint.setPsKey(getTextValue(node, "ps_key"));
         devicePoint.setDeviceName(getTextValue(node, "device_name"));

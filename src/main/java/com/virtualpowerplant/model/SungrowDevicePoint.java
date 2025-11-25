@@ -1,6 +1,6 @@
 package com.virtualpowerplant.model;
 
-public class DevicePoint {
+public class SungrowDevicePoint {
 
     private String deviceSn;
     private String psKey;

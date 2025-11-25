@@ -27,7 +27,6 @@ public class LindormConfig {
             }
             logger.info("初始化天气数据 Lindorm TSDB JDBC连接，URL: {}", url);
             connection = DriverManager.getConnection(url);
-//            initWeatherTable();
             logger.info("天气数据 Lindorm TSDB JDBC连接初始化完成");
         } catch (Exception e) {
             logger.error("初始化天气数据 Lindorm TSDB JDBC连接失败: {}", e.getMessage(), e);

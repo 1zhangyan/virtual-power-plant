@@ -1,6 +1,6 @@
 package com.virtualpowerplant.controller;
 
-import com.virtualpowerplant.model.InverterRealTimeData;
+import com.virtualpowerplant.model.DeviceRealTimeData;
 import com.virtualpowerplant.service.InverterDataLindormService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,7 +34,7 @@ public class InverterPowerDataController {
             if (startTime > endTime ) {
                 throw new RuntimeException("开始时间要小于结束时间");
             }
-            List<InverterRealTimeData> inverterRealTimeDatas = inverterDataLindormService.queryBySNTimeRange(inverterSn, startTime, endTime);
+            List<DeviceRealTimeData> inverterRealTimeDatas = inverterDataLindormService.queryBySNTimeRange(inverterSn, startTime, endTime);
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("power_data", inverterRealTimeDatas);

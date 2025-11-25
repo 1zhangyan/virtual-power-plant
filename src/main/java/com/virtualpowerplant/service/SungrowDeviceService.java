@@ -1,10 +1,14 @@
 package com.virtualpowerplant.service;
 
+import static com.virtualpowerplant.utils.PositionStandard.positionStandard;
+
 import com.virtualpowerplant.mapper.DeviceMapper;
+import com.virtualpowerplant.mapper.VppDeviceMapper;
 import com.virtualpowerplant.model.SungrowDevice;
 import com.virtualpowerplant.model.PowerStation;
 import com.virtualpowerplant.model.SunGrowUserInfo;
 import com.virtualpowerplant.model.VirtualPowerPlant;
+import com.virtualpowerplant.model.VppDevice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -12,19 +16,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class DeviceService {
+public class SungrowDeviceService {
 
-    private static final Logger logger = LoggerFactory.getLogger(DeviceService.class);
+    private static final Logger logger = LoggerFactory.getLogger(SungrowDeviceService.class);
 
     @Autowired
     private DeviceMapper deviceMapper;
+
+    @Autowired
+    private VppDeviceMapper vppDeviceMapper;
 
     @Autowired
     private VppService vppService;
@@ -32,66 +38,40 @@ public class DeviceService {
     /**
      * 同步SunGrow设备数据到数据库，包含经纬度信息
      */
-    public void syncDevicesWithCoordinates() throws Exception {
-        logger.info("开始同步SunGrow设备数据...");
-
-        // 1. 同步虚拟电厂信息
-        SunGrowUserInfo sunGrowUserInfo = SunGrowDataService.getCachedUserInfo();
-
-        VirtualPowerPlant virtualPowerPlant = new VirtualPowerPlant();
-        BeanUtils.copyProperties(sunGrowUserInfo,virtualPowerPlant);
-        Long vppId = vppService.findOrInsert(virtualPowerPlant);
-
-        // 2. 获取所有电站信息（包含经纬度）
-        logger.info("开始获取电站信息...");
-        List<PowerStation> powerStations = SunGrowDataService.getPowerStationsAndParse();
-        Map<Long, PowerStation> psMap = powerStations.stream()
-            .collect(Collectors.toMap(PowerStation::getPsId, ps -> ps));
-        logger.info("获取到 {} 个电站信息", powerStations.size());
-
-        // 3. 获取所有设备信息
-        logger.info("开始获取设备信息...");
-        List<SungrowDevice> devices = SunGrowDataService.getDevicesAndParse();
-        logger.info("获取到 {} 个设备信息", devices.size());
-
-        // 4. 为设备添加经纬度信息并保存到数据库
-        logger.info("开始处理设备数据并同步到数据库...");
-        LocalDateTime now = LocalDateTime.now();
-        int processedCount = 0;
-        int updatedCount = 0;
-
-        for (SungrowDevice device : devices) {
-            PowerStation ps = psMap.get(device.getPsId());
-            if (ps != null) {
-                device.setLatitude(ps.getLatitude());
-                device.setLongitude(ps.getLongitude());
-                device.setPsName(ps.getPsName());
-                device.setPsType(ps.getPsType());
-                device.setOnlineStatus(ps.getPsStatus()); // psStatus对应onlineStatus
-                device.setProvinceName(ps.getProvinceName());
-                device.setCityName(ps.getCityName());
-                device.setDistrictName(ps.getDistrictName());
-                device.setConnectType(ps.getConnectType());
-                updatedCount++;
+    public void syncDevicesWithCoordinates() {
+        try {
+            logger.info("开始同步SunGrow设备数据...");
+            SunGrowUserInfo sunGrowUserInfo = SunGrowDataService.getCachedUserInfo();
+            VirtualPowerPlant virtualPowerPlant = new VirtualPowerPlant();
+            BeanUtils.copyProperties(sunGrowUserInfo, virtualPowerPlant);
+            Long vppId = vppService.findOrInsert(virtualPowerPlant);
+            List<PowerStation> powerStations = SunGrowDataService.getPowerStationsAndParse();
+            Map<Long, PowerStation> psMap = powerStations.stream()
+                    .collect(Collectors.toMap(PowerStation::getPsId, ps -> ps));
+            List<SungrowDevice> devices = SunGrowDataService.getDevicesAndParse();
+            logger.info("获取到 {} 个设备信息", devices.size());
+            logger.info("开始处理设备数据并同步到数据库...");
+            for (SungrowDevice device : devices) {
+                VppDevice vppDevice = new VppDevice();
+                PowerStation ps = psMap.get(device.getPsId());
+                if (ps != null && device.getTypeName().equals("逆变器")) {
+                    vppDevice.setDeviceSn(device.getDeviceSn());
+                    vppDevice.setVppId(vppId);
+                    vppDevice.setDeviceName(device.getDeviceName());
+                    vppDevice.setDeviceType(device.getTypeName());
+                    vppDevice.setLongitude(ps.getLongitude());
+                    vppDevice.setLatitude(ps.getLatitude());
+                    vppDevice.setLongitudeStandard(positionStandard(ps.getLongitude()));
+                    vppDevice.setLatitudeStandard(positionStandard(ps.getLatitude()));
+                    vppDevice.setProvince(ps.getProvinceName());
+                    vppDevice.setCity(ps.getCityName());
+                    vppDeviceMapper.upsert(vppDevice);
+                }
             }
-
-            if (device.getCreatedAt() == null) {
-                device.setCreatedAt(now);
-            }
-            device.setUpdatedAt(now);
-            device.setVppId(vppId);
-            // 5. Upsert到数据库
-            deviceMapper.insertOrUpdate(device);
-            processedCount++;
-
-            // 每处理100个设备记录一次日志
-            if (processedCount % 100 == 0) {
-                logger.info("已处理 {} / {} 个设备", processedCount, devices.size());
-            }
+            logger.info("设备数据同步完成");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-
-        logger.info("设备数据同步完成：总共处理 {} 个设备，其中 {} 个设备添加了电站信息(经纬度、电站名称、省市区等)",
-                   processedCount, updatedCount);
     }
 
     /**
@@ -101,7 +81,7 @@ public class DeviceService {
         return deviceMapper.selectInverters()
                 .stream()
                 .filter(it -> it.getLatitude() > 0.0 && it.getLongitude() > 0.0)
-                .map(it ->  String.format("%s#%s", Math.round(it.getLongitude()),Math.round(it.getLatitude())))
+                .map(it -> String.format("%s#%s", Math.round(it.getLongitude()), Math.round(it.getLatitude())))
                 .distinct()
                 .collect(Collectors.toList());
     }
@@ -109,7 +89,7 @@ public class DeviceService {
     /**
      * 根据vppId查询逆变器设备
      */
-    public List<SungrowDevice> getInvertersByVppId(Long vppId) {
-        return deviceMapper.selectInvertersByVppId(vppId);
+    public List<VppDevice> getInvertersByVppId(Long vppId) {
+        return vppDeviceMapper.selectInvertersByVppId(vppId);
     }
 }

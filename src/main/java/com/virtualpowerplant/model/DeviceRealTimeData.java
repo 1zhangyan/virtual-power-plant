@@ -1,9 +1,8 @@
 package com.virtualpowerplant.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 
-public class InverterRealTimeData {
+public class DeviceRealTimeData {
 
 
     private String psName;
@@ -22,7 +21,7 @@ public class InverterRealTimeData {
 
     private LocalDateTime createTime;
 
-    public InverterRealTimeData() {
+    public DeviceRealTimeData() {
         this.createTime = LocalDateTime.now();
     }
 

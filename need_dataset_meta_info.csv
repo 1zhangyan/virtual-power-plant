@@ -1,0 +1,206 @@
+﻿dataset_type,mete_type,var_name,mete_var,default_unit,support_unit,var_desc
+opensource,era5_pressure,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+opensource,era5_pressure,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+opensource,era5_pressure,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+opensource,era5_pressure,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+opensource,era5_pressure,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+opensource,era5_pressure,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+opensource,era5_pressure,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+opensource,era5_pressure,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+opensource,era5_pressure,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+opensource,era5_pressure,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+opensource,era5_pressure,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+opensource,era5_pressure,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+opensource,era5_pressure,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+opensource,era5_pressure,1000hpa Fraction of cloud cover,cc1000hpa,%,"[0,1]",气压层1000hpa云覆盖率
+opensource,era5_pressure,925hpa Fraction of cloud cover,cc925hpa,%,"[0,1]",气压层925hpa云覆盖率
+opensource,era5_pressure,850hpa Fraction of cloud cover,cc850hpa,%,"[0,1]",气压层850hpa云覆盖率
+opensource,era5_pressure,700hpa Fraction of cloud cover,cc700hpa,%,"[0,1]",气压层700hpa云覆盖率
+opensource,era5_pressure,600hpa Fraction of cloud cover,cc600hpa,%,"[0,1]",气压层600hpa云覆盖率
+opensource,era5_pressure,500hpa Fraction of cloud cover,cc500hpa,%,"[0,1]",气压层500hpa云覆盖率
+opensource,era5_pressure,400hpa Fraction of cloud cover,cc400hpa,%,"[0,1]",气压层400hpa云覆盖率
+opensource,era5_pressure,300hpa Fraction of cloud cover,cc300hpa,%,"[0,1]",气压层300hpa云覆盖率
+opensource,era5_pressure,250hpa Fraction of cloud cover,cc250hpa,%,"[0,1]",气压层250hpa云覆盖率
+opensource,era5_pressure,200hpa Fraction of cloud cover,cc200hpa,%,"[0,1]",气压层200hpa云覆盖率
+opensource,era5_pressure,150hpa Fraction of cloud cover,cc150hpa,%,"[0,1]",气压层150hpa云覆盖率
+opensource,era5_pressure,100hpa Fraction of cloud cover,cc100hpa,%,"[0,1]",气压层100hpa云覆盖率
+opensource,era5_pressure,50hpa Fraction of cloud cover,cc50hpa,%,"[0,1]",气压层50hpa云覆盖率
+opensource,cfs_h6_surface,temperature (0m),t,K,C | F,地面0米气温
+opensource,cfs_h6_surface,temperature (2m),t2m,K,C | F,地面2米气温
+opensource,cfs_h6_surface,Maximum temperature,tmax,K,C | F,最高温度
+opensource,cfs_h6_surface,Minimum temperature,tmin,K,C | F,最低温度
+opensource,cfs_h6_surface,cloud cover total,tcc,%,"[0,1]",总体云覆盖率
+opensource,cfs_h6_surface,cloud cover low,lcc,%,"[0,1]",低空云覆盖率
+opensource,cfs_h6_surface,cloud cover mid,mcc,%,"[0,1]",中空云覆盖率
+opensource,cfs_h6_surface,cloud cover high,hcc,%,"[0,1]",高空云覆盖率
+opensource,cfs_h6_surface,downward short-wave radiation flux,dswrf,W/m^2,,下行短波辐照通量
+opensource,cfs_h6_surface,downward long-wave radiation flux,dlwrf,W/m^2,,下行长波辐照通量
+opensource,cfs_h6_surface,upward short-wave radiation flux,uswrf,W/m^2,,上行短波辐照通量
+opensource,cfs_h6_surface,upward long-wave radiation flux,ulwrf,W/m^2,,上行长波辐照通量
+opensource,icon_surface,2 metre dewpoint temperature,d2m,K,C | F,2米露点温度
+opensource,icon_surface,2 metre temperature,t2m,K,C | F,2米气温
+opensource,icon_surface,Max 2m Temperature,t2m_max,K,C | F,2米最大气温
+opensource,icon_surface,Min 2m Temperature,t2m_min,K,C | F,2米最小气温
+opensource,icon_surface,Snow temperature (top of snow),t_snow,K,C | F,积雪顶层温度
+opensource,icon_surface,Net short wave radiation flux at surface,nswrf-acc,W/m^2,,[原始值]地表净短波辐射通量
+opensource,icon_surface,Net short wave radiation flux on model top,nswrf_top-acc,W/m^2,,[原始值]模型顶层净短波辐射通量
+opensource,icon_surface,"Net short-wave radiation flux, clear sky",nswrfcs-acc,W/m^2,,[原始值]晴空净短波辐射通量
+opensource,icon_surface,Downward diffusive short wave radiation flux at surface,dswdif-acc,W/m^2,,[原始值]地表向下散射短波辐射通量
+opensource,icon_surface,Upward diffusive short wave radiation flux at surface,uswdif-acc,W/m^2,,[原始值]地表向上散射短波辐射通量
+opensource,icon_surface,Downward direct short wave radiation flux at surface,dswdir-acc,W/m^2,,[原始值]地表向下直射短波辐射通量
+opensource,icon_surface,Net short wave radiation flux at surface,nswrf,W/m^2,,[预处理]地表净短波辐射通量
+opensource,icon_surface,Net short wave radiation flux on model top,nswrf_top,W/m^2,,[预处理]模型顶层净短波辐射通量
+opensource,icon_surface,"Net short-wave radiation flux, clear sky",nswrfcs,W/m^2,,[预处理]晴空净短波辐射通量
+opensource,icon_surface,Downward diffusive short wave radiation flux at surface,dswdif,W/m^2,,[预处理]地表向下散射短波辐射通量
+opensource,icon_surface,Upward diffusive short wave radiation flux at surface,uswdif,W/m^2,,[预处理]地表向上散射短波辐射通量
+opensource,icon_surface,Downward direct short wave radiation flux at surface,dswdir,W/m^2,,[预处理]地表向下直射短波辐射通量
+opensource,icon_surface,Net long wave radiation flux at surface,nlwrf,W/m^2,,地表净长波辐射通量
+opensource,icon_surface,Net long wave radiation flux on model top,nlwrf_top,W/m^2,,模型顶层净长波辐射通量
+opensource,icon_surface,Cloud Cover (0 - 400 hPa),hcc,%,"[0,1]",云量 (0 - 400 hPa)
+opensource,icon_surface,Cloud Cover (800 hPa - Soil),lcc,%,"[0,1]",云量 (800 hPa - 土壤)
+opensource,icon_surface,Cloud Cover (400 - 800 hPa),mcc,%,"[0,1]",云量 (400 - 800 hPa)
+opensource,icon_surface,Total Cloud Cover,tcc,%,"[0,1]",总云量
+opensource,icon_surface,Soil Temperature,t_s,K,C | F,土壤温度
+opensource,aifs_surface,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,aifs_surface,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,aifs_surface,skin temperature,skt,K,C | F,地表温度
+opensource,aifs_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,aifs_surface,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,aifs_surface,surface long-wave (thermal) radiation downwards accumulated,strd-acc,J/m^2,,[原始累积值] 地表下行长波（热）辐射
+opensource,aifs_surface,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,aifs_surface,surface long-wave (thermal) radiation downwards,strd,W/m^2,,[预处理] 地表下行长波（热）辐射
+opensource,aifs_surface,total cloud cover,tcc,"[0,1]",%,总云量
+opensource,aifs_surface,low cloud cover,lcc,"[0,1]",%,低云量
+opensource,aifs_surface,mid cloud cover,mcc,"[0,1]",%,中云量
+opensource,aifs_surface,high cloud cover,hcc,"[0,1]",%,高云量
+opensource,gfs_surface,temperature (2m),t2m,K,C | F,地面2米气温
+opensource,gfs_surface,dewpoint (2m),d2m,K,C | F,地面2米露点温度
+opensource,gfs_surface,skin temperature,skt,K,C | F,地表温度
+opensource,gfs_surface,surface temperature,t0m,K,C | F,地面0米气温
+opensource,gfs_surface,temperature (80m),t80m,K,C | F,地面80米气温
+opensource,gfs_surface,temperature (100m),t100m,K,C | F,地面100米气温
+opensource,gfs_surface,wet bulb temp,wbt,K,C | F,[预处理]湿球温度
+opensource,gfs_surface,cloud cover total,tcc,%,"[0,1]",总体云覆盖率
+opensource,gfs_surface,cloud cover low,lcc,%,"[0,1]",低空云覆盖率
+opensource,gfs_surface,cloud cover mid,mcc,%,"[0,1]",中空云覆盖率
+opensource,gfs_surface,cloud cover high,hcc,%,"[0,1]",高空云覆盖率
+opensource,gfs_surface,downward short-wave radiation flux,dswrf,W/m^2,,下行短波辐照通量
+opensource,gfs_surface,downward long-wave radiation flux,dlwrf,W/m^2,,下行长波辐照通量
+opensource,gfs_surface,upward short-wave radiation flux,uswrf,W/m^2,,上行短波辐照通量
+opensource,gfs_surface,upward long-wave radiation flux,ulwrf,W/m^2,,上行长波辐照通量
+opensource,ifs_surface,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,ifs_surface,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,ifs_surface,skin temperature,skt,K,C | F,地表温度
+opensource,ifs_surface,top net long-wave (thermal) radiation accumulated,ttr-acc,J/m^2,,[原始累积值] 顶部净长波（热）辐射<br>地表和大气向外辐射的长波辐射 - 从外太空向地球辐射的长波辐射
+opensource,ifs_surface,surface net short-wave (solar) radiation accumulated,ssr-acc,J/m^2,,[原始累积值] 地表净短波（太阳）辐射<br>地表接收的短波(太阳)辐射 - 地表反射回大气的短波辐射<br>地球年平均地表净短波辐射约为168W/m^2
+opensource,ifs_surface,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,ifs_surface,surface net long-wave (thermal) radiation accumulated,str-acc,J/m^2,,[原始累积值] 地表净长波（热）辐射
+opensource,ifs_surface,surface long-wave (thermal) radiation downwards accumulated,strd-acc,J/m^2,,[原始累积值] 地表下行长波（热）辐射
+opensource,ifs_surface,top net long-wave (thermal) radiation,ttr,W/m^2,,[预处理] 顶部净长波（热）辐射<br>地表和大气向外辐射的长波辐射 - 从外太空向地球辐射的长波辐射
+opensource,ifs_surface,surface net short-wave (solar) radiation,ssr,W/m^2,,[预处理] 地表净短波（太阳）辐射<br>地表接收的短波(太阳)辐射 - 地表反射回大气的短波辐射<br>地球年平均地表净短波辐射约为168W/m^2
+opensource,ifs_surface,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射<br>从大气向地表辐射的短波(太阳)辐射通量，短波指可见光和近红外<br>是光伏发电的主要能源来源
+opensource,ifs_surface,surface net long-wave (thermal) radiation,str,W/m^2,,[预处理] 地表净长波（热）辐射
+opensource,ifs_surface,surface long-wave (thermal) radiation downwards,strd,W/m^2,,[预处理] 地表下行长波（热）辐射
+opensource,gfs_graphcast,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,gfs_graphcast,1000hpa temperature,t1000hpa,K,C | F,气压层1000hpa气温
+opensource,gfs_graphcast,925hpa temperature,t925hpa,K,C | F,气压层925hpa气温
+opensource,gfs_graphcast,850hpa temperature,t850hpa,K,C | F,气压层850hpa气温
+opensource,gfs_graphcast,700hpa temperature,t700hpa,K,C | F,气压层700hpa气温
+opensource,gfs_graphcast,600hpa temperature,t600hpa,K,C | F,气压层600hpa气温
+opensource,gfs_graphcast,500hpa temperature,t500hpa,K,C | F,气压层500hpa气温
+opensource,gfs_graphcast,400hpa temperature,t400hpa,K,C | F,气压层400hpa气温
+opensource,gfs_graphcast,300hpa temperature,t300hpa,K,C | F,气压层300hpa气温
+opensource,gfs_graphcast,250hpa temperature,t250hpa,K,C | F,气压层250hpa气温
+opensource,gfs_graphcast,200hpa temperature,t200hpa,K,C | F,气压层200hpa气温
+opensource,gfs_graphcast,150hpa temperature,t150hpa,K,C | F,气压层150hpa气温
+opensource,gfs_graphcast,100hpa temperature,t100hpa,K,C | F,气压层100hpa气温
+opensource,gfs_graphcast,50hpa temperature,t50hpa,K,C | F,气压层50hpa气温
+opensource,gfs_graphcast,cloud cover total,tcc,%,"[0,1]",[预处理]总体云覆盖率
+opensource,gfs_graphcast,cloud cover low,lcc,%,"[0,1]",[预处理]低空云覆盖率
+opensource,gfs_graphcast,cloud cover mid,mcc,%,"[0,1]",[预处理]中空云覆盖率
+opensource,gfs_graphcast,cloud cover high,hcc,%,"[0,1]",[预处理]高空云覆盖率
+opensource,iconeps_surface,Net short wave radiation flux (at the surface),msnswrf-acc,W/m^2,,[原始值]地表净短波辐射通量
+opensource,iconeps_surface,Net short wave radiation flux,nswrf,W/m^2,,净短波辐射通量
+opensource,iconeps_surface,Net short wave radiation flux (at the surface),msnswrf,W/m^2,,[预处理]地表净短波辐射通量
+opensource,iconeps_surface,Net long wave radiation flux (at the surface),msnlwrf,W/m^2,,地表净长波辐射通量
+opensource,iconeps_surface,Net long wave radiation flux,nlwrf,W/m^2,,净长波辐射通量
+opensource,iconeps_surface,Total cloud cover,tcc,%,"[0,1]",总云量
+opensource,gefs_p25,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,gefs_p25,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,gefs_p25,skin temperature,skt,K,C | F,[预处理] 体感温度
+opensource,gefs_p25,wet bulb temp,wbt,K,C | F,[预处理] 湿球温度
+opensource,gefs_p25,downward short-wave rad flux,dswrf,W/m^2,,下行短波辐射通量
+opensource,gefs_p25,upward short-wave rad flux,uswrf,W/m^2,,上行短波辐射通量
+opensource,gefs_p25,downard long-wave rad flux,dlwrf,W/m^2,,下行长波辐射通量
+opensource,gefs_p25,upward long-wave rad flux,ulwrf,W/m^2,,上行长波辐射通量
+opensource,gefs_p25,mean surface latent heat flux,msshf,W/m^2,,平均表面潜热通量主要涉及水的蒸发和凝结过程
+opensource,gefs_p25,mean surface sensible heat flux,mslhf,W/m^2,,平均表面感热通量是衡量地标通过传导和对流过程向大气传输的显热量的平均值
+opensource,gefs_p25,total cloud cover,tcc,"[0,1]",%,云覆盖比例
+opensource,gefs_p50,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,gefs_p50,2 metre dewpoint temperature,d2m,K,C | F,[预处理] 地面2米露点温度
+opensource,gefs_p50,skin temperature,skt,K,C | F,[预处理] 体感温度
+opensource,gefs_p50,wet bulb temp,wbt,K,C | F,[预处理] 湿球温度
+opensource,gefs_p50,downward short-wave rad flux,dswrf,W/m^2,,下行短波辐射通量
+opensource,gefs_p50,upward short-wave rad flux,uswrf,W/m^2,,上行短波辐射通量
+opensource,gefs_p50,downward long-wave rad flux,dlwrf,W/m^2,,下行长波辐射通量
+opensource,gefs_p50,upward long-wave rad flux,ulwrf,W/m^2,,上行长波辐射通量
+opensource,gefs_p50,mean surface latent heat flux,msshf,W/m^2,,平均表面潜热通量主要涉及水的蒸发和凝结过程
+opensource,gefs_p50,mean surface sensible heat flux,mslhf,W/m^2,,平均表面感热通量
+opensource,gefs_p50,total cloud cover,tcc,"[0,1]",%,云覆盖比例
+opensource,ens_open,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,ens_open,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,ens_open,skin temperature,skt,K,C | F,地表温度
+opensource,ens_open,top net long-wave (thermal) radiation accumulated,ttr-acc,J/m^2,,[原始累积值] 顶部净长波（热）辐射
+opensource,ens_open,surface net short-wave (solar) radiation accumulated,ssr-acc,J/m^2,,[原始累积值] 地表净短波（太阳）辐射
+opensource,ens_open,surface short-wave (solar) radiation downwards accumulated,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波（太阳）辐射
+opensource,ens_open,surface net long-wave (thermal) radiation accumulated,str-acc,J/m^2,,[原始累积值] 地表净长波（热）辐射
+opensource,ens_open,surface long-wave (thermal) radiation downwards accumulated,strd-acc,J/m^2,,[原始累积值] 地表下行长波（热）辐射
+opensource,ens_open,top net long-wave (thermal) radiation,ttr,W/m^2,,[预处理] 顶部净长波（热）辐射
+opensource,ens_open,surface net short-wave (solar) radiation,ssr,W/m^2,,[预处理] 地表净短波（太阳）辐射
+opensource,ens_open,surface short-wave (solar) radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波（太阳）辐射
+opensource,ens_open,surface net long-wave (thermal) radiation,str,W/m^2,,[预处理] 地表净长波（热）辐射
+opensource,ens_open,surface long-wave (thermal) radiation downwards,strd,W/m^2,,[预处理] 地表下行长波（热）辐射
+opensource,gdas_surface,temperature (2m),t2m,K,C | F,地面2米气温
+opensource,gdas_surface,dewpoint (2m),d2m,K,C | F,地面2米露点温度
+opensource,gdas_surface,skin temperature,skt,K,C | F,地表温度
+opensource,gdas_surface,surface temperature,t0m,K,C | F,地面0米气温
+opensource,gdas_surface,temperature (80m),t80m,K,C | F,地面80米气温
+opensource,gdas_surface,temperature (100m),t100m,K,C | F,地面100米气温
+opensource,gdas_surface,cloud cover total,tcc,%,"[0,1]",总体云覆盖率
+opensource,gdas_surface,cloud cover low,lcc,%,"[0,1]",低空云覆盖率
+opensource,gdas_surface,cloud cover mid,mcc,%,"[0,1]",中空云覆盖率
+opensource,gdas_surface,cloud cover high,hcc,%,"[0,1]",高空云覆盖率
+opensource,gdas_surface,downward short-wave radiation flux,dswrf,W/m^2,,下行短波辐照通量
+opensource,gdas_surface,downward long-wave radiation flux,dlwrf,W/m^2,,下行长波辐照通量
+opensource,gdas_surface,upward short-wave radiation flux,uswrf,W/m^2,,上行短波辐照通量
+opensource,gdas_surface,upward long-wave radiation flux,ulwrf,W/m^2,,上行长波辐照通量
+opensource,era5_surface,2 metre temperature,t2m,K,C | F,地面2米气温
+opensource,era5_surface,2 metre dewpoint temperature,d2m,K,C | F,地面2米露点温度
+opensource,era5_surface,skin temperature,skt,K,C | F,地表温度
+opensource,era5_surface,cloud cover total,tcc,"[0,1]",%,总体云覆盖率
+opensource,era5_surface,cloud cover low,lcc,"[0,1]",%,低空云覆盖率
+opensource,era5_surface,cloud cover mid,mcc,"[0,1]",%,中空云覆盖率
+opensource,era5_surface,cloud cover high,hcc,"[0,1]",%,高空云覆盖率
+opensource,era5_surface,surface solar radiation downwards,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波(太阳)辐射
+opensource,era5_surface,surface net solar radiation,ssr-acc,J/m^2,,[原始累积值] 地表净短波(太阳)辐射
+opensource,era5_surface,surface solar radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波(太阳)辐射
+opensource,era5_surface,surface net solar radiation,ssr,W/m^2,,[预处理] 地表净短波(太阳)辐射
+opensource,era5_surface,mean surface direct short-wave radiation flux,msdrswrf,W/m^2,,平均地表直接短波辐射通量
+opensource,era5_surface,mean surface downward short-wave radiation flux,msdwswrf,W/m^2,,平均地表下行短波辐射通量
+opensource,era5_land,surface net solar radiation,ssr-acc,J/m^2,,[原始累积值] 地表净短波(太阳)辐射
+opensource,era5_land,surface net thermal radiation,str-acc,J/m^2,,[原始累积值] 地表净热辐射
+opensource,era5_land,surface solar radiation downwards,ssrd-acc,J/m^2,,[原始累积值] 地表下行短波(太阳)辐射
+opensource,era5_land,surface thermal radiation downwards,strd-acc,J/m^2,,[原始累积值] 地表下行热辐射
+opensource,era5_land,surface latent heat flux,slhf-acc,J/m^2,,[原始累积值] 地表潜热通量
+opensource,era5_land,surface sensible heat flux,sshf-acc,J/m^2,,[原始累积值] 地表感热通量
+opensource,era5_land,surface net solar radiation,ssr,W/m^2,,[预处理] 地表净短波(太阳)辐射
+opensource,era5_land,surface net thermal radiation,str,W/m^2,,[预处理] 地表净热辐射
+opensource,era5_land,surface solar radiation downwards,ssrd,W/m^2,,[预处理] 地表下行短波(太阳)辐射
+opensource,era5_land,surface thermal radiation downwards,strd,W/m^2,,[预处理] 地表下行热辐射
+opensource,era5_land,surface latent heat flux,slhf,W/m^2,,[预处理] 地表潜热通量
+opensource,era5_land,surface sensible heat flux,sshf,W/m^2,,[预处理] 地表感热通量
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,

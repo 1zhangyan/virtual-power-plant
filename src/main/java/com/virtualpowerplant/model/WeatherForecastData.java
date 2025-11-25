@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
  * 逆变器天气数据合并模型
  * 包含设备信息和对应位置的天气预报数据
  */
-public class InverterWeatherData {
+public class WeatherForecastData {
 
     // 设备信息
     private String psName;      // 电站名称
@@ -25,11 +25,11 @@ public class InverterWeatherData {
     private Double ulwrf;  // Upward Long Wave Radiation Flux (向上长波辐射通量) - W/m^2
 
     // 构造函数
-    public InverterWeatherData() {}
+    public WeatherForecastData() {}
 
-    public InverterWeatherData(String psName, String psKey, String deviceSn, LocalDateTime timestamp,
-                              Double tcc, Double lcc, Double mcc, Double hcc,
-                              Double dswrf, Double dlwrf, Double uswrf, Double ulwrf) {
+    public WeatherForecastData(String psName, String psKey, String deviceSn, LocalDateTime timestamp,
+                               Double tcc, Double lcc, Double mcc, Double hcc,
+                               Double dswrf, Double dlwrf, Double uswrf, Double ulwrf) {
         this.psName = psName;
         this.psKey = psKey;
         this.deviceSn = deviceSn;
@@ -143,7 +143,7 @@ public class InverterWeatherData {
 
     @Override
     public String toString() {
-        return String.format("InverterWeatherData{ps='%s'/%s, device='%s', time=%s, tcc=%.1f%%, dswrf=%.1fW/m²}",
+        return String.format("WeatherForecastData{ps='%s'/%s, device='%s', time=%s, tcc=%.1f%%, dswrf=%.1fW/m²}",
                 psName, psKey, deviceSn, time, tcc, dswrf);
     }
 }

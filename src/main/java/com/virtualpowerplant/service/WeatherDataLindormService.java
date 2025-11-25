@@ -3,7 +3,8 @@ package com.virtualpowerplant.service;
 
 import com.virtualpowerplant.config.LindormConfig;
 import com.virtualpowerplant.model.SimpleWeatherForestData;
-import com.virtualpowerplant.model.WeatherForestData;
+import com.virtualpowerplant.model.TerraqtForestData;
+import com.virtualpowerplant.utils.TimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,8 @@ public class WeatherDataLindormService {
 
     private static final Logger logger = LoggerFactory.getLogger(WeatherDataLindormService.class);
 
-    /**
-     * 按照 metaTypes 初始化时间序列表
-     *
-     * @param metaTypes
-     */
-    public void initWeatherTable(List<String> metaTypes) {
-//        List<String> metaTypes = datasetMetaInfoService.selectAllValidMetaType();
+    public void initWeatherTable() {
+        List<String> metaTypes = datasetMetaInfoService.selectAllValidMetaType();
         for (String metaType : metaTypes) {
             List<String> metaVars = datasetMetaInfoService.selectMetaVarByMetaType(metaType);
             String createTableSQL = String.format(
@@ -54,23 +50,21 @@ public class WeatherDataLindormService {
     }
 
     private static String getTableName(String metaType) {
-        return String.format("weather_forest_%s", metaType);
+        return String.format("weather_forest_v1_%s", metaType);
     }
 
     /**
-     * 根据 WeatherForestData 写入天气数据
+     * 根据 TerraqtForestData 写入天气数据
      **/
-    public void writeWeatherData(WeatherForestData weatherForestData) {
+    public void writeWeatherData(TerraqtForestData weatherForestData) {
         if (LindormConfig.connection == null) {
             logger.warn("Lindorm连接未初始化，跳过天气数据写入");
             return;
         }
-
         if (weatherForestData == null || weatherForestData.getTimestamps() == null) {
             logger.warn("天气数据列表为空，跳过写入");
             return;
         }
-
         try (Statement stmt = LindormConfig.connection.createStatement()) {
             for (int i = 0; i < weatherForestData.getTimestamps().size(); i++) {
                 String insertSQL = String.format(
@@ -98,17 +92,18 @@ public class WeatherDataLindormService {
      * 坐标：精确到个位数
      * 时间：取当前小时
      **/
-    public List<SimpleWeatherForestData> selectWeatherData(Double longitude, Double latitude, Long timeStamp, String metaType) {
-        Timestamp timestamp = new Timestamp(timeStamp / 1000 / 60 / 60 * 1000 * 60 * 60);
+    public List<SimpleWeatherForestData> selectWeatherData(Double longitude, Double latitude, String startTime, String endTime, String metaType) {
+
         List<SimpleWeatherForestData> result = new ArrayList<>();
         String querySQL = String.format(
-                "SELECT * FROM %s WHERE longitude = ? AND latitude = ? AND time = ?",
+                "SELECT * FROM %s WHERE longitude = ? AND latitude = ? AND time >= ? and time <= ?",
                 getTableName(metaType)
         );
         try (PreparedStatement pstmt = LindormConfig.connection.prepareStatement(querySQL)) {
             pstmt.setString(1, String.valueOf(Math.round(longitude) * 1.0));
             pstmt.setString(2, String.valueOf(Math.round(latitude) * 1.0));
-            pstmt.setTimestamp(3, timestamp);
+            pstmt.setTimestamp(3, Timestamp.valueOf(startTime));
+            pstmt.setTimestamp(4, Timestamp.valueOf(endTime));
 
             List<SimpleWeatherForestData> simpleWeatherForestDatas = new ArrayList<>();
             List<String> metaVars = datasetMetaInfoService.selectMetaVarByMetaType(metaType);
@@ -124,18 +119,15 @@ public class WeatherDataLindormService {
             }
             return simpleWeatherForestDatas;
         } catch (SQLException e) {
-            logger.error("查询天气数据失败: longitude {},latitude {}, timeStamp {}, metaType {} "
-                    , String.valueOf(Math.round(longitude) * 1.0)
-                    , String.valueOf(Math.round(latitude) * 1.0)
-                    , timestamp
+            logger.error("查询天气数据失败: longitude {},latitude {}, metaType {} "
                     , metaType
                     , e);
             return null;
         }
     }
 
-    public List<SimpleWeatherForestData> selectWeatherData(Double longitude, Double latitude, Long timeStamp) {
-        return selectWeatherData(longitude, latitude, timeStamp, "gfs_surface");
-    }
+//    public List<SimpleWeatherForestData> selectWeatherData(Double longitude, Double latitude, String startTime, String endTime, String metaType) {
+//        return selectWeatherData(longitude, latitude, startTime, endTime, metaType);
+//    }
 
 }

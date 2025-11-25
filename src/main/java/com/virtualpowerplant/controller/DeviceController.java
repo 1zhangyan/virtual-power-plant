@@ -1,7 +1,7 @@
 package com.virtualpowerplant.controller;
 
-import com.virtualpowerplant.model.Device;
-import com.virtualpowerplant.service.DeviceService;
+import com.virtualpowerplant.model.VppDevice;
+import com.virtualpowerplant.service.SungrowDeviceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class DeviceController {
     private static final Logger logger = LoggerFactory.getLogger(DeviceController.class);
 
     @Autowired
-    private DeviceService deviceService;
+    private SungrowDeviceService deviceService;
 
 //    @PostMapping("/sync")
 //    @Operation(summary = "同步SunGrow设备数据", description = "登录SunGrow账号，获取所有设备信息和对应电站的经纬度，同步到数据库")
@@ -38,9 +38,9 @@ public class DeviceController {
 
     @GetMapping("/inverters/coordinates")
     @Operation(summary = "查询虚拟电厂下所有设备的详细信息", description = "根据vppId返回所有逆变器设备详细信息")
-    public ResponseEntity<List<Device>> getInvertersWithCoordinates(@RequestParam(required = true) Long vppId) {
+    public ResponseEntity<List<VppDevice>> getInvertersWithCoordinates(@RequestParam(required = true) Long vppId) {
         try {
-            List<Device> inverters;
+            List<VppDevice> inverters;
             if (vppId != null) {
                 inverters = deviceService.getInvertersByVppId(vppId);
                 logger.debug("查询到 {} 个VPP {} 的带经纬度逆变器设备", inverters.size(), vppId);

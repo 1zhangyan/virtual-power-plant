@@ -2,7 +2,7 @@ package com.virtualpowerplant.model;
 
 import java.time.LocalDateTime;
 
-public class Device {
+public class SungrowDevice {
 
     private Long id;
     private Long uuid;
@@ -36,7 +36,7 @@ public class Device {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Device() {}
+    public SungrowDevice() {}
 
     // Getters and Setters
     public Long getId() {
@@ -246,7 +246,7 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device{" +
+        return "SungrowDevice{" +
                 "uuid=" + uuid +
                 ", psId=" + psId +
                 ", deviceName='" + deviceName + '\'' +

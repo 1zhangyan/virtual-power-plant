@@ -63,13 +63,13 @@ public class RealTimeDataResponse {
     }
 
     public static class DevicePointWrapper {
-        private DevicePoint devicePoint;
+        private SungrowDevicePoint devicePoint;
 
-        public DevicePoint getDevicePoint() {
+        public SungrowDevicePoint getDevicePoint() {
             return devicePoint;
         }
 
-        public void setDevicePoint(DevicePoint devicePoint) {
+        public void setDevicePoint(SungrowDevicePoint devicePoint) {
             this.devicePoint = devicePoint;
         }
     }

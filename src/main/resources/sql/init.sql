@@ -6,53 +6,56 @@ CREATE DATABASE IF NOT EXISTS vpp
 -- 使用数据库
 USE vpp;
 
--- 创建设备表（如果不存在）
-CREATE TABLE IF NOT EXISTS sungrow_device (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    uuid BIGINT NOT NULL UNIQUE COMMENT '设备唯一标识',
-    ps_id BIGINT NOT NULL COMMENT '电站ID',
-    ps_name VARCHAR(100) COMMENT '电站名称',
-    device_name VARCHAR(100) NOT NULL COMMENT '设备名称',
-    device_sn VARCHAR(50) NOT NULL COMMENT '设备序列号',
-    device_type INT NOT NULL COMMENT '设备类型(1:逆变器, 22:通信模块)',
-    device_code INT COMMENT '设备代码',
-    type_name VARCHAR(50) COMMENT '设备类型名称',
-    device_model_code VARCHAR(50) COMMENT '设备型号代码',
-    device_model_id BIGINT COMMENT '设备型号ID',
-    factory_name VARCHAR(100) COMMENT '制造商名称',
-    channel_id INT COMMENT '通道ID',
-    ps_key VARCHAR(100) COMMENT '电站键值',
-    communication_dev_sn VARCHAR(50) COMMENT '通信设备序列号',
-    dev_status VARCHAR(10) COMMENT '设备状态(0:离线, 1:在线)',
-    dev_fault_status INT COMMENT '设备故障状态(4:正常)',
-    rel_state INT COMMENT '连接状态(0:未连接, 1:已连接)',
-    rel_time DATETIME COMMENT '连接时间',
-    grid_connection_date DATETIME COMMENT '并网时间',
-    latitude DECIMAL(10, 8) COMMENT '纬度',
-    longitude DECIMAL(11, 8) COMMENT '经度',
-    ps_type INT COMMENT '电站类型',
-    online_status INT COMMENT '电站在线状态',
-    province_name VARCHAR(50) COMMENT '省份名称',
-    city_name VARCHAR(50) COMMENT '城市名称',
-    district_name VARCHAR(50) COMMENT '区域名称',
-    connect_type INT COMMENT '连接类型',
+CREATE TABLE IF NOT EXISTS vpp.virtual_power_plant (
+                                                       vpp_id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '虚拟电厂ID（自增主键）',
+                                                       mobile_tel VARCHAR(20) COMMENT '手机号码',
+    user_name VARCHAR(100) COMMENT '用户姓名',
+    language VARCHAR(10) COMMENT '语言',
+    user_id VARCHAR(50) COMMENT '用户ID',
+    country_name VARCHAR(100) COMMENT '国家名称',
+    user_account VARCHAR(100) COMMENT '用户账号',
+    user_master_org_name VARCHAR(200) COMMENT '用户主组织名称',
+    email VARCHAR(200) COMMENT '邮箱',
+    country_id VARCHAR(10) COMMENT '国家ID',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 
-    INDEX idx_ps_id (ps_id),
-    INDEX idx_device_type (device_type),
-    INDEX idx_dev_status (dev_status),
-    INDEX idx_uuid (uuid),
-    INDEX idx_device_sn (device_sn)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='设备信息表';
+    -- 创建索引
+    UNIQUE KEY uk_user_id (user_id),
+    UNIQUE KEY uk_user_account (user_account),
+    INDEX idx_mobile_tel (mobile_tel),
+    INDEX idx_email (email),
+    INDEX idx_user_name (user_name)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='虚拟电厂表';
 
--- 插入示例数据（可选）
-INSERT IGNORE INTO sungrow_device (uuid, ps_id, ps_name, device_name, device_sn, device_type, type_name, factory_name, dev_status, dev_fault_status, rel_state, latitude, longitude, ps_type, online_status, province_name, city_name, district_name, connect_type)
-VALUES
-    (1001, 1, '北京朝阳电站', '逆变器-001', 'INV-001', 1, '逆变器', '阳光电源', '1', 4, 1, 39.9042, 116.4074, 1, 1, '北京市', '北京市', '朝阳区', 1),
-    (1002, 1, '北京朝阳电站', '通信模块-001', 'COM-001', 22, '通信模块', '阳光电源', '1', 4, 1, 39.9042, 116.4074, 1, 1, '北京市', '北京市', '朝阳区', 1),
-    (1003, 1, '上海浦东电站', '逆变器-002', 'INV-002', 1, '逆变器', '阳光电源', '0', 2, 0, 31.2304, 121.4737, 1, 0, '上海市', '上海市', '浦东新区', 1);
+create table vpp_device
+(
+    `device_id` bigint UNSIGNED auto_increment PRIMARY KEY comment  '自增主键',
+    `vpp_id` bigint not null comment 'vppid',
+    `device_sn` varchar(128) not null comment 'sn',
+    `device_name` varchar(128) not null comment 'name',
+    `device_type` varchar(128) not null comment 'type',
+    `longitude` double not null comment 'longitude',
+    `latitude` double not null comment 'latitude',
+    `longitude_standard` double not null comment 'longitude_standard',
+    `latitude_standard` double not null comment 'latitude_standard',
+    `province` varchar(128) not null comment 'province',
+    `city` varchar(128) not null comment 'city',
+    `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP comment '创建时间',
+    `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
+    UNIQUE INDEX  uniq_feature_ref (feature_id,feature_table_id,feature_table_col)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment '特征和特征表的关联信息';
 
--- 验证数据插入
-SELECT 'SunGrow Device table created and sample data inserted' as status;
-SELECT COUNT(*) as device_count FROM sungrow_device;
+create table dataset_meta_info
+(
+    id           bigint auto_increment
+        primary key,
+    dataset_type varchar(56) not null,
+    meta_type    varchar(56) not null,
+    var_name     varchar(56) not null,
+    meta_var     varchar(56) not null,
+    default_unit varchar(56) null,
+    support_unit varchar(56) null,
+    var_desc     text        null
+)
+    comment '天气数据集元数据信息';
